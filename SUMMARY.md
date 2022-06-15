@@ -93,3 +93,4 @@
   * [MySQL](web-attacks/sql/mysql.md)
   * [Login](web-attacks/sql/login.md)
 * [XXE](web-attacks/xxe.md)
+* [CORS](web-attacks/cors.md)

