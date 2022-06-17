@@ -85,7 +85,7 @@
   * [Reflected](web-attacks/xss/reflected.md)
 * [Template Injection](web-attacks/ssti.md)
 * [RCE](web-attacks/rce.md)
-* [CSRF (Cross Site Request Forgery)](web-attacks/csrf-cross-site-request-forgery.md)
+* [CSRF](web-attacks/csrf-cross-site-request-forgery.md)
 * [SQL injection](web-attacks/sql/README.md)
   * [PostgreSQL](web-attacks/sql/postgresql.md)
   * [Oracle](web-attacks/sql/oracle.md)
