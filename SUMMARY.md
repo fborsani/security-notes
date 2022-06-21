@@ -83,7 +83,7 @@
 * [XSS](web-attacks/xss/README.md)
   * [DOM Based](web-attacks/xss/dom-based.md)
   * [Reflected](web-attacks/xss/reflected.md)
-* [Template Injection](web-attacks/ssti.md)
+* [SSTI](web-attacks/ssti.md)
 * [RCE](web-attacks/rce.md)
 * [CSRF](web-attacks/csrf-cross-site-request-forgery.md)
 * [SQL injection](web-attacks/sql/README.md)
