@@ -80,6 +80,7 @@
   * [PHP](web-attacks/code/php/README.md)
     * [PHP shells](web-attacks/code/php/php-shells.md)
   * [Java deserialization](web-attacks/code/java-deserialization.md)
+* [HTTP](web-attacks/http.md)
 * [XSS](web-attacks/xss/README.md)
   * [DOM Based](web-attacks/xss/dom-based.md)
   * [Reflected](web-attacks/xss/reflected.md)
