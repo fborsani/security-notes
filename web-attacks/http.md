@@ -42,8 +42,9 @@ Content-Length: 3
 Transfer-Encoding: chunked
 
 8
-SMUGGLED [\r\n\r\n]
+SMUGGLED 
 0
+[\r\n\r\n]
 ```
 
 #### TE.TE Exploit
