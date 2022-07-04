@@ -41,7 +41,7 @@ Host: vulnerable-website.com
 Content-Length: 3
 Transfer-Encoding: chunked
 
-8
+8    #String length in HEX
 SMUGGLED 
 0
 [\r\n\r\n]
