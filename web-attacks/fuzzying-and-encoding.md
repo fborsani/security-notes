@@ -20,38 +20,40 @@ Common payload characters
 
 | Symbol                                   | Encoding |
 | ---------------------------------------- | -------- |
-| "                                        |          |
-| '                                        |          |
-| /                                        |          |
-| \\                                       |          |
-| ;                                        |          |
-| :                                        |          |
-| ,                                        |          |
-| .                                        |          |
-| (                                        |          |
-| )                                        |          |
-| \[                                       |          |
-| ]                                        |          |
-| {                                        |          |
-| }                                        |          |
-| <                                        |          |
-| >                                        |          |
-| \*                                       |          |
+| "                                        | %22      |
+| '                                        | %27      |
+| \`                                       | %60      |
+| /                                        | %2F      |
+| \\                                       | %5C      |
+| ;                                        | %3B      |
+| :                                        | %3A      |
+| ,                                        | %2C      |
+| .                                        | %2E      |
+| (                                        | %28      |
+| )                                        | %29      |
+| \[                                       | %5B      |
+| ]                                        | %5D      |
+| {                                        | %7B      |
+| }                                        | %7D      |
+| <                                        | %3C      |
+| >                                        | %3E      |
+| \*                                       | %2A      |
 | +                                        | %2B      |
-| -                                        |          |
-| \_                                       |          |
+| -                                        | %2D      |
+| \_                                       | %5F      |
 | &                                        | %24      |
-| \|                                       |          |
-| $                                        |          |
+| \|                                       | %7C      |
+| $                                        | %24      |
 | #                                        | %23      |
-| \0 (NULL)                                |          |
-| \b (backspace)                           |          |
-| \n (line feed)                           |          |
-| \t (horizontal tab)                      |          |
-| \v (vertical tab)                        |          |
-| \f (form feed)                           |          |
-| \r (carriage return often used as \n \r) |          |
-| \e (escape)                              |          |
+| \~                                       | %7E      |
+| \0 (NULL)                                | %00      |
+| \b (backspace)                           | %08      |
+| \n (line feed)                           | %0A      |
+| \t (horizontal tab)                      | %09      |
+| \v (vertical tab)                        | %0B      |
+| \f (form feed)                           | %0C      |
+| \r (carriage return often used as \n \r) | %0D      |
+| \e (escape)                              | %1B      |
 | SPACE                                    | %20 OR + |
 
 ### HTML Encoding
@@ -62,6 +64,7 @@ Common payload characters
 | ---------------------------------------- | -------------- | ----------- | ----------- |
 | "                                        |                |             |             |
 | '                                        |                |             |             |
+| \`                                       |                |             |             |
 | /                                        |                |             |             |
 | \\                                       |                |             |             |
 | ;                                        |                |             |             |
@@ -84,6 +87,7 @@ Common payload characters
 | \|                                       |                |             |             |
 | $                                        |                |             |             |
 | #                                        |                |             |             |
+| \~                                       |                |             |             |
 | \0 (NULL)                                |                |             |             |
 | \b (backspace)                           |                |             |             |
 | \n (line feed)                           |                |             |             |
@@ -98,41 +102,43 @@ Common payload characters
 
 
 
-| Symbol                                   | Base36 |
-| ---------------------------------------- | ------ |
-| "                                        |        |
-| '                                        |        |
-| /                                        |        |
-| \\                                       |        |
-| ;                                        |        |
-| :                                        |        |
-| ,                                        |        |
-| .                                        |        |
-| (                                        |        |
-| )                                        |        |
-| \[                                       |        |
-| ]                                        |        |
-| {                                        |        |
-| }                                        |        |
-| <                                        |        |
-| >                                        |        |
-| \*                                       |        |
-| +                                        |        |
-| -                                        |        |
-| \_                                       |        |
-| &                                        |        |
-| \|                                       |        |
-| $                                        |        |
-| #                                        |        |
-| \0 (NULL)                                |        |
-| \b (backspace)                           |        |
-| \n (line feed)                           |        |
-| \t (horizontal tab)                      |        |
-| \v (vertical tab)                        |        |
-| \f (form feed)                           |        |
-| \r (carriage return often used as \n \r) |        |
-| \e (escape)                              |        |
-| SPACE                                    |        |
+| Symbol                                   | Base36 | Base64 |
+| ---------------------------------------- | ------ | ------ |
+| "                                        |        |        |
+| '                                        |        |        |
+| \`                                       |        |        |
+| /                                        |        |        |
+| \\                                       |        |        |
+| ;                                        |        |        |
+| :                                        |        |        |
+| ,                                        |        |        |
+| .                                        |        |        |
+| (                                        |        |        |
+| )                                        |        |        |
+| \[                                       |        |        |
+| ]                                        |        |        |
+| {                                        |        |        |
+| }                                        |        |        |
+| <                                        |        |        |
+| >                                        |        |        |
+| \*                                       |        |        |
+| +                                        |        |        |
+| -                                        |        |        |
+| \_                                       |        |        |
+| &                                        |        |        |
+| \|                                       |        |        |
+| $                                        |        |        |
+| #                                        |        |        |
+| \~                                       |        |        |
+| \0 (NULL)                                |        |        |
+| \b (backspace)                           |        |        |
+| \n (line feed)                           |        |        |
+| \t (horizontal tab)                      |        |        |
+| \v (vertical tab)                        |        |        |
+| \f (form feed)                           |        |        |
+| \r (carriage return often used as \n \r) |        |        |
+| \e (escape)                              |        |        |
+| SPACE                                    |        |        |
 
 
 
@@ -142,6 +148,7 @@ Common payload characters
 | ---------------------------------------- | ------- | ----- | ------ | ------ |
 | "                                        |         |       |        |        |
 | '                                        |         |       |        |        |
+| \`                                       |         |       |        |        |
 | /                                        |         |       |        |        |
 | \\                                       |         |       |        |        |
 | ;                                        |         |       |        |        |
@@ -164,6 +171,7 @@ Common payload characters
 | \|                                       |         |       |        |        |
 | $                                        |         |       |        |        |
 | #                                        |         |       |        |        |
+| \~                                       |         |       |        |        |
 | \0 (NULL)                                |         |       |        |        |
 | \b (backspace)                           |         |       |        |        |
 | \n (line feed)                           |         |       |        |        |
