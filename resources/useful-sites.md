@@ -50,6 +50,12 @@
 * [https://cxsecurity.com/cvemap/](https://cxsecurity.com/cvemap/)
 * [https://www.exploit-db.com/google-hacking-database](https://www.exploit-db.com/google-hacking-database)
 
+## Fuzzying
+
+* [https://gchq.github.io/CyberChef/](https://gchq.github.io/CyberChef/)
+* [https://unicode-table.com/](https://unicode-table.com/)
+* [http://rumkin.com/tools/cipher/](http://rumkin.com/tools/cipher/)
+
 ## Credentials
 
 #### Forensics
