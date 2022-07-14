@@ -82,15 +82,24 @@
 
 ## Networking
 
-* [https://www.speedguide.net/port.php?port=](https://www.speedguide.net/port.php?port=)\<port number>
-* [https://www.whois.com/whois/](https://www.whois.com/whois/)\<domain name>
-* [https://sitereport.netcraft.com/?url=](https://sitereport.netcraft.com/?url=) \<url>
-* [https://www.shodan.io/](https://www.shodan.io/search?query=)
-* [https://securityheaders.com/?q=](https://securityheaders.com/?q=)\<url>
-* [https://cookiedatabase.org/](https://cookiedatabase.org/)
-* [https://www.ssllabs.com/ssltest/analyze.html?d=](https://www.ssllabs.com/ssltest/analyze.html?d=)\<url>
+**Common Ports, Requests, Headers, Cookies...**
+
 * [http://useragentstring.com/](http://useragentstring.com)?uas=\<UA string>\&getText=all
 * [https://reqbin.com/](https://reqbin.com/)
+* [https://www.speedguide.net/port.php?port=](https://www.speedguide.net/port.php?port=)\<port number>
+* [https://securityheaders.com/?q=](https://securityheaders.com/?q=)\<url>
+* [https://cookiedatabase.org/](https://cookiedatabase.org/)
+
+**Search Hosts or services**
+
+* [https://www.whois.com/whois/](https://www.whois.com/whois/)\<domain name>
+* [https://search.censys.io/](https://search.censys.io/)
+* [https://www.shodan.io/](https://www.shodan.io/search?query=)
+
+**Network security analysis services**
+
+* [https://www.ssllabs.com/ssltest/analyze.html?d=](https://www.ssllabs.com/ssltest/analyze.html?d=)\<url>
+* [https://sitereport.netcraft.com/?url=](https://sitereport.netcraft.com/?url=) \<url>
 
 ## OSINT
 
