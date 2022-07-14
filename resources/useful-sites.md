@@ -45,8 +45,9 @@
 
 #### CVEs lists
 
-* [https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=)\<keyword or cve>
-* [https://cvedetails.com/cve/](https://cvedetails.com/cve/)\<cve>
+* [https://cve.mitre.org/](https://cve.mitre.org/)cgi-bin/cvekey.cgi?keyword=\<keyword or cve>
+* [https://www.cve.org/](https://www.cve.org/)
+* [https://cvedetails.com/](https://cvedetails.com/)cve/\<cve>
 * [https://cxsecurity.com/cvemap/](https://cxsecurity.com/cvemap/)
 * [https://www.exploit-db.com/google-hacking-database](https://www.exploit-db.com/google-hacking-database)
 
@@ -86,20 +87,20 @@
 
 * [http://useragentstring.com/](http://useragentstring.com)?uas=\<UA string>\&getText=all
 * [https://reqbin.com/](https://reqbin.com/)
-* [https://www.speedguide.net/port.php?port=](https://www.speedguide.net/port.php?port=)\<port number>
-* [https://securityheaders.com/?q=](https://securityheaders.com/?q=)\<url>
+* [https://www.speedguide.net/port.php](https://www.speedguide.net/port.php)?port=\<port number>
 * [https://cookiedatabase.org/](https://cookiedatabase.org/)
 
 **Search Hosts or services**
 
-* [https://www.whois.com/whois/](https://www.whois.com/whois/)\<domain name>
+* [https://www.whois.com/](https://www.whois.com/)whois/\<domain name>
 * [https://search.censys.io/](https://search.censys.io/)
 * [https://www.shodan.io/](https://www.shodan.io/search?query=)
 
 **Network security analysis services**
 
-* [https://www.ssllabs.com/ssltest/analyze.html?d=](https://www.ssllabs.com/ssltest/analyze.html?d=)\<url>
-* [https://sitereport.netcraft.com/?url=](https://sitereport.netcraft.com/?url=) \<url>
+* [https://www.ssllabs.com/ssltest/](https://www.ssllabs.com/ssltest/)analyze.html?d=\<url> SSL/TLS Configuration
+* [https://sitereport.netcraft.com](https://sitereport.netcraft.com)/?url= \<url>  SSL/TLS Configuration
+* [https://securityheaders.com](https://securityheaders.com)/?q=\<url> HSTS Configuration
 
 ## OSINT
 
