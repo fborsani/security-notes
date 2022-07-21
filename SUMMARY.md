@@ -75,8 +75,8 @@
 ## Web Attacks
 
 * [Authentication](web-attacks/authentication.md)
-* [Fuzzying and encoding](web-attacks/fuzzying-and-encoding.md)
-* [Filter Evasion](web-attacks/filter-evasion.md)
+* [Filter Evasion](web-attacks/filter-evasion/README.md)
+  * [Fuzzying and encoding](web-attacks/filter-evasion/fuzzying-and-encoding.md)
 * [Enumeration](web-attacks/enumeration.md)
 * [File Upload](web-attacks/file-upload.md)
 * [Web Exploits](web-attacks/code/README.md)
