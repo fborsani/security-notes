@@ -73,7 +73,6 @@
 
 * [https://open-sez.me/](https://open-sez.me/)
 * [https://github.com/danielmiessler/SecLists](https://github.com/danielmiessler/SecLists)
-* [https://github.com/wallarm/jwt-secrets/blob/master/jwt.secrets.list](https://github.com/wallarm/jwt-secrets/blob/master/jwt.secrets.list)
 
 #### Hash cracking
 
