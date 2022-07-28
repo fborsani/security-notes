@@ -46,6 +46,7 @@ Unicode format can be converted in URL encoding or CSS encoding as follows
 U+0022 #full Unicode for double quote character
 %22    #URL encoded char
 \22    #CSS encoded char, can be used as part of a string
+\u0022 #JavaScript Unicode notation
 ```
 
 Url encoding reserved characters
