@@ -73,6 +73,7 @@
 
 * [https://open-sez.me/](https://open-sez.me/)
 * [https://github.com/danielmiessler/SecLists](https://github.com/danielmiessler/SecLists)
+* [https://github.com/wallarm/jwt-secrets/blob/master/jwt.secrets.list](https://github.com/wallarm/jwt-secrets/blob/master/jwt.secrets.list)
 
 #### Hash cracking
 
@@ -88,6 +89,7 @@
 * [http://useragentstring.com/](http://useragentstring.com)?uas=\<UA string>\&getText=all
 * [https://reqbin.com/](https://reqbin.com/)
 * [https://www.speedguide.net/port.php](https://www.speedguide.net/port.php)?port=\<port number>
+* [https://developer.mozilla.org/en-US/docs/Web/HTTP#reference](https://developer.mozilla.org/en-US/docs/Web/HTTP#reference)
 * [https://cookiedatabase.org/](https://cookiedatabase.org/)
 
 **Search Hosts or services**

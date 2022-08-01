@@ -1,12 +1,5 @@
 # Enumeration
 
-## Google Dorks
-
-```
-site:<url>
-insite:<url> e -inurl:https
-```
-
 ## Directory traversal
 
 ### Check for page formats
