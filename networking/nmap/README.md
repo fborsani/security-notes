@@ -4,6 +4,8 @@ description: nmap cheatsheet
 
 # Nmap
 
+## Tool
+
 ### Scope
 
 ```
@@ -84,4 +86,18 @@ nmap <host list> --exclude <host list>
 -oX			File.xml
 -oG			Grepable
 -oA			Output in the three major formats at once
+```
+
+## Templates
+
+#### Common services slow
+
+```
+nmap -Pn -p 21,22,25,53,80,110,111,143,443,445,1433,1521,3306,5432,8080,8443 -T2 <ip> -A -vvv -oA ./nmap
+```
+
+#### Service detailed scan
+
+```
+nmap -Pn -p <port> <ip> -sV --version-all -sC -vvv -oA ./nmap
 ```
