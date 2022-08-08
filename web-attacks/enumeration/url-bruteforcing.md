@@ -1,4 +1,4 @@
-# IDOR
+# URL bruteforcing
 
 ## DIRB
 
