@@ -1,5 +1,94 @@
 # Enumeration
 
+## Google Dorks
+
+```
+"Info:<url>"
+site:<url>
+site:<url> -inurl:https
+site:<url> -filetype: .
+site:<url> filetype:Log allintext:"username" "password"
+site:<url> ext:pdf
+```
+
+#### Social media
+
+```
+<query> @<facebook|twitter|linkedin...>
+```
+
+### Specific dorks
+
+#### SQL Dump
+
+```
+"index of" "database.sql.zip" 
+```
+
+#### FTP server
+
+```
+intitle:”index of” inurl:ftp
+```
+
+#### Wordpress admin page
+
+```
+intitle:"Index of" wp-admin                 
+```
+
+#### Apache2
+
+```
+intitle:"Apache2 Ubuntu Default Page: It works" 
+```
+
+#### PHPMyAdmin
+
+```
+"Index of" inurl:phpmyadmin                          #phpMyAdmin
+```
+
+#### JIRA/Kibana
+
+```
+inurl:Dashboard.jspa intext:"Atlassian Jira Project Management Software"
+inurl:app/kibana intext:Loading Kibana
+```
+
+#### cPanel password reset
+
+```
+inurl:_cpanel/forgotpwd
+```
+
+## Site analysis
+
+### WhatWeb
+
+Advanced web scanner and spider tool. Download from [here](https://github.com/urbanadventurer/WhatWeb).
+
+```
+whatweb -v <url>                     #standard scan
+whatweb -v -a3 <url>                 #aggressive scan
+whatweb -v <url> -u <user>:<pass>    #basic auth
+```
+
+#### Use with proxy
+
+```
+whatweb -v <url> --proxy <url> --proxy-user <user>:<pass>
+```
+
+### Plugins
+
+```
+whatweb -l                #list all plugins
+whatweb -I <keyword>      #search by keyword and show detailed description
+whatweb --dorks=<plugin>  #list google dorks used by the plugin
+whatweb -i <plugin> <url> #use the specified plugin during scan
+```
+
 ## Directory traversal
 
 ### Check for page formats
