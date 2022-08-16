@@ -93,6 +93,7 @@
 * [RCE](web-attacks/rce.md)
 * [CSRF](web-attacks/csrf-cross-site-request-forgery.md)
 * [SQL injection](web-attacks/sql/README.md)
+  * [sqlmap](web-attacks/sql/sqlmap.md)
   * [PostgreSQL](web-attacks/sql/postgresql.md)
   * [Oracle](web-attacks/sql/oracle.md)
   * [MSSQL](web-attacks/sql/mssql.md)

