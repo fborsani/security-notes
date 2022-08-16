@@ -51,15 +51,15 @@ SELECT name FROM master..syslogins WHERE processadmin = 1;
 SELECT name FROM master..syslogins WHERE diskadmin = 1;
 SELECT name FROM master..syslogins WHERE dbcreator = 1;
 SELECT name FROM master..syslogins WHERE bulkadmin = 1;
---check if current user has privilege--
-SELECT is_srvrolemember(‘sysadmin’);
-SELECT is_srvrolemember(‘dbcreator’);
-SELECT is_srvrolemember(‘bulkadmin’);
-SELECT is_srvrolemember(‘diskadmin’);
-SELECT is_srvrolemember(‘processadmin’);
-SELECT is_srvrolemember(‘serveradmin’);
-SELECT is_srvrolemember(‘setupadmin’);
-SELECT is_srvrolemember(‘securityadmin’);
+--check if user has privilege--
+SELECT is_srvrolemember('<name>');
+SELECT is_srvrolemember('<name>');
+SELECT is_srvrolemember('<name>');
+SELECT is_srvrolemember('<name>');
+SELECT is_srvrolemember('<name>');
+SELECT is_srvrolemember('<name>');
+SELECT is_srvrolemember('<name>');
+SELECT is_srvrolemember('<name>');
 ```
 
 ### Database info

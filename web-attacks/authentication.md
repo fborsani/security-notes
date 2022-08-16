@@ -11,7 +11,7 @@
 * **HTTP dialect based access control**: some applications deny requests from certain users based on user type, resource requested and type of HTTP request. These controls can be bypassed by using a different verb for instance sending a GET request instead of a POST. It is also possible to rewrite the destination URL by adding headers such as `X-Original-URL` and `X-Rewrite-URL`
 * **Horizontal privilege escalation:** a user is capable of accessing resources belonging to other users of the same group. For instance a user may be capable of access not only his account page but also the account page of any other user by modifying the request's parameters
 * **Vertical privilege escalation:** a user is capable of impersonating another user with greater permissions such as a site administrator by tampering the request's parameters. Can be a consequence of horizontal privilege escalation.
-* **IDOR:** an Insecure Direct Object Request happens when an application uses user supplied input to access objects directly without verifying whether the current user is allowed to access the given resource
+* **IDOR:** an Insecure Direct Object Request happens when an application uses user supplied input to access objects directly without verifying whether the current user is allowed to access the given resource for example by tampering IDs
 
 ### Authentication bad practices
 
