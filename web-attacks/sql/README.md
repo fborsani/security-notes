@@ -61,9 +61,18 @@ Execute a query containing a valid parameter (such as an item ID) and concatenat
 ```
 <param>' and 1=1;    #returns the item matching <param>
 <param>' and 1=0;    #returns nothing
+<param>' or 1=1      #returns everything
 ```
 
 If the first statement returns the expected value and the second statement returns nothing then the field or parameter are vulnerable
+
+#### Payload variants
+
+```
+' and 'a'='a'    #strings instead of numbers
+' and "a"="a"    #double quotes instead of single
+') and 1=1;      #closed round bracket to exclude other conditions
+```
 
 ### Union based
 
