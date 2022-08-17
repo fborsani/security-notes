@@ -91,6 +91,7 @@
 * [https://www.speedguide.net/port.php](https://www.speedguide.net/port.php)?port=\<port number>
 * [https://developer.mozilla.org/en-US/docs/Web/HTTP#reference](https://developer.mozilla.org/en-US/docs/Web/HTTP#reference)
 * [https://cookiedatabase.org/](https://cookiedatabase.org/)
+* [http://www.soapclient.com/](http://www.soapclient.com/)
 
 **Search Hosts or services**
 

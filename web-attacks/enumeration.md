@@ -19,6 +19,13 @@ site:<url> ext:pdf
 
 ### Specific dorks
 
+#### SOAP WSDL file
+
+```
+inurl:wsdl
+filetype:wsdl
+```
+
 #### SQL Dump
 
 ```
@@ -46,7 +53,7 @@ intitle:"Apache2 Ubuntu Default Page: It works"
 #### PHPMyAdmin
 
 ```
-"Index of" inurl:phpmyadmin                          #phpMyAdmin
+"Index of" inurl:phpmyadmin 
 ```
 
 #### JIRA/Kibana
@@ -125,7 +132,22 @@ openssl x509 -req -in <cert>.csr -CA <cert authority> -CAkey <remote key>.key -C
 openssl pkcs12 -export -out <file>.pfx -in <file>.pem -inkey <name>.key -certfile <remote cert>.cert
 ```
 
-## Specific sites
+### SOAP Services
+
+SOAP services expose a WSDL file that can reveal all the possible calls and relative parameters that can be executed on the server. This can allow an attacker to execute arbitrary calls to server-side services to tamper or destroy data
+
+In order to find the definition file try appending the following payloads to the service url
+
+```
+<url>?wsdl
+<url>.wsdl
+<url>?disco    #ASP.NET
+<url>.disco    #ASP.NET
+```
+
+Some public web services may have their WSDL file accessible by visiting [soapclient.com](http://www.soapclient.com/)
+
+## Specific sites and services
 
 ### Wordpress
 
