@@ -1,6 +1,22 @@
-# File Upload
+# File Vulnerabilities
 
-## Evade file restrictions
+## LFI
+
+local file inclusion happens when it is possible to access files stored on the target's system by passing a relative path to a parameter of a request. The number of "up one level instructions" is irrelevant because once we reach the root level, the additional "go up" instructions will be ignored.
+
+See LFI List for a list of possible target files for tests
+
+```
+#Linux
+../../../../../../../../../../../../etc/passwd
+#Windows
+..\..\..\..\..\..\..\..\..\..\..\..\Windows\system.ini
+..\..\..\..\..\..\..\..\..\..\..\..\boot.ini
+```
+
+## File upload functionality
+
+### Evade file restrictions
 
 Changing the content type header when trying to upload reverse shells can bypass simple files detection systems.
 
