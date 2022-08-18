@@ -100,5 +100,6 @@
   * [MSSQL](web-attacks/sql/mssql.md)
   * [MySQL](web-attacks/sql/mysql.md)
   * [Login](web-attacks/sql/login.md)
+* [XPath injection](web-attacks/xpath-injection.md)
 * [XXE](web-attacks/xxe.md)
 * [CORS](web-attacks/cors.md)
