@@ -153,19 +153,26 @@ Some public web services may have their WSDL file accessible by visiting [soapcl
 
 #### Enumeration
 
-```http
-wpscan --url <host> --enumerate ap,at,cb,dbe
-```
+Enumeration can be executed with the tool wpscan downloadable [here](https://github.com/wpscanteam/wpscan)
 
-Remember to search listed plugins and modules for vulnerabilities.
+```http
+wpscan --update
+wpscan --url <host> --enumerate u,p            #list users and installed lugins
+wpscan --url <host> --enumerate ap,at,cb,dbe   #bruteforce installed plugins, better results but really noisy
+```
 
 #### Credentials dump:
 
 This file contains plain-text username and password for database login. Sometimes these credentials can also be used to authenticate as another user on target machine.
 
 ```http
-cat <wp folder>/wp-config.php
+cat <wp folder>/wp-config.php    #local
+wget <url>/wp-config.php         #remote
 ```
+
+### Joomla
+
+
 
 ### Git repository
 
