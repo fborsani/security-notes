@@ -103,3 +103,9 @@
 * [XPath injection](web-attacks/xpath-injection.md)
 * [XXE](web-attacks/xxe.md)
 * [CORS](web-attacks/cors.md)
+
+## MOBILE PENTESTING
+
+* [Static Code Analysis](mobile-pentesting/static-code-analysis.md)
+* [Dynamic Code Analysis](mobile-pentesting/dynamic-code-analysis.md)
+* [Network Traffic Analysis](mobile-pentesting/network-traffic-analysis.md)
