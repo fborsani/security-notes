@@ -20,6 +20,7 @@ hostname
 systeminfo
 systeminfo | findstr /B /C:”OS Name” /C:”OS Version” /C:”System Type”
 wmic qfe get Caption, Description, HotFixID, InstalledOn
+wmic os get Caption,BuildNumber,Version
 ```
 
 ## Drivers
