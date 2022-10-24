@@ -113,10 +113,16 @@ rdesktop <ip> -r disk:share=<local folder to share>     #share folder with remot
 ### xfreerdp
 
 ```
-xfreerdp /d:<domain> /u:<user> /v:<host> +clipboard                         #share clipboard
-xfreerdp /d:<domain> /u:<user> /v:<host> +clipboard /dynamic-resolution     #allow window resize
+xfreerdp /d:<domain> /u:<user> /v:<host> +clipboard              #share clipboard
+xfreerdp /d:<domain> /u:<user> /v:<host> +drives                 #share all mount points
+xfreerdp /d:<domain> /u:<user> /v:<host> +home_drive             #share home folder
+xfreerdp /d:<domain> /u:<user> /v:<host> /dynamic-resolution     #allow window resize
+
+xfreerdp /u:"<user>" -p:"<password>" /v:<host>
 xfreerdp /u:<user> /d:<domain> /p:<password> /v:<ip>:<port>
 xfreerdp /u:<user> /pth:<hash> /v:<ip>     #login with hash
+
+xfreerdp /v:<host> /dynamic-resolution +clipboard +home_drive 
 ```
 
 ### VNC
