@@ -113,8 +113,9 @@ rdesktop <ip> -r disk:share=<local folder to share>     #share folder with remot
 ### xfreerdp
 
 ```
-xfreerdp /d:<domain> /u:<user> /v:<host> +clipboard     #share clipboard
-xfreerdp /u:<user> /d:<domain> /p:<password> /v:<ip>
+xfreerdp /d:<domain> /u:<user> /v:<host> +clipboard                         #share clipboard
+xfreerdp /d:<domain> /u:<user> /v:<host> +clipboard /dynamic-resolution     #allow window resize
+xfreerdp /u:<user> /d:<domain> /p:<password> /v:<ip>:<port>
 xfreerdp /u:<user> /pth:<hash> /v:<ip>     #login with hash
 ```
 
