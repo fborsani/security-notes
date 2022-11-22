@@ -134,8 +134,8 @@ tar -tvf <archive>.tar
 --Compress--
 tar -czvf archive.tar.gz <dir>/
 --Extract--
-tar -xvf <archive>.tar <path to extract>
-tar -xzvf <archive>.tar.gz <path to extract>
+tar -xvf <archive>.tar -C <path to extract>
+tar -xzvf <archive>.tar.gz -C <path to extract>
 ```
 
 ### Zip
