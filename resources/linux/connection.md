@@ -23,6 +23,30 @@ ssh-keygen -t <rsa/dsa/ecsda> -f <file>
 chmod 600 <file>
 ```
 
+### SCP
+
+Transfer remote file or folder to local
+
+```
+scp <user>@<host>:<filepath> <local path>
+scp -i <pkey> <user>@<host>:<filepath> <local path>
+scp -r <user>@<host>:<folder> <local path>
+```
+
+Transfer local file or folder to remote
+
+```
+scp <file> <user>@<host>:<path>
+scp -i <pkey> <file> <user>@<host>:<filepath>
+scp -r <folder> <user>@<host>:<path>
+```
+
+Transfer from remote to remote
+
+```
+scp <user1>@<host1>:<file> <user2>@<host2>:<dest path>
+```
+
 ### HTTP
 
 ```
