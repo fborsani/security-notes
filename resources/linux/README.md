@@ -52,7 +52,7 @@ iptables -S
 iptables --flush
 ```
 
-## Directories
+## Directories and files
 
 ### List subdirs
 
@@ -67,6 +67,8 @@ find / -type d -readable -exec ls -adl {} \; 2>/dev/null
 find . -type f -name "<name>" 2>/dev/null
 find . -type f -name "*.conf" 2>/dev/null
 find . -type f -name "*.txt"  2>/dev/null
+find . -type f -mtime +<days> 2>/dev/null                   #files older than x days
+find . -type f -name"<name>" -exec cat {} \; 2>/dev/null    #find and print file
 ls -h  
 ls -lah
 ```
