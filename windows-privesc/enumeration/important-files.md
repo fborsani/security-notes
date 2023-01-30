@@ -20,7 +20,7 @@ dir /s/b /A:-D RDCMan.settings == *.rdg == *_history* == httpd.conf == .htpasswd
 dir /s *ysprep.inf *ysprep.xml *nattended.xml *nattend.xml *nattend.txt 2>nul
 ```
 
-Typical files. Passwords may be stored in Base64
+Typical files
 
 ```
 C:\Windows\sysprep\sysprep.xml
