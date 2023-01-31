@@ -18,6 +18,18 @@ Performed through a combination of token containing identity and privileges of u
 * SASL: system ACL - logging and audit policies by user
 * ACE: access control entity - the single access rule that composes the list of rules used by DACL and SACL to manage accesses
 
+### User groups
+
+| ID  | Name               | Description                                                             |
+| --- | ------------------ | ----------------------------------------------------------------------- |
+| 512 | Domain Admins      | Grants administrative privilege over the whole domain                   |
+| 549 | Server Operators   | Grants administrative privilege on the DC                               |
+| 551 | Backup Operators   | Allows to access any file regardless of permission and performs backups |
+| 548 | Account Operators  | Allows to create or edit user accounts                                  |
+| 513 | Domain Users       | Inclues all users                                                       |
+| 515 | Domain Computers   | Includes all machine accounts                                           |
+| 516 | Domain Controllers | Includes all DCs                                                        |
+
 ### Trust
 
 Link between two domains that allows objects to share information. Can occur between father/child or horizontally across the forest boundary.&#x20;
