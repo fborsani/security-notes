@@ -26,7 +26,7 @@ Performed through a combination of token containing identity and privileges of u
 | 549 | Server Operators   | Grants administrative privilege on the DC                               |
 | 551 | Backup Operators   | Allows to access any file regardless of permission and performs backups |
 | 548 | Account Operators  | Allows to create or edit user accounts                                  |
-| 513 | Domain Users       | Inclues all users                                                       |
+| 513 | Domain Users       | Includes all users                                                      |
 | 515 | Domain Computers   | Includes all machine accounts                                           |
 | 516 | Domain Controllers | Includes all DCs                                                        |
 
