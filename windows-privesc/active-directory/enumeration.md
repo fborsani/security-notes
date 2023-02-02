@@ -1,25 +1,12 @@
 # Enumeration
 
-## Domain Information
-
-### PowerShell
+### Domain Information
 
 ```
 $ADCLass = [System.DirectoryServices.ActiveDirectory.Domain]
 $ADClass::GetCurrentDomain() 
 
-Get-WmiObject -Namespace root\directory\ldap -Class ds_domain | select ds_dc, ds_distinguishedname, pscomputername
-
-//get DC
-Get-WmiObject -Namespace root\directory\ldap -Class ds_computer | where {$_.ds_useraccountcontrol -match 532480} | select ds_cn, ds_dnshostname, ds_operatingsystem
-
-//get servers
-Get-WmiObject -Namespace root\directory\ldap -Class ds_computer | where {$_.ds_useraccountcontrol -match 4096} | select ds_cn, ds_dnshostname, ds_operatingsystem
-```
-
-### PowerView
-
-```
+//PowerView
 Get-NetDomain
 Get-NetDomain -Domain <domain>
 Get-DomainSID
@@ -27,31 +14,8 @@ Get-DomainPolicy
 (Get-DomainPolicy)."system access"
 (Get-DomainPolicy)."kerberos policy"
 Get-NetDomainController
-```
 
-Trust policies
-
-```
-Get-NetDomainTrust
-Get-NetDomainTrust -Domain <domain>
-```
-
-Forest
-
-```
-Get-NetForest
-Get-NetForest -Forest <forest domain>
-Get-NetForestDomain
-Get-NetForestDomain -Forest <forest domain>
-Get-NetForestCatalog
-Get-NetForestCatalog -Forest <forest domain>
-Get-NetForestTrust
-Get-NetForestTrust -Forest <forest domain>
-```
-
-### LDAP Module
-
-```
+//LDAP module
 Get-ADDomain
 Get-ADDomain -Identity <domain>
 (Get-ADDomain).DomainSid
@@ -61,13 +25,29 @@ Get-ADDomainController
 Trust policies
 
 ```
+//powerview
+Get-NetDomainTrust
+Get-NetDomainTrust -Domain <domain>
+
+//LDAP module
 Get-ADTrust
 Get-ADTrust -Identity <domain>
 ```
 
-Forest
+Forests
 
 ```
+//powerview
+Get-NetForest
+Get-NetForest -Forest <forest domain>
+Get-NetForestDomain
+Get-NetForestDomain -Forest <forest domain>
+Get-NetForestCatalog
+Get-NetForestCatalog -Forest <forest domain>
+Get-NetForestTrust
+Get-NetForestTrust -Forest <forest domain>
+
+//LDAP module
 Get-ADForest
 Get-ADForest -Identity <forest domain>
 (Get-ADForest).Domains
@@ -75,93 +55,43 @@ Get-ADForest | select -ExpandProperty GlobalCatalogs
 Get-ADTrust -Filter 'msDS-TrustForestTrustInfo -ne "$null"'
 ```
 
-## Machines
-
-### PowerShell
+### User Information
 
 ```
-Get-WmiObject -Namespace root\directory\ldap -Class ds_computer
-```
-
-### PowerView
-
-```
-Get-NetComputer
-Get-NetComputer -OperatingSystem "*<OS>*"
-Get-NetComputer -Ping
-Get-NetComputer -FullData
-```
-
-Find shares and files
-
-```
-//PowerView
-Invoke-ShareFinder -Verbose
-Invoke-FileFinder -Verbose    //show files from readable shares
-Get-NetFileServer
-```
-
-### LDAP Module
-
-```
-Get-ADComputer -Filter * -Properties name | select name
-Get-ADComputer -Filter 'OperatingSystem like "*<OS>*"' -Properties * | select name.OperatingSystem
-Get-ADComputer -Filter * -Properties DNSHostName | %{Test-Connection -Count 1 -ComputerName $_.DNSHostName}
-Get-ADComputer -Filter * -Properties *
-```
-
-## User Information
-
-### CMD
-
-these commands need to be run on a machine connected to the domain
-
-```
-net user /domain        //list all
-net user <user>/domain  //get info on the user
-net accounts /domain    //get info on the account policies
-```
-
-### PowerShell
-
-```
-Get-WmiObject -Class win32_useraccount | select name, domain, accounttype
-```
-
-List of machines where the current user is administrator
-
-```
-$pcs = Get-WmiObject -Namespace root\directory\ldap -Class ds_computer | select -ExpandProperty ds_cn
-foreach ($pc in $pcs) {
-    (Get-WmiObject -Class win32_computersystem -ComputerName $pc -ErrorAction silentlycontinue).name
-}
-```
-
-### PowerView
-
-```
+//PowerView 
 Get-NetUser
 Get-NetUser -Username <username> 
 Get-UserProperty                             //List of properties
 Get-UserProperty -Properties <property>      //value of property values for all users
+
+//LDAP module  
+Get-ADUser -Filter *                      //default properties (same as powerView)
+Get-ADUser -Filter * -Properties *        //all properties
+Get-ADUser -Identity <username> -Properties *
+Get-ADUser -Filter * -Properties * | select -First 1 | Get-Member -MemberType *Property | select name    //property list
 ```
 
 Search a string in user properties
 
 ```
+//PowerView
 Find-userField -SearchField <property> -SearchTerm "<str>"
+
+//LDAP Module
+Get-ADUser -Filter '<property> like '*<str>* -Properties * | select name,<property>
 ```
 
 Get logged users
 
 ```
+//PowerView
 Get-NetLoggedOn -ComputerName <fqd name>     //requires local admin
 Get-LoggedOnLocal -ComputerName <fqd name>
 Get-LastLoggedOn -ComputerName <fqd name>    //requires local admin
 Get-NetSession -ComputerName <fqd name>      //summary of users and concurrent sessions
 ```
 
-User Hunting
+User Hunting (PowerView)
 
 ```
 Find-LocalAdminAccess -Verbose            //find all machines where current user is admin
@@ -171,126 +101,62 @@ Invoke-UserHunter -GroupName "RDPUsers"   //find machines where user can RDP to
 Invoke-UserHunter -CheckAccess            //check for admin access
 ```
 
-### LDAP Module
+### Groups
 
 ```
- Get-ADUser -Filter *                      //default properties
- Get-ADUser -Filter * -Properties *        //all properties
- Get-ADUser -Identity <username> -Properties *
- Get-ADUser -Filter * -Properties * | select -First 1 | Get-Member -MemberType *Property | select name    //property list
- 
- //If the machine we are running the query from is not part of a domain we need to specify the DC to query
- Get-ADUser -Identity <username> -Server <DC to query> -Properties *
- Get-ADUser -Filter 'Name -like "<SQL style query>"' -Server <DC to query> -Properties *
-```
-
-Search a string in user properties
-
-```
-Get-ADUser -Filter '<property> like '*<str>* -Properties * | select name,<property>
-```
-
-## Groups
-
-### CMD
-
-these commands need to be run on a machine connected to the domain
-
-```
-net group /domain            //list all
-net group <group> /domain    //get info on group
-```
-
-### PowerShell
-
-```
-Get-WmiObject -Class win32_groupindomain | foreach {[wmi]$_.partcomponent}
-```
-
-Users in group
-
-```
-Get-WmiObject -Class win32_groupuser | where {
-    $_.groupcomponent -match '<group>'
-} | foreach {[wmi]$_.partcomponent}
-```
-
-Groups of user
-
-```
-Get-WmiObject -Class win32_groupuser | where {
-    $_.partcomponent -match '<user>'
-} | foreach {[wmi]$_.groupcomponent}
-```
-
-### PowerView
-
-```
+//PowerView
 Get-NetGroup
 Get-NetGroup -Domain <domain>
 Get-NetGroup -FullData
 Get-NetGroup *<str>*
-```
 
-Users in group
-
-```
-Get-NetGroupMember -GroupName <group> -Recurse
-```
-
-Groups of user
-
-```
-Get-NetGroup -Username <user>
-```
-
-List all groups on a machine. Requires administrative privileges or the machine has to be a domain controller
-
-```
-Get-NetLocalGroup -ComputerName <full qualified domain> -ListGroups
-Get-NetLocalGroup -ComputerName <full qualified domain> -Recurse
-```
-
-### LDAP Module
-
-```
+//LDAP Module
 Get-ADGroup -Filter * | select Name
 Get-ADGroup -Filter * -Properties *
 Get-ADGroup -Filter 'name like "*<str>*"' | select Name
 ```
 
-Users in group
+Users in group and groups of user
 
 ```
+//PowerView
+Get-NetGroupMember -GroupName <group> -Recurse
+Get-NetGroup -Username <user>
+
+//LDAP Module
 Get-ADGroupMember -Identity <group> -Recursive
-```
-
-Groups of user
-
-```
 Get-ADPrincipalGroupMembership -identity <user>
 ```
 
-## Group Policies (GPO)
-
-### PowerShell
+List all groups on a machine. Requires administrative privileges or the machine has to be a domain controller
 
 ```
+//PowerView
+Get-NetLocalGroup -ComputerName <full qualified domain> -ListGroups
+Get-NetLocalGroup -ComputerName <full qualified domain> -Recurse
+```
+
+### Group Policies (GPO)
+
+```
+//Powershell
 gpresult /RV        //get set of policies applied on current machine
-```
 
-### PowerView
-
-```
+//PowerView
 Get-NetGPO
 Get-NetGPO | select displayname
 Get-NetGPO -ComputerName <fqdn>
 Get-NetGPOGroup    //GPOs for restricted groups or users
+
+//LDAP Module
+Get-GPO -All
+Get-GPResultantsetOfPolicy -ReportType Html -Path <output path>
 ```
 
 Users under the machine's group policy
 
 ```
+//Powerview
 Find-GPOComputerAdmin -ComputerName <fqdn>        //find users under the machine's GPO
 Find-GPOLocation -UserName <username> -Verbose    //find machines that apply GPs to user
 ```
@@ -298,21 +164,38 @@ Find-GPOLocation -UserName <username> -Verbose    //find machines that apply GPs
 Organization Units
 
 ```
+//Powerview
 Get-NetOU -FullData
 Get-NetOU -FullData | select displayname,gplink    //get GPO name from gplink attr
 Get-NetGPO -GPOName "{<GPO name>}"                 //GPOs applied to OU
-```
 
-## LDAP Module
-
-```
-Get-GPO -All
-Get-GPResultantsetOfPolicy -ReportType Html -Path <output path>
-```
-
-Organizational Units
-
-```
+//LDAP Module
 Get-ADOrganizationalUnit -Filter * -Properties *
 Get-GPO -Guid <GPO name>
 ```
+
+### Machines
+
+```
+//PowerView
+Get-NetComputer
+Get-NetComputer -OperatingSystem "*<OS>*"
+Get-NetComputer -Ping
+Get-NetComputer -FullData
+
+//LDAP Module
+Get-ADComputer -Filter * -Properties name | select name
+Get-ADComputer -Filter 'OperatingSystem like "*<OS>*"' -Properties * | select name.OperatingSystem
+Get-ADComputer -Filter * -Properties DNSHostName | %{Test-Connection -Count 1 -ComputerName $_.DNSHostName}
+Get-ADComputer -Filter * -Properties *
+```
+
+Find shares and files
+
+```
+//PowerView
+Invoke-ShareFinder -Verbose
+Invoke-FileFilder -Verbose    //show files from readable shares
+Get-NetFileServer
+```
+
