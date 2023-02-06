@@ -257,8 +257,8 @@ Get-NetLocalGroup -ComputerName <full qualified domain> -Recurse
 Get-ADGroup -Filter * | select Name
 Get-ADGroup -Filter * -Properties *
 
-Get-ADGroup -Filter 'Name -eq "<str>"' | select Name
-Get-ADGroup -Filter 'Name -like "*<str>*"' | select Name
+Get-ADGroup -Filter 'Name -eq "<str>"' -Properties *
+Get-ADGroup -Filter 'Name -like "*<str>*"' -Properties *
 ```
 
 Users in group
