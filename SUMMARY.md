@@ -60,7 +60,7 @@
   * [Important Files](windows-privesc/enumeration/important-files.md)
 * [Active Directory](windows-privesc/active-directory/README.md)
   * [Enumeration](windows-privesc/active-directory/enumeration.md)
-  * [Credentials and Tickets](windows-privesc/active-directory/local-credentials.md)
+  * [Credentials harvesting](windows-privesc/active-directory/credentials-harvesting.md)
   * [Lateral Movement](windows-privesc/active-directory/lateral-movement/README.md)
     * [Hashes](windows-privesc/active-directory/lateral-movement/hashes.md)
     * [Tickets](windows-privesc/active-directory/lateral-movement/tickets.md)
@@ -71,7 +71,6 @@
 * [Client side](windows-privesc/client-side.md)
 * [Juicy Potato](windows-privesc/juicy-potato.md)
 * [UAC bypass](windows-privesc/uac-bypass.md)
-* [Credentials and Pivoting](windows-privesc/pivoting.md)
 * [Common Exploits](windows-privesc/common-exploits.md)
 
 ## Web Attacks
