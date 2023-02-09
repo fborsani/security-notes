@@ -89,7 +89,6 @@ New-PSSESSION -NAME PSC -ComputerName <target>; Enter-PSSession -Name PSC
 
 ```
 schtasks /create /s <target> /SC <time> <amount> /RU "NT Authority\System" /IR "<payload>"
-
 schtasks /create /s <target> /SC <time> <amount> /RU "<group>/<user>" /IR "<payload>"
 ```
 

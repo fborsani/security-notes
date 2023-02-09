@@ -40,8 +40,11 @@ C:\unattend.inf
 
 ```bash
 %SYSTEMROOT%\repair\SAM
+%SYSTEMROOT%\repair\sam
 %SYSTEMROOT%\System32\config\RegBack\SAM
+%SYSTEMROOT%\System32\config\RegBack\sam
 %SYSTEMROOT%\System32\config\SAM
+%SYSTEMROOT%\System32\config\sam
 %SYSTEMROOT%\repair\system
 %SYSTEMROOT%\System32\config\SYSTEM
 %SYSTEMROOT%\System32\config\RegBack\system

@@ -144,6 +144,7 @@ Get-NetUser
 Get-NetUser -Username <username> 
 Get-UserProperty                             //List of properties
 Get-UserProperty -Properties <property>      //value of property values for all users
+Get-UserProperty -Properties description     //might contain credentials
 ```
 
 Search a string in user properties
@@ -174,9 +175,11 @@ Invoke-UserHunter -CheckAccess            //check for admin access
 ### LDAP Module
 
 ```
- Get-ADUser -Filter *                      //default properties
- Get-ADUser -Filter * -Properties *        //all properties
- Get-ADUser -Identity <username> -Properties *
+ Get-ADUser -Filter *                                //default properties
+ Get-ADUser -Filter * -Properties *                  //all properties
+ Get-ADUser -Filter * -Properties description        //all properties
+ Get-ADUser -Identity <username> -Properties *       //might contain credentials
+ 
  Get-ADUser -Filter * -Properties * | select -First 1 | Get-Member -MemberType *Property | select name    //property list
  
  //If the machine we are running the query from is not part of a domain we need to specify the DC to query
