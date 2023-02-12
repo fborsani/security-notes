@@ -125,6 +125,7 @@ net accounts /domain    //get info on the account policies
 ### PowerShell
 
 ```
+Get-WmiObject -Class win32_useraccount
 Get-WmiObject -Class win32_useraccount | select name, domain, accounttype
 ```
 

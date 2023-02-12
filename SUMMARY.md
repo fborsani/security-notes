@@ -58,13 +58,6 @@
 
 * [Enumeration](windows-privesc/enumeration/README.md)
   * [Important Files](windows-privesc/enumeration/important-files.md)
-* [Active Directory](windows-privesc/active-directory/README.md)
-  * [Enumeration](windows-privesc/active-directory/enumeration.md)
-  * [Credentials harvesting](windows-privesc/active-directory/credentials-harvesting/README.md)
-    * [Domain Controller specific](windows-privesc/active-directory/credentials-harvesting/domain-controller-specific.md)
-  * [Lateral Movement](windows-privesc/active-directory/lateral-movement/README.md)
-    * [Hashes](windows-privesc/active-directory/lateral-movement/hashes.md)
-    * [Tickets](windows-privesc/active-directory/lateral-movement/tickets.md)
 * [Antivirus evasion tools](windows-privesc/antivirus-evasion-tools.md)
 * [Unquoted paths](windows-privesc/unquoted-paths.md)
 * [Always install elevated](windows-privesc/always-install-elevated.md)
@@ -73,6 +66,18 @@
 * [Juicy Potato](windows-privesc/juicy-potato.md)
 * [UAC bypass](windows-privesc/uac-bypass.md)
 * [Common Exploits](windows-privesc/common-exploits.md)
+
+## Active Directory
+
+* [Introduction](active-directory/introduction.md)
+* [Enumeration](active-directory/enumeration.md)
+* [Credentials harvesting](active-directory/credentials-harvesting/README.md)
+  * [Domain Controller specific](active-directory/credentials-harvesting/domain-controller-specific.md)
+* [Connection](active-directory/connection.md)
+* [Pass The Hash](active-directory/pass-the-hash.md)
+* [Kerberoast](active-directory/kerberoast.md)
+* [ASREProast](active-directory/asreproast.md)
+* [Tickets](active-directory/tickets.md)
 
 ## Web Attacks
 
