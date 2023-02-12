@@ -69,15 +69,15 @@
 
 ## Active Directory
 
-* [Introduction](active-directory/introduction.md)
-* [Enumeration](active-directory/enumeration.md)
-* [Credentials harvesting](active-directory/credentials-harvesting/README.md)
+* [Introduction](windows-privesc/active-directory/README.md)
+* [Enumeration](windows-privesc/active-directory/enumeration.md)
+* [Credentials harvesting](windows-privesc/active-directory/local-credentials.md)
   * [Domain Controller specific](active-directory/credentials-harvesting/domain-controller-specific.md)
-* [Connection](active-directory/connection.md)
-* [Pass The Hash](active-directory/pass-the-hash.md)
+* [Connection](windows-privesc/active-directory/lateral-movement/README.md)
+* [Pass The Hash](windows-privesc/active-directory/lateral-movement/hashes.md)
 * [Kerberoast](active-directory/kerberoast.md)
 * [ASREProast](active-directory/asreproast.md)
-* [Tickets](active-directory/tickets.md)
+* [Tickets](windows-privesc/active-directory/lateral-movement/tickets.md)
 
 ## Web Attacks
 

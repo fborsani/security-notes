@@ -1,4 +1,4 @@
-# Lateral Movement
+# Connection
 
 ## Remote administration
 
