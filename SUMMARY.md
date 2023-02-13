@@ -71,6 +71,7 @@
 
 * [Introduction](windows-privesc/active-directory/README.md)
 * [Enumeration](windows-privesc/active-directory/enumeration.md)
+* [Rubeus](active-directory/rubeus.md)
 * [Credentials harvesting](windows-privesc/active-directory/local-credentials.md)
   * [Domain Controller specific](active-directory/credentials-harvesting/domain-controller-specific.md)
 * [Connection](windows-privesc/active-directory/lateral-movement/README.md)
