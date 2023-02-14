@@ -1,4 +1,4 @@
-# Kerberos Bruteforcing
+# Kerberos
 
 ## Kerbrute
 

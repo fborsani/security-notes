@@ -71,7 +71,7 @@
 
 * [Introduction](windows-privesc/active-directory/README.md)
 * [Enumeration](windows-privesc/active-directory/enumeration.md)
-* [Kerberos Bruteforcing](active-directory/kerberos-bruteforcing.md)
+* [Kerberos](active-directory/kerberos.md)
 * [Rubeus](active-directory/rubeus.md)
 * [Credentials harvesting](windows-privesc/active-directory/local-credentials.md)
   * [Domain Controller specific](active-directory/credentials-harvesting/domain-controller-specific.md)

