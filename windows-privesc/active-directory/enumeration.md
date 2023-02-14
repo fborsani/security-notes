@@ -5,8 +5,7 @@
 ### PowerShell
 
 ```
-$ADCLass = [System.DirectoryServices.ActiveDirectory.Domain]
-$ADClass::GetCurrentDomain() 
+$ADCLass = [System.DirectoryServices.ActiveDirectory.Domain];$ADClass::GetCurrentDomain();
 
 Get-WmiObject -Namespace root\directory\ldap -Class ds_domain | select ds_dc, ds_distinguishedname, pscomputername
 
