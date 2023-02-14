@@ -178,8 +178,8 @@ Invoke-UserHunter -CheckAccess            //check for admin access
 ```
  Get-ADUser -Filter *                                //default properties
  Get-ADUser -Filter * -Properties *                  //all properties
- Get-ADUser -Filter * -Properties description        //all properties
- Get-ADUser -Identity <username> -Properties *       //might contain credentials
+ Get-ADUser -Filter * -Properties description        //description might contain credentials
+ Get-ADUser -Identity <username> -Properties *       
  
  Get-ADUser -Filter * -Properties * | select -First 1 | Get-Member -MemberType *Property | select name    //property list
  
@@ -214,17 +214,13 @@ Get-WmiObject -Class win32_groupindomain | foreach {[wmi]$_.partcomponent}
 Users in group
 
 ```
-Get-WmiObject -Class win32_groupuser | where {
-    $_.groupcomponent -match '<group>'
-} | foreach {[wmi]$_.partcomponent}
+Get-WmiObject -Class win32_groupuser | where {$_.groupcomponent -match '<group>'} | foreach {[wmi]$_.partcomponent}
 ```
 
 Groups of user
 
 ```
-Get-WmiObject -Class win32_groupuser | where {
-    $_.partcomponent -match '<user>'
-} | foreach {[wmi]$_.groupcomponent}
+Get-WmiObject -Class win32_groupuser | where {$_.partcomponent -match '<user>'} | foreach {[wmi]$_.groupcomponent}
 ```
 
 ### PowerView
