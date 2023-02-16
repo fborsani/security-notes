@@ -37,14 +37,8 @@ runas /savecred /user:<domain>\<user> "cmd.exe /k <cmd>"   //run command as user
 Run by specifying username and password
 
 ```
-runas /env /noprofile /user:<domain>/<user> <password> "cmd.exe /k <cmd>"
-runas /netonly /user:<domain>\<user> "cmd.exe /k <cmd>"
-```
-
-Run as another user on the same machine
-
-```
-runas /user:<user> "cmd.exe /k <cmd>"
+runas /env /noprofile /user:<domain>/<user> <password> "<cmd>"
+runas /netonly /user:<domain>\<user> "<cmd>"
 ```
 
 ### WMI

