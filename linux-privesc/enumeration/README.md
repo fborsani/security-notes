@@ -120,6 +120,15 @@ cat /etc/cron-weekly
 cat /etc/cron-monthly
 ```
 
+### Services
+
+```
+service --status-all
+systemctl --type=service --state=<active|running>
+systemctl list-units --type=service --all
+ls -l /etc/systemd/system /usr/lib/systemd/service | egrep .service$
+```
+
 ### Installed
 
 ```
