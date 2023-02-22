@@ -63,7 +63,8 @@
 * [Always install elevated](windows-privesc/always-install-elevated.md)
 * [Vulnerable services](windows-privesc/vulnerable-services.md)
 * [Client side](windows-privesc/client-side.md)
-* [Juicy Potato](windows-privesc/juicy-potato.md)
+* [Exploitable privileges](windows-privesc/exploitable-privileges/README.md)
+  * [Juicy Potato](windows-privesc/exploitable-privileges/juicy-potato.md)
 * [UAC bypass](windows-privesc/uac-bypass.md)
 * [Common Exploits](windows-privesc/common-exploits.md)
 
