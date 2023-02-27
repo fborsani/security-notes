@@ -56,6 +56,7 @@
 
 ## Windows PrivEsc
 
+* [Checklist](windows-privesc/checklist.md)
 * [Enumeration](windows-privesc/enumeration/README.md)
   * [Important Files](windows-privesc/enumeration/important-files.md)
 * [Antivirus evasion tools](windows-privesc/antivirus-evasion-tools.md)
