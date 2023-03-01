@@ -46,6 +46,7 @@
 
 ## Linux PrivEsc
 
+* [Checklist](linux-privesc/checklist.md)
 * [Enumeration](linux-privesc/enumeration/README.md)
   * [Important files](linux-privesc/enumeration/important-files.md)
   * [Memory Dump](linux-privesc/enumeration/memory-dump.md)

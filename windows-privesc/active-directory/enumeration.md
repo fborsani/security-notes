@@ -304,7 +304,7 @@ Get-NetOU -FullData | select displayname,gplink    //get GPO name from gplink at
 Get-NetGPO -GPOName "{<GPO name>}"                 //GPOs applied to OU
 ```
 
-## LDAP Module
+### LDAP Module
 
 ```
 Get-GPO -All
