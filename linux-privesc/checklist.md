@@ -27,6 +27,7 @@
   * Running processes
   * Ask the package manager (apt, dnf, yum, pacman...) for a list of installed software&#x20;
   * Check installed software for known CVEs
+  * Check running services
   * Check crontab files for scheduled scripts
     * Edit scheduled scripts to execute arbitrary code
   * Expose processes listening on localhost by rerouting traffic through a SSH Reverse Proxy
