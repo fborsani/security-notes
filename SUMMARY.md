@@ -5,7 +5,6 @@
 ## Resources
 
 * [Useful sites](resources/useful-sites.md)
-* [Pentest checklist](resources/pentest-checklist.md)
 * [Web application checklist](resources/web-application-checklist.md)
 * [Metasploit](resources/metasploit/README.md)
   * [Searchsploit](resources/metasploit/searchsploit.md)
@@ -19,6 +18,7 @@
 * [Windows](resources/windows/README.md)
   * [Kernel exploits table](resources/windows/kernel-exploits-table.md)
 * [Bruteforce](resources/bruteforce/README.md)
+  * [Checklist](resources/bruteforce/checklist.md)
   * [John the Ripper](resources/bruteforce/john-the-ripper.md)
   * [Hashcat](resources/bruteforce/hashcat.md)
 * [BOF](resources/bof/README.md)
