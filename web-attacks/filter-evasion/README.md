@@ -89,12 +89,6 @@ Extract a character from a string. By combining integer expressions for indexes 
 (!![]/![]+"")[+!![]]    #is equal to "Infinity"[1] --> "n"
 ```
 
-## PHP
-
-### Type Juggling
-
-
-
 ## URI Obfuscation
 
 Automatic login

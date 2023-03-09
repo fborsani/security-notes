@@ -87,11 +87,11 @@
 
 ## Web Attacks
 
+* [Enumeration](web-attacks/enumeration.md)
+  * [URL bruteforcing](web-attacks/enumeration/url-bruteforcing.md)
 * [Authentication](web-attacks/authentication.md)
 * [Filter Evasion](web-attacks/filter-evasion/README.md)
   * [Fuzzying and encoding](web-attacks/filter-evasion/fuzzying-and-encoding.md)
-* [Enumeration](web-attacks/enumeration.md)
-  * [URL bruteforcing](web-attacks/enumeration/url-bruteforcing.md)
 * [File Vulnerabilities](web-attacks/file-upload.md)
   * [LFI List](web-attacks/file-upload/lfi-list.md)
   * [PHP shells](web-attacks/file-upload/php-shells.md)
