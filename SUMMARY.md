@@ -5,7 +5,6 @@
 ## Resources
 
 * [Useful sites](resources/useful-sites.md)
-* [Web application checklist](resources/web-application-checklist.md)
 * [Metasploit](resources/metasploit/README.md)
   * [Searchsploit](resources/metasploit/searchsploit.md)
   * [Msfvenom](resources/metasploit/payload-generation.md)
@@ -87,6 +86,7 @@
 
 ## Web Attacks
 
+* [Checklist](web-attacks/checklist.md)
 * [Enumeration](web-attacks/enumeration.md)
   * [URL bruteforcing](web-attacks/enumeration/url-bruteforcing.md)
 * [Authentication](web-attacks/authentication.md)

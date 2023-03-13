@@ -20,7 +20,7 @@ See [LFI List](file-upload/lfi-list.md) for a list of possible target files for 
 
 Remote file inclusion happens when an attacker is able to make a web server include and execute files hosted on a different server controlled by the attacker. For instance by making a parameter point to an url of a file such as a reverse shell written in php it is possible to make the server follow the url and execute the shell
 
-See [PHP shells](file-upload/php-shells.md) for shells to be used in an attack. Keep in mind that these files MUST be stored as .txt files instead of their executable format (.php, .jsp, .asp). If you don't do thisthe malicious code will be executed on your local server instead of the remote one
+See [PHP shells](file-upload/php-shells.md) for shells to be used in an attack. Keep in mind that these files MUST be stored as .txt files instead of their executable format (.php, .jsp, .asp). If you don't do this the malicious code will be executed on your local server instead of the remote one
 
 #### Payloads
 

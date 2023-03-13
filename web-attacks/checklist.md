@@ -1,0 +1,83 @@
+# Checklist
+
+* URL bruteforce to discover accessible files or pages
+  * Check for backup files
+  * Check for interesting files
+    * robots.txt
+    * htaccess
+  * Check for readable folders (can be used for storing and accessing payloads)
+  * Bypass authentication by navigating directly to the pages
+  * Hidden administrative pages or control panels
+    * Common frameworks (Wordpress, Joomla, Laravel, Apache control panel, PHP)
+    * Default/Simple access credentials
+* Fingerprint web application
+  * Check header/footer
+  * Check page comments
+  * Server and other custom headers in response
+  * Check for exposed licenses or other framework specific files
+  * Try to make the server display an error page
+    * 404 Error - navigate to a non existing page
+    * 403 Error - navigate to a protected resource
+  * Try causing an error and see if the application displays a stack trace
+  * Enumerate the underlying server by checking the page format and extension
+* Search possible vulnerabilities
+  * Custom application on common framework
+    * Search for CVEs for given framework and version
+    * Potential vulnerable plugins
+    * Default credentials
+  * Commercial/Open Source webapp
+    * Search for known CVEs
+    * Search for project repository on GitHub/GitLab
+      * Default configurations
+      * If the application is deployed via container such as Docker it may contain plaintext credentials for the web server or database
+* Manual testing
+  * Check for vulnerable libraries
+  * Check for requests to other pages or services
+  * Check requests for plaintext credentials or session tokens
+  * Login forms
+    * Check if its is possible to create a new user
+    * Remember me functionality
+      * XSS to session hijack
+    * Exploitable password reset functionality
+    * Default credentials
+    * Guessable passwords such as the application name or easy words such as admin, pass, letmein, ...
+    * Check if the failed login message allows to detect existing users
+    * Password bruteforce
+      * Scrape the site to create a custom dictionary
+  * Check input and request fields. Remember to check both on client side by interacting with the application and server side by replicating the request with proxy tools such as Burp Suite or OWASP ZAP
+    * Check if input fields are managed by third-party components such as rich text editors
+      * Check for CVEs and/or custom bypass techniques
+    * SQL Injection
+      * Retrieve credentials and hashes
+      * Enumerate type and version of DB for possible CVEs
+        * Code Execution
+        * Arbitrary file read/write
+    * XSS
+    * SSTI
+    * RCE
+      * Reverse shell
+      * Arbitrary file read/write
+    * RFI
+      * Upload and execute a reverse shell
+      * Upload and execute a webshell
+    * LFI
+      * Enumerate underlying OS by reading typical files (/etc/passwd or C:\\\boot.ini)
+      * Read arbitrary files
+      * Trigger the execution of payloads loaded by exploiting other services or a vulnerable upload functionality
+    * Email fields
+      * SMTP injection to user enumeration
+    * Fields with non-standard inputs
+      * Regex vulnerabilities
+      * XPath injection
+  * Check for upload functionality
+    * Upload webapp packages for installation (war, php, .net,...)
+    * Weak file restrictions
+    * File upload functionality delegated to third-party library
+      * Check for known CVEs
+    * Arbitrary file upload
+    * Vulnerabilities in interpreted file names
+      * SQL Injection
+      * RCE
+    * XXE
+      * SSRF
+      * Exfiltrate arbitrary files
