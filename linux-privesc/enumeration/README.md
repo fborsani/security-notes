@@ -8,6 +8,7 @@
 whoami
 id
 sudo -l
+sudo --version
 echo $PATH
 printenv
 (env || set) 2>/dev/null
