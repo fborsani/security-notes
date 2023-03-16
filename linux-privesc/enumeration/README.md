@@ -123,12 +123,29 @@ cat /etc/cron-monthly
 
 ### Services
 
+Enumerate service manager type
+
 ```
-service --status-all
-systemctl --type=service --state=<active|running>
-systemctl list-units --type=service --all
-ls -l /etc/systemd/system /usr/lib/systemd/service | egrep .service$
+pstree | head -3    #check first line. It may display either systemd or init
 ```
+
+Enumerate init.d services
+
+```
+service --status-all                     #list all services
+service --status-all | grep '\[ + \]'    #list running services
+service <name> status                    #service info
+ls -l /etc/init.d/*                      #list all service conf files
+```
+
+Enumerate systemd services
+
+<pre><code>systemctl list-units --type=service                                  #list all services
+systemctl --type=service --state=&#x3C;active|running>                    #list running services
+systemctl status &#x3C;service>                                           #service info
+<strong>systemctl list-unit-files --state=enabled                            #list conf files of active services
+</strong>ls -l /etc/systemd/system /usr/lib/systemd/service | grep .service   #list service conf files
+</code></pre>
 
 ### Installed
 
