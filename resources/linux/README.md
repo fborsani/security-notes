@@ -194,6 +194,11 @@ cat <hexfile>.hex | xclip -selection clipboard
 ## Useful Commands
 
 ```
+su -c '<command>' <user>    
+su - <user> -c '<command>'    #may ask for password
+sudo -u <user> <cmd>          #simulate user login
+
+
 find -type f -name "*.txt" -exec cat "{}" \;
 find -type f -name "*.txt" -exec mv "{}" <dst> \;    #useful when mv throws errors
 find -exec mv "{}" <dst> \;                          #move all files and folders from here
