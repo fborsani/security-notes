@@ -191,6 +191,18 @@ echo -n "<hex string>" | xxd -r -ps
 cat <hexfile>.hex | xclip -selection clipboard
 ```
 
+## Useful Commands
+
+```
+find -type f -name "*.txt" -exec cat "{}" \;
+find -type f -name "*.txt" -exec mv "{}" <dst> \;    #useful when mv throws errors
+find -exec mv "{}" <dst> \;                          #move all files and folders from here
+
+ls | wc -l    #count files in folder
+wc -l <file>  #count the lines in file
+wc -w <file>  #count the words in file
+```
+
 ## Networking
 
 ### Default TTL
