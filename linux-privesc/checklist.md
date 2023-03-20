@@ -26,7 +26,10 @@
 * Enumerate tasks and processes
   * Running processes
   * Ask the package manager (apt, dnf, yum, pacman...) for a list of installed software&#x20;
-  * Check installed software for known CVEs
+  * Check installed software for vulnerabilities
+    * Known CVEs
+    * Arbitrary file read/write capabilities
+    * Capability to spawn an elevated shell (i.e. SUID + command execution)
   * Check running services
   * Check crontab files for scheduled scripts
     * Edit scheduled scripts to execute arbitrary code
