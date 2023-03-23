@@ -147,33 +147,6 @@ In order to find the definition file try appending the following payloads to the
 
 Some public web services may have their WSDL file accessible by visiting [soapclient.com](http://www.soapclient.com/)
 
-## Specific sites and services
-
-### Wordpress
-
-#### Enumeration
-
-Enumeration can be executed with the tool wpscan downloadable [here](https://github.com/wpscanteam/wpscan)
-
-```http
-wpscan --update
-wpscan --url <host> --enumerate u,p            #list users and installed lugins
-wpscan --url <host> --enumerate ap,at,cb,dbe   #bruteforce installed plugins, better results but really noisy
-```
-
-#### Credentials dump:
-
-This file contains plain-text username and password for database login. Sometimes these credentials can also be used to authenticate as another user on target machine.
-
-```http
-cat <wp folder>/wp-config.php    #local
-wget <url>/wp-config.php         #remote
-```
-
-### Joomla
-
-
-
 ### Git repository
 
 If you happen to find a .git folder on a server, you can dump all the files in the repository even if not directly accessible (403 error) with the following tool: [https://github.com/arthaud/git-dumper](https://github.com/arthaud/git-dumper)

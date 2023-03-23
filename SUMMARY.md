@@ -89,6 +89,7 @@
 * [Checklist](web-attacks/checklist.md)
 * [Enumeration](web-attacks/enumeration.md)
   * [URL bruteforcing](web-attacks/enumeration/url-bruteforcing.md)
+* [Wordpress](web-attacks/wordpress.md)
 * [Authentication](web-attacks/authentication.md)
 * [Filter Evasion](web-attacks/filter-evasion/README.md)
   * [Fuzzying and encoding](web-attacks/filter-evasion/fuzzying-and-encoding.md)
