@@ -96,7 +96,7 @@ You can use `wp.getUsersBlogs`, `wp.getCategories` or `metaWeblog.getUsersBlogs`
 
 ### File upload
 
-Requires valide credentials
+Requires valid credentials
 
 ```
 <?xml version='1.0' encoding='utf-8'?>

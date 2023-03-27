@@ -17,9 +17,11 @@
     * Editable passwd file
     * Editable .service files
     * Credentials or config files
+      * PHP config files (i.e. wp-config.php)
+      * DB config files (i.e. my.cnf)
   * Check environment variables
 * Enumerate OS version for common vulnerabilities
-  * Test for Shellshock exploit
+* Test for Shellshock exploit
 * Enumerate sensitive files and folders
   * Globally readable/writable files
   * Binaries with SUID bit set

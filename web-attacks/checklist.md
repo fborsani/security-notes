@@ -1,15 +1,17 @@
 # Checklist
 
 * URL bruteforce to discover accessible files or pages
-  * Check for backup files
-  * Check for interesting files
-    * robots.txt
-    * htaccess
-  * Check for readable folders (can be used for storing and accessing payloads)
-  * Bypass authentication by navigating directly to the pages
-  * Hidden administrative pages or control panels
-    * Common frameworks (Wordpress, Joomla, Laravel, Apache control panel, PHP)
-    * Default/Simple access credentials
+  * URL bruteforce for pages (.html, .php, .jsp, .do, .js)
+    * Bypass authentication by navigating directly to the pages
+    * Hidden administrative pages or control panels
+      * Common frameworks (Wordpress, Joomla, Laravel, Apache control panel, PHP)
+      * Default/Simple access credentials
+  * URL bruteforce for folders (can be used for storing and accessing payloads)
+  * URL bruteforce for files (set extension as .txt, .bak, .json, .conf, .cnf)
+    * Check for backup files
+      * Check for interesting files
+        * robots.txt
+        * htaccess
   * Check for git repositories
 * Fingerprint web application
   * Check header/footer

@@ -29,18 +29,39 @@ gobuster dir -u <domain> -w <path to dict> -s '<http codes i.e. 200,403>' -ek
 gobuster dir -u <domain> -w <path to dict> -s '<http codes i.e. 200,403>' -x <file extension> -ek
 ```
 
-#### Work via proxy
+### Common search patterns
 
-Only SOCKS 5 is supported
+Search generic
+
+```
+gobuster dir -u <domain> -w <path to dict> -ek
+```
+
+Search config files
+
+```
+gobuster dir -u <domain> -w <path to dict> -ek -x 'txt,conf,cnf,json,bak'
+```
+
+Search pages
+
+```
+gobuster dir -u <domain> -w <path to dict> -ek -x 'hmtl'
+gobuster dir -u <domain> -w <path to dict> -ek -x 'php'
+gobuster dir -u <domain> -w <path to dict> -ek -x 'jsp,do'
+gobuster dir -u <domain> -w <path to dict> -ek -x 'asp,aspx'
+```
+
+Exclude results based on response length (useful to detect redirects to standard error pages)
+
+```
+gobuster dir -u <domain> -w <path to dict> -ek --exclude-length <len>
+```
+
+Work via proxy (only SOCKS 5 is supported)
 
 ```
 gobuster dir -p socks5://127.0.0.1:<proxy port> -u <url> -w <dict> -ek
-```
-
-#### Dictionaries for bruteforce
-
-```
-ls -alh /usr/share/seclists/Discovery/Web-Content
 ```
 
 #### Interesting HTTP codes:
