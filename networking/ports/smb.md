@@ -51,34 +51,7 @@ prompt OFF
 mget *
 ```
 
-## Enumeration
-
-### NetBIOS
-
-```
-nmblookup -A <IP>    #enumerate all from given IP
-nbtscan -r <ip addr>
-nbtscan <ip cidr>    #search accessible services on network
-sudo nmap -sU -sV -T4 --script nbstat.nse -p137 -Pn -n <IP>
-```
-
-### Shares
-
-```
-smbmap -H [ip/hostname]            #anonymous access
-echo exit | smbclient -L \\\\[ip]  #anonymous access
-smbmap -H [ip/hostname] -u <root or username> -p <pass or none>
-```
-
-### Nmap NSE
-
-```
-nmap -v -p 139,445 --script=smb-os-discovery <ip addr>
-nmap --script smb-enum-shares -p 139,445 <ip addr>
-nmap --script smb-vuln* -p 139,445 <ip addr>
-```
-
-### Fix problems with older samba versions
+## Fix problems with older samba versions
 
 ```
 nano /etc/samba/smb.conf
@@ -86,4 +59,41 @@ nano /etc/samba/smb.conf
 client min protocol = LANMAN1
 #save and restart
 service smbd restart
+```
+
+## Enumeration
+
+### NetBIOS
+
+```
+nmblookup -A <IP>    #enumerate all from given IP
+nbtstat <ip>
+sudo nmap -sU -sV  --script nbstat.nse -p 137 -Pn -n <IP>
+
+nmap -v -p 139,445 --script=smb-os-discovery <ip addr>    #OS
+nmap --script smb-vuln* -p 139,445 <ip addr>              #vulnerabilities
+```
+
+### Existing users
+
+```
+nmap --script smb-enum-users.nse -p445 <ip>
+nmap -sU -sS --script smb-enum-users.nse -p U:137,T:139 <ip>
+```
+
+### Anonymous login
+
+```
+smbclient -N -L \\<ip>
+rpcclient -N -L <ip>
+```
+
+### Shares
+
+```
+smbmap -H <ip>                                  #anonymous access
+echo exit | smbclient -L \\\\<ip>               #anonymous access
+bmap -H <ip> -u <root or username> -p ''        #user with empty password
+smbmap -H <ip> -u <root or username> -p <pass>  #with user
+nmap --script smb-enum-shares -p 139,445 <ip>
 ```

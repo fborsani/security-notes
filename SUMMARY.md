@@ -36,6 +36,7 @@
   * [SMB](networking/ports/smb.md)
   * [RPC](networking/ports/rpc.md)
   * [SNMP](networking/ports/snmp.md)
+  * [LDAP](networking/ports/ldap.md)
   * [NTP](networking/ports/ntp.md)
   * [NFS](networking/ports/nfs.md)
   * [Mail](networking/ports/mail.md)

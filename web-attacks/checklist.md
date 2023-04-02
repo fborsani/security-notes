@@ -14,15 +14,16 @@
         * htaccess
   * Check for git repositories
 * Fingerprint web application
-  * Check header/footer
-  * Check page comments
-  * Server and other custom headers in response
-  * Check for exposed licenses or other framework specific files
-  * Try to make the server display an error page
-    * 404 Error - navigate to a non existing page
-    * 403 Error - navigate to a protected resource
-  * Try causing an error and see if the application displays a stack trace
-  * Enumerate the underlying server by checking the page format and extension
+  * Check HTTP headers and cookies for server/webapp specific strings
+  * Check pages
+    * Check header/footer
+    * Check comments
+    * Check for exposed licenses or other framework specific files
+      * Try to make the server display an error page
+        * 404 Error - navigate to a non existing page
+        * 403 Error - navigate to a protected resource
+      * Try causing an error and see if the application displays a stack trace
+      * Enumerate the underlying server by checking the page format and extension
 * Search possible vulnerabilities
   * Custom application on common framework
     * Search for CVEs for given framework and version

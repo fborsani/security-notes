@@ -69,9 +69,13 @@
 * [http://rumkin.com/tools/cipher/](http://rumkin.com/tools/cipher/)
 * [https://www.quipqiup.com/](https://www.quipqiup.com/)
 
-#### Default credentials and dictionaries
+#### Default credentials
 
 * [https://open-sez.me/](https://open-sez.me/)
+* [https://default-password.info/](https://default-password.info/)
+
+#### Dictionaries
+
 * [https://github.com/danielmiessler/SecLists](https://github.com/danielmiessler/SecLists)
 * [https://github.com/wallarm/jwt-secrets/blob/master/jwt.secrets.list](https://github.com/wallarm/jwt-secrets/blob/master/jwt.secrets.list)
 
