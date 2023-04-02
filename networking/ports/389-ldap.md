@@ -1,4 +1,4 @@
-# LDAP
+# 389 - LDAP
 
 ## Enumeration
 
@@ -10,12 +10,13 @@ nmap -n -sV --script "ldap* and not brute" <ip>
 
 Enumerate users and associated data. The description field may contain plaintext credentials.
 
-<pre><code>ldapsearch -x -h &#x3C;ip> -D "" -w "" -b "DC=&#x3C;subdomain>,DC=&#x3C;tld>"
+```
+ldapsearch -x -h <ip> -D "" -w "" -b "DC=<subdomain>,DC=<tld>"
 
-<strong>ldapsearch -x -h &#x3C;ip> -D "" -w "" -b "DC=&#x3C;subdomain>,DC=&#x3C;tld>" | grep sAMAccountName
-</strong>ldapsearch -x -h &#x3C;ip> -D "" -w "" -b "DC=&#x3C;subdomain>,DC=&#x3C;tld>" | grep description
-ldapsearch -x -h &#x3C;ip> -D "" -w "" -b "DC=&#x3C;subdomain>,DC=&#x3C;tld>" | grep userpas
-</code></pre>
+ldapsearch -x -h <ip> -D "" -w "" -b "DC=<subdomain>,DC=<tld>" | grep sAMAccountName
+ldapsearch -x -h <ip> -D "" -w "" -b "DC=<subdomain>,DC=<tld>" | grep description
+ldapsearch -x -h <ip> -D "" -w "" -b "DC=<subdomain>,DC=<tld>" | grep userpas
+```
 
 ## Enumeration with credentials
 
