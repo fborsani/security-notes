@@ -1,15 +1,5 @@
 # Wordpress
 
-## Plugin enumeration
-
-Enumeration can be executed with the tool wpscan downloadable [here](https://github.com/wpscanteam/wpscan)
-
-```http
-wpscan --update
-wpscan --url <host> --enumerate u,p            #list users and installed lugins
-wpscan --url <host> --enumerate ap,at,cb,dbe   #bruteforce installed plugins, better results but really 
-```
-
 ## Standard pages and folders
 
 #### License files
@@ -24,19 +14,29 @@ wpscan --url <host> --enumerate ap,at,cb,dbe   #bruteforce installed plugins, be
 * `/login.php`
 * `/wp-login.php`
 
-#### Storage folders
+#### Resource folders
 
 * `wp-content/uploads/` resources folder
 * `wp-content/themes/` themes folder
 * `wp-includes/` plugins, scripts and widgets
 
-## Reverse shell upload
+## Plugin enumeration
+
+Enumeration can be executed with the tool wpscan downloadable [here](https://github.com/wpscanteam/wpscan)
+
+```http
+wpscan --update
+wpscan --url <host> --enumerate u,p            #list users and installed lugins
+wpscan --url <host> --enumerate ap,at,cb,dbe   #bruteforce installed plugins, better results but really
+```
+
+## Authenticated RCE
 
 These attacks require access to the administrative console
 
 ### Template editor
 
-It is possible to use the template editor to modify a php page. The modified files are usually located under `/wp-content/themes/<theme>/<page>.php`
+It is possible to use the template editor to modify a php page.  The best target is the 404 page since it can be triggered easily. If not possible the modified files are usually located under `/wp-content/themes/<theme>/<page>.php`
 
 ### Plugin upload functionality
 
