@@ -1,4 +1,4 @@
-# SNMP
+# 161 - SNMP
 
 ## Enumeration
 
@@ -21,7 +21,7 @@ snmpwalk -c <comm string> -v1 -t <timeout> <ip addr> 1.3.6.1.2.1.25.6.3.1.2     
 * **`public`** Read only functions&#x20;
 * **`private`** Read/Write in general
 
-Permissions are not totally controlled by the community string used, some values may be writable even if the public string is used. The reverse is also true, if you try to write a read-only object a **** `noSuchName` or `readOnly` error is received. In versions 1 and 2/2c if you to use a bad community string the server wont respond.
+Permissions are not totally controlled by the community string used, some values may be writable even if the public string is used. The reverse is also true, if you try to write a read-only object a `noSuchName` or `readOnly` error is received. In versions 1 and 2/2c if you to use a bad community string the server wont respond.
 
 ## OID structure
 

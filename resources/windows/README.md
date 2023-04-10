@@ -164,9 +164,9 @@ icacls <filename> /setowner <owner> /L /Q /C       #change owner to file
 8530   Windows Update Service
 ```
 
-****
 
-****
+
+
 
 
 
