@@ -381,6 +381,16 @@ See hash examples at: [https://hashcat.net/wiki/doku.php?id=example\_hashes](htt
 hashcat -w 2 -a 0 -m 1600 --username <file> <dict>
 ```
 
+### GNUPG private key
+
+```
+gpg2john <file>.priv > creds.txt
+john --wordlist=<dict> creds.txt
+
+#use key to extract plaintext credentials
+echo "<pkey>" | gpg --batch --yes --decrypt --passphrase-fd 0 <file>.gpg
+```
+
 ### NTLM
 
 ```
@@ -409,6 +419,7 @@ hashcat -w 3 -a 0 -m 11200 <file> <dict>  #MySQL SHA-1
 use rar2john to extract hashes from archives
 
 ```
+rar2john <file>.rar > creds.txt
 hashcat -w 2 -a 0 -m 13600 <file> <dict>    #Winzip
 hashcat -w 2 -a 0 -m 11600 <file> <dict>    #7-zip
 hashcat -w 2 -a 0 -m 23700 <file> <dict>    #RAR3-p compressed
