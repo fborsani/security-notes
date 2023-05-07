@@ -2,10 +2,12 @@
 
 * URL bruteforce to discover accessible files or pages
   * URL bruteforce for pages (.html, .php, .jsp, .do, .js)
+    * .stm, .shtm or .shtml
+      * SSI
     * Bypass authentication by navigating directly to the pages
     * Hidden administrative pages or control panels
-      * Common frameworks (Wordpress, Joomla, Laravel, Apache control panel, PHP)
-      * Default/Simple access credentials
+    * Common frameworks (Wordpress, Joomla, Laravel, Apache control panel, PHP)
+    * Default/Simple access credentials
   * URL bruteforce for folders (can be used for storing and accessing payloads)
   * URL bruteforce for files (set extension as .txt, .bak, .json, .conf, .cnf)
     * Check for backup files
@@ -87,6 +89,7 @@
     * Vulnerabilities in interpreted file names
       * SQL Injection
       * RCE
+      * SSI
     * XXE
       * SSRF
       * Exfiltrate arbitrary files

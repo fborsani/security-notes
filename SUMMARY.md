@@ -110,6 +110,7 @@
   * [DOM Based](web-attacks/xss/dom-based.md)
   * [Reflected](web-attacks/xss/reflected.md)
   * [Filter Evasion](web-attacks/xss/filter-evasion.md)
+* [SSI](web-attacks/ssi.md)
 * [SSTI](web-attacks/ssti.md)
 * [RCE](web-attacks/rce.md)
 * [CSRF](web-attacks/csrf-cross-site-request-forgery.md)

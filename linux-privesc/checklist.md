@@ -9,9 +9,14 @@
     * Allowed commands can spawn elevated shells
     * Sudo version exploits
     * LD\_PRELOAD exploit
+  * Readable home folders
+    * hidden files
+    * bash history
+    * .gnupg folder
+    * .ssh folder
+    * sudo\_command\_successful
   * Docker/lxd groups exploit
   * Can switch to another user without password or using other known credentials
-  * Check user history and config files in home directory
   * Readable or Writable sensitive files
     * Editable sudoers file
     * Editable passwd file
@@ -32,9 +37,11 @@
     * Known CVEs
     * Arbitrary file read/write capabilities
     * Capability to spawn an elevated shell (i.e. SUID + command execution)
+    * Application can create sockets
   * Check running services
   * Check crontab files for scheduled scripts
     * Edit scheduled scripts to execute arbitrary code
+    * Check for relative paths in commands
   * Expose processes listening on localhost by rerouting traffic through a SSH Reverse Proxy
 * Enumerate and mount other drives or partitions
 * Enumerate custom executables/scripts
