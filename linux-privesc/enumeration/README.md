@@ -42,14 +42,15 @@ ls -lah /home/*/*
 
 ls -lah /home/*/.ssh
 ls -lah /home/*/.gnupg
+ls -lah /home/*/.bash_history
 ```
 
-### Writable fiels
+### Writable files
 
 Owned files
 
 ```
-find / -type f -exec ls -lah '{}' \; 2>/dev/null | grep $(whoami)
+find /etc /var /home /bin /usr /opt /tmp /mnt -type f -exec ls -lah '{}' \; 2>/dev/null | grep $(whoami)
 ```
 
 Writable folders
@@ -61,7 +62,7 @@ find / -type d -exec ls -ld '{}' \; 2>/dev/null | grep $(whoami);
 Writable files
 
 ```
-find /etc -writable -type f -exec ls -lah '{}' \; 2>/dev/null
+find /etc /var /home /bin /usr /opt /tmp /mnt -writable -type f -exec ls -lah '{}' \; 2>/dev/null
 ```
 
 ## OS
