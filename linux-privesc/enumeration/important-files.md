@@ -35,16 +35,16 @@ ls -lah /home/*
 ls -lah /home/*/*
 ```
 
-Search file globally by user
+Search files globally by user
 
 ```
-find / -type f -exec ls -lah '{}' \; 2>/dev/null | grep <user>
+find / -type f -exec ls -lah '{}' \; 2>/dev/null | grep $(whoami)
 ```
 
 Search globally for user-owned folders
 
 ```
-find / -type d -exec ls -ld '{}' \; 2>/dev/null | grep <user>;
+find / -type d -exec ls -ld '{}' \; 2>/dev/null | grep $(whoami);
 ```
 
 Writable by me

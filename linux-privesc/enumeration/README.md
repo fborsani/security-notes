@@ -31,6 +31,39 @@ su <user>    #with or without password, try stupid things like root - root
 sudo su      #switch to root, requires sudo permission and knowledge of the user's password
 ```
 
+## User files enumeration
+
+### Enumerate home folders
+
+```
+find /home/*/ -type f 2>/dev/null
+ls -lah /home/*
+ls -lah /home/*/*
+
+ls -lah /home/*/.ssh
+ls -lah /home/*/.gnupg
+```
+
+### Writable fiels
+
+Owned files
+
+```
+find / -type f -exec ls -lah '{}' \; 2>/dev/null | grep $(whoami)
+```
+
+Writable folders
+
+```
+find / -type d -exec ls -ld '{}' \; 2>/dev/null | grep $(whoami);
+```
+
+Writable files
+
+```
+find /etc -writable -type f -exec ls -lah '{}' \; 2>/dev/null
+```
+
 ## OS
 
 ### Arch and kernel

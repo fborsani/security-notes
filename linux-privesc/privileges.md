@@ -132,6 +132,8 @@ Description=Foo
 
 [Service]
 ExecStart=/usr/sbin/foo-daemon
+#OR
+ExecStart='<CMD>'
 
 [Install]
 WantedBy=multi-user.target
