@@ -123,6 +123,12 @@ cat /etc/cron-monthly
 
 ### Services
 
+Enumerate writable service files
+
+```
+find /etc -type f -name *.service -exec ls -lah {} \; | grep $(whoami)
+```
+
 Enumerate service manager type
 
 ```
@@ -147,7 +153,7 @@ systemctl status &#x3C;service>                                           #servi
 </strong>ls -l /etc/systemd/system /usr/lib/systemd/service | grep .service   #list service conf files
 </code></pre>
 
-### Installed
+### Installed software
 
 ```
 dpkg -l
