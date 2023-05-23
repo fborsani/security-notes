@@ -93,6 +93,7 @@
 * [Checklist](web-attacks/checklist.md)
 * [Enumeration](web-attacks/enumeration.md)
   * [URL bruteforcing](web-attacks/enumeration/url-bruteforcing.md)
+* [APIs and Fields](web-attacks/apis-and-fields.md)
 * [Joomla](web-attacks/joomla.md)
 * [Wordpress](web-attacks/wordpress.md)
 * [WebDAV](web-attacks/webdav.md)
