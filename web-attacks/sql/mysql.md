@@ -122,6 +122,7 @@ SELECT host, user, password FROM mysql.user; --priv
 
 ```
 SELECT * FROM mytable INTO <name> '<path to name>';
+UNION SELECT ("<payload>") INTO OUTFILE '<path> '  -- -'
 ```
 
 ### Local code execution (raptor\_udf)
