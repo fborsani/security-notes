@@ -57,22 +57,22 @@ crowbar -b <protocol> -s <target ip> -u <target user> -C <path to wordlist>.txt 
 ### Hydra
 
 ```
-hydra -vV -l <user> -P <path to wordlist>.txt <protocol>://<ip> -e sn -t 8
-hydra -vV -l <user> -P <path to wordlist>.txt <protocol>://<ip> -o <file>.txt
+hydra -vV -l <user> -P <path to wordlist>.txt <protocol>://<ip> -s <port> -e sn -t 8
+hydra -vV -l <user> -P <path to wordlist>.txt <protocol>://<ip> -s <port> -o <file>.txt
 hydra -vV -L <userlist>.txt -P <path to wordlist>.txt <protocol>://<ip> -s <port>
 ```
 
 #### Post form
 
 ```
-hydra <ip> http-form-post "<relative form url>:<user form field>=^USER^&<password form field>=^PASS^:F=<invalid login string>" -L <file>.txt -P <file>.txt -vV -f
-hydra <ip> http-form-post "<relative form url>:<user form field>=<username>&<password form field>=^PASS^:F=<invalid login string>" -l <username> -P <file>.txt -vV -f
+hydra <ip> -s <port> http-form-post "<relative form url>:<user form field>=^USER^&<password form field>=^PASS^:F=<invalid login string>" -L <file>.txt -P <file>.txt -vV -f
+hydra <ip> -s <port> http-form-post "<relative form url>:<user form field>=<username>&<password form field>=^PASS^:F=<invalid login string>" -l <username> -P <file>.txt -vV -f
 ```
 
 Slow mode
 
 ```
-hydra <ip> http-form-post "<relative form url>:<user form field>=<username>&<password form field>=^PASS^:F=<invalid login string>" -l <username> -P <file>.txt -vV -f -t 2 -W 5
+hydra <ip> -s <port> http-form-post "<relative form url>:<user form field>=<username>&<password form field>=^PASS^:F=<invalid login string>" -l <username> -P <file>.txt -vV -f -t 2 -W 5
 ```
 
 #### Password spraying
