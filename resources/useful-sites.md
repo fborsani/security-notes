@@ -45,6 +45,7 @@
 
 #### CVEs lists
 
+* [https://security.snyk.io/](https://security.snyk.io/)
 * [https://cve.mitre.org/](https://cve.mitre.org/)cgi-bin/cvekey.cgi?keyword=\<keyword or cve>
 * [https://www.cve.org/](https://www.cve.org/)
 * [https://cvedetails.com/](https://cvedetails.com/)cve/\<cve>
