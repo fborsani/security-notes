@@ -73,7 +73,8 @@ curl -X POST <url> -H "Authorization: Bearer <token>"
 #### SQL Injection
 
 ```
-''""``) or 'a' = 1;
+'"`) or 'a' = 1;    
+'"` or 1 = 1; 
 
 sleep(5)#
 or sleep(5)#
