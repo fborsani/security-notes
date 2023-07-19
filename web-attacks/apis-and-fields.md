@@ -58,6 +58,9 @@ curl -X POST <url>
 
 ```
 curl -X POST <url> -d @<path to file>
+curl -X POST <url> -F @<path to file>               #as form encoded
+curl -X POST <url> --data-binary @<path to file>    #use this if file is corrupted
+
 ```
 
 #### POST - Base Auth
