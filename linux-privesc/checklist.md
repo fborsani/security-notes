@@ -4,11 +4,12 @@
 * Verify if the current shell is from a docker instance
 * Get user information
   * Can use sudo
+    * sudo su or sudo - su
     * Sudo without password
-    * Sudo rules with wildcards
-    * Allowed commands can spawn elevated shells
-    * Sudo version exploits
-    * LD\_PRELOAD exploit
+      * Sudo rules with wildcards
+      * Allowed commands can spawn elevated shells
+      * Sudo version exploits
+      * LD\_PRELOAD exploit
   * Readable home folders
     * hidden files
     * bash history
@@ -17,6 +18,7 @@
     * sudo\_command\_successful
   * Docker/lxd groups exploit
   * Can switch to another user without password or using other known credentials
+  * Exploitable service accounts (i.e. apache, cron, ftp...) may allow to gain different/better privileges
   * Readable or Writable sensitive files
     * Editable sudoers file
     * Editable passwd file

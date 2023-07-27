@@ -28,7 +28,9 @@ cat /etc/group
 
 ```
 su <user>    #with or without password, try stupid things like root - root
+su - <user>  #simulate full login
 sudo su      #switch to root, requires sudo permission and knowledge of the user's password
+sudo - su    #sometimes is allowed while the version without the - is blocked
 ```
 
 ## User files enumeration
