@@ -48,8 +48,8 @@ gcc -shared -o <lib shared>.so <file>.o
 ### To windows
 
 ```
-i686-w64-mingw32-gcc <c file>.c -o <filename>.exe -<lib arg1> -<lib arg n> 
-x86_64-w64-mingw32-gcc <c file>.c -o <filename>.exe -<lib arg1> -<lib arg n> 
+i686-w64-mingw32-gcc <c file>.c -o <filename>.exe -lws2_32 -<lib arg n> 
+x86_64-w64-mingw32-gcc <c file>.c -o <filename>.exe -lws2_32 -<lib arg n> 
 ```
 
 #### Setup
