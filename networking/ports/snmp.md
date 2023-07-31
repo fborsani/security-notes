@@ -5,7 +5,9 @@
 ```
 nmap -sU --open -p 161 <ip addr>
 onesixtyone -c <community keyword file> -i <ip list file>
-snmpwalk -c <comm string> -v1 -t <timeout> <ip addr>                            #Full
+snmpwalk -c <public|private> -v<1|2c|3> -t <timeout> <ip addr>:<port> 
+ 
+snmpwalk -c <comm string> -v1 -t <timeout> <ip addr> .1                         #Full
 snmpwalk -c <comm string> -v1 -t <timeout> <ip addr> 1.3.6.1.4.1.77.1.2.25      #Windows users
 snmpwalk -c <comm string> -v1 -t <timeout> <ip addr> 1.3.6.1.2.1.25.4.2.1.2     #Windows processes
 snmpwalk -c <comm string> -v1 -t <timeout> <ip addr> 1.3.6.1.2.1.6.13.1.3       #Open TCP ports
