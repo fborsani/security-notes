@@ -100,7 +100,7 @@
 * [File Vulnerabilities](web-attacks/file-upload.md)
   * [LFI List](web-attacks/file-upload/lfi-list.md)
   * [PHP shells](web-attacks/file-upload/php-shells.md)
-* [Web Exploits](web-attacks/code/README.md)
+* [Code Execution](web-attacks/code/README.md)
   * [PHP](web-attacks/code/php.md)
   * [Java deserialization](web-attacks/code/java-deserialization.md)
 * [Joomla](web-attacks/joomla.md)
