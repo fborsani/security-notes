@@ -4,9 +4,9 @@
 
 ### Interesting locations
 
-```
-C:\\ProgramData
-C:\\Program Files\*\
+<pre><code><strong>C:\\inetpub
+</strong><strong>C:\\ProgramData
+</strong>C:\\Program Files\*\
 C:\\Program Files (x86)\*\
 C:\\Windows\Temp
 C:\\Temp
@@ -14,7 +14,7 @@ C:\\Users\*\
 C:\\Users\*\Documents
 C:\\Users\*\AppData\Local
 C:\\Users\*\AppData\LocalLow
-```
+</code></pre>
 
 ### Config files
 
