@@ -8,10 +8,10 @@ nmap -n -sV --script "ldap* and not brute" <ip>
 
 ### Empty login
 
-Enumerate users and associated data. The description field may contain plaintext credentials.
+Enumerate users and associated data. The description field may contain plaintext credentials. The subdomain is usually the hostname of the machine.
 
 ```
-ldapsearch -x -h <ip> -D "" -w "" -b "DC=<subdomain>,DC=<tld>"
+ldapsearch -h <ip> -x -s base -b '' "(objectClass=*)" "*"    #dump all
 
 ldapsearch -x -h <ip> -D "" -w "" -b "DC=<subdomain>,DC=<tld>" | grep sAMAccountName
 ldapsearch -x -h <ip> -D "" -w "" -b "DC=<subdomain>,DC=<tld>" | grep description
@@ -21,7 +21,7 @@ ldapsearch -x -h <ip> -D "" -w "" -b "DC=<subdomain>,DC=<tld>" | grep userpas
 ## Enumeration with credentials
 
 ```
-ldapsearch -x -h <ip> -D '<domain>\<user>' -w '<pass>' -b "<CN string>,DC=<subdomain>,DC=<TLD>"sers,DC=<subdomain>,DC=<TLD>"
+ldapsearch -x -h <ip> -D '<domain>\<user>' -w '<pass>' -b "<CN string>,DC=<subdomain>,DC=<TLD>"
 ```
 
 Set `CN string` to one of the following values:
