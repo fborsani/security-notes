@@ -2,43 +2,7 @@
 
 ### HTML and Unicode Encoding
 
-| Symbol                                   | Entity Name | Numeric         | Unicode |
-| ---------------------------------------- | ----------- | --------------- | ------- |
-| "                                        | \&quot;     | \&#34; \&#X22;  | U+0022  |
-| '                                        | \&apos;     | \&#39; \&#X27;  | U+0027  |
-| \`                                       | \&grave;    | \&#96; \&#X60;  | U+0060  |
-| /                                        | \&sol;      | \&#47; \&#X2F;  | U+002F  |
-| \\                                       | \&bsol;     | \&#92; \&#X5C;  | U+005C  |
-| ;                                        | \&semi;     | \&#59; \&#X3B;  | U+003B  |
-| :                                        | \&colon;    | \&#58; \&#X3A;  | U+003A  |
-| ,                                        | \&comma;    | \&#44; \&#X2C;  | U+002C  |
-| .                                        | \&period;   | \&#46; \&#X2E;  | U+002E  |
-| (                                        | \&lpar;     | \&#40; \&#X28;  | U+0028  |
-| )                                        | \&rpar;     | \&#41; \&#X29;  | U+0029  |
-| \[                                       | \&lbrack;   | \&#91; \&#X5B;  | U+005B  |
-| ]                                        | \&rbrack;   | \&#93; \&#X5D;  | U+005D  |
-| {                                        | \&lbrace;   | \&#123; \&#X7B; | U+007B  |
-| }                                        | \&rbrace;   | \&#125; \&#X7D; | U+007D  |
-| <                                        | \&lt;       | \&#60; \&#X3C;  | U+003C  |
-| >                                        | \&gt;       | \&#62; \&#X3E;  | U+003E  |
-| \*                                       | \&ast;      | \&#42; \&#X2A;  | U+002A  |
-| +                                        | \&plus;     | \&#43; \&#X2B;  | U+002B  |
-| -                                        | NA          | \&#45; \&#X2D;  | U+002D  |
-| \_                                       | \&lowbar;   | \&#95; \&#X5F;  | U+005F  |
-| &                                        | \&amp;      | \&#38; \&#X26;  | U+0026  |
-| \|                                       | \&vert;     | \&#124; \&#X7C; | U+007C  |
-| $                                        | \&dollar;   | \&#36; \&#X24;  | U+0024  |
-| #                                        | \&num;      | \&#35; \&#X23;  | U+0023  |
-| \~                                       | \&tilde;    | \&#126; \&#X7E; | U+007E  |
-| \0 (NULL)                                | NA          | \&#0; \&#X0;    | U+0000  |
-| \b (backspace)                           | NA          | \&#8; \&#X8;    | U+0008  |
-| \n (line feed)                           | NA          | \&#10; \&#XA;   | U+000A  |
-| \t (horizontal tab)                      | NA          | \&#9; \&#X9;    | U+0009  |
-| \v (vertical tab)                        | NA          | \&#11; \&#XB;   | U+000B  |
-| \f (form feed)                           | NA          | \&#12; \&#XC;   | U+000C  |
-| \r (carriage return often used as \n \r) | NA          | \&#13; \&#XD;   | U+000D  |
-| \e (escape)                              | NA          | \&#27; \&#X1B;  | U+001B  |
-| SPACE                                    | NA          | \&#32; \&#X20;  | U+0020  |
+<table><thead><tr><th width="211.55256064690028">Symbol</th><th width="181">Entity Name</th><th width="150">Numeric</th><th>Unicode</th></tr></thead><tbody><tr><td>"</td><td>&#x26;quot;</td><td>&#x26;#34; &#x26;#X22;</td><td>U+0022</td></tr><tr><td>'</td><td>&#x26;apos;</td><td>&#x26;#39; &#x26;#X27;</td><td>U+0027</td></tr><tr><td>`</td><td>&#x26;grave;</td><td>&#x26;#96; &#x26;#X60;</td><td>U+0060</td></tr><tr><td>/</td><td>&#x26;sol;</td><td>&#x26;#47; &#x26;#X2F;</td><td>U+002F</td></tr><tr><td>\</td><td>&#x26;bsol;</td><td>&#x26;#92; &#x26;#X5C;</td><td>U+005C</td></tr><tr><td>;</td><td>&#x26;semi;</td><td>&#x26;#59; &#x26;#X3B;</td><td>U+003B</td></tr><tr><td>:</td><td>&#x26;colon;</td><td>&#x26;#58; &#x26;#X3A;</td><td>U+003A</td></tr><tr><td>,</td><td>&#x26;comma;</td><td>&#x26;#44; &#x26;#X2C;</td><td>U+002C</td></tr><tr><td>.</td><td>&#x26;period;</td><td>&#x26;#46; &#x26;#X2E;</td><td>U+002E</td></tr><tr><td>(</td><td>&#x26;lpar;</td><td>&#x26;#40; &#x26;#X28;</td><td>U+0028</td></tr><tr><td>)</td><td>&#x26;rpar;</td><td>&#x26;#41; &#x26;#X29;</td><td>U+0029</td></tr><tr><td>[</td><td>&#x26;lbrack;</td><td>&#x26;#91; &#x26;#X5B;</td><td>U+005B</td></tr><tr><td>]</td><td>&#x26;rbrack;</td><td>&#x26;#93; &#x26;#X5D;</td><td>U+005D</td></tr><tr><td>{</td><td>&#x26;lbrace;</td><td>&#x26;#123; &#x26;#X7B;</td><td>U+007B</td></tr><tr><td>}</td><td>&#x26;rbrace;</td><td>&#x26;#125; &#x26;#X7D;</td><td>U+007D</td></tr><tr><td>&#x3C;</td><td>&#x26;lt;</td><td>&#x26;#60; &#x26;#X3C;</td><td>U+003C</td></tr><tr><td>></td><td>&#x26;gt;</td><td>&#x26;#62; &#x26;#X3E;</td><td>U+003E</td></tr><tr><td>*</td><td>&#x26;ast;</td><td>&#x26;#42; &#x26;#X2A;</td><td>U+002A</td></tr><tr><td>+</td><td>&#x26;plus;</td><td>&#x26;#43; &#x26;#X2B;</td><td>U+002B</td></tr><tr><td>-</td><td>NA</td><td>&#x26;#45; &#x26;#X2D;</td><td>U+002D</td></tr><tr><td>_</td><td>&#x26;lowbar;</td><td>&#x26;#95; &#x26;#X5F;</td><td>U+005F</td></tr><tr><td>&#x26;</td><td>&#x26;amp;</td><td>&#x26;#38; &#x26;#X26;</td><td>U+0026</td></tr><tr><td>|</td><td>&#x26;vert;</td><td>&#x26;#124; &#x26;#X7C;</td><td>U+007C</td></tr><tr><td>$</td><td>&#x26;dollar;</td><td>&#x26;#36; &#x26;#X24;</td><td>U+0024</td></tr><tr><td>#</td><td>&#x26;num;</td><td>&#x26;#35; &#x26;#X23;</td><td>U+0023</td></tr><tr><td>~</td><td>&#x26;tilde;</td><td>&#x26;#126; &#x26;#X7E;</td><td>U+007E</td></tr><tr><td>\0 (NULL)</td><td>NA</td><td>&#x26;#0; &#x26;#X0;</td><td>U+0000</td></tr><tr><td>\b (backspace)</td><td>NA</td><td>&#x26;#8; &#x26;#X8;</td><td>U+0008</td></tr><tr><td>\n (line feed)</td><td>NA</td><td>&#x26;#10; &#x26;#XA;</td><td>U+000A</td></tr><tr><td>\t (horizontal tab)</td><td>NA</td><td>&#x26;#9; &#x26;#X9;</td><td>U+0009</td></tr><tr><td>\v (vertical tab)</td><td>NA</td><td>&#x26;#11; &#x26;#XB;</td><td>U+000B</td></tr><tr><td>\f (form feed)</td><td>NA</td><td>&#x26;#12; &#x26;#XC;</td><td>U+000C</td></tr><tr><td>\r (carriage return often used as \n \r)</td><td>NA</td><td>&#x26;#13; &#x26;#XD;</td><td>U+000D</td></tr><tr><td>\e (escape)</td><td>NA</td><td>&#x26;#27; &#x26;#X1B;</td><td>U+001B</td></tr><tr><td>SPACE</td><td>NA</td><td>&#x26;#32; &#x26;#X20;</td><td>U+0020</td></tr></tbody></table>
 
 Unicode format can be converted in URL encoding or CSS encoding as follows
 
@@ -51,12 +15,4 @@ U+0022 #full Unicode for double quote character
 
 Url encoding reserved characters
 
-|       | URL Encoded |                              |
-| ----- | ----------- | ---------------------------- |
-| #     | %23         | Anchor point                 |
-| ?     | %3F         | Arguments start point        |
-| &     | %24         | Argument separator           |
-| %     | %25         | Character encoding prefix    |
-| /     | %2F         | URL separator                |
-| +     | %2B         | Alternative symbol for space |
-| SPACE | %20 OR +    |                              |
+<table><thead><tr><th width="157"></th><th>URL Encoded</th><th></th></tr></thead><tbody><tr><td>#</td><td>%23</td><td>Anchor point</td></tr><tr><td>?</td><td>%3F</td><td>Arguments start point</td></tr><tr><td>&#x26;</td><td>%24</td><td>Argument separator</td></tr><tr><td>%</td><td>%25</td><td>Character encoding prefix</td></tr><tr><td>/</td><td>%2F</td><td>URL separator</td></tr><tr><td>+</td><td>%2B</td><td>Alternative symbol for space</td></tr><tr><td>SPACE</td><td>%20 OR +</td><td></td></tr></tbody></table>

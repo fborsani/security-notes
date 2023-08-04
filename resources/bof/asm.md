@@ -2,7 +2,11 @@
 
 ## X86 Architecture
 
-![](../../.gitbook/assets/regs1.png)
+<div align="left">
+
+<img src="../../.gitbook/assets/regs1.png" alt="">
+
+</div>
 
 ![](../../.gitbook/assets/regs2.png)
 

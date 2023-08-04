@@ -20,15 +20,7 @@ Performed through a combination of token containing identity and privileges of u
 
 ### User groups
 
-| ID  | Name               | Description                                                             |
-| --- | ------------------ | ----------------------------------------------------------------------- |
-| 512 | Domain Admins      | Grants administrative privilege over the whole domain                   |
-| 549 | Server Operators   | Grants administrative privilege on the DC                               |
-| 551 | Backup Operators   | Allows to access any file regardless of permission and performs backups |
-| 548 | Account Operators  | Allows to create or edit user accounts                                  |
-| 513 | Domain Users       | Includes all users                                                      |
-| 515 | Domain Computers   | Includes all machine accounts                                           |
-| 516 | Domain Controllers | Includes all DCs                                                        |
+<table><thead><tr><th width="85.33333333333331">ID</th><th width="208">Name</th><th>Description</th></tr></thead><tbody><tr><td>512</td><td>Domain Admins</td><td>Grants administrative privilege over the whole domain</td></tr><tr><td>549</td><td>Server Operators</td><td>Grants administrative privilege on the DC</td></tr><tr><td>551</td><td>Backup Operators</td><td>Allows to access any file regardless of permission and performs backups</td></tr><tr><td>548</td><td>Account Operators</td><td>Allows to create or edit user accounts</td></tr><tr><td>513</td><td>Domain Users</td><td>Includes all users</td></tr><tr><td>515</td><td>Domain Computers</td><td>Includes all machine accounts</td></tr><tr><td>516</td><td>Domain Controllers</td><td>Includes all DCs</td></tr></tbody></table>
 
 ### Trust
 
