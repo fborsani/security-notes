@@ -6,10 +6,10 @@
 * [https://github.com/swisskyrepo/PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
 * [https://book.hacktricks.xyz/](https://book.hacktricks.xyz/)
 * [https://guif.re/](https://guif.re/)
-* [https://osintframework.com/](https://osintframework.com/)  List of sites and resources for intelligence gathering
-* [https://www.regextester.com](https://www.regextester.com/)    Test and debug regular expressions
-* [https://nomodulenamed.com](https://nomodulenamed.com)    Helps to fix missing dependencies on Python packages
-* [https://www.offensive-security.com/metasploit-unleashed](https://www.offensive-security.com/metasploit-unleashed)  Metasploit guide
+* [https://osintframework.com/](https://osintframework.com/) List of sites and resources for intelligence gathering
+* [https://www.regextester.com](https://www.regextester.com/) Test and debug regular expressions
+* [https://nomodulenamed.com](https://nomodulenamed.com) Helps to fix missing dependencies on Python packages
+* [https://www.offensive-security.com/metasploit-unleashed](https://www.offensive-security.com/metasploit-unleashed) Metasploit guide
 * [https://www.revshells.com/](https://www.revshells.com/) Quick reverse shell templates
 
 ### OWASP Guidelines
@@ -21,16 +21,20 @@
 
 * [https://lolbas-project.github.io/](https://lolbas-project.github.io/) List of common exploitable Windows tools\programs
 * [https://github.com/Flangvik/SharpCollection](https://github.com/Flangvik/SharpCollection) Pre-compiled executables for in-memory execution
-* [https://attack.stealthbits.com/](https://attack.stealthbits.com/) Active Directory attacks guide
 * [https://www.lemoda.net/windows/windows2unix/windows2unix.html](https://www.lemoda.net/windows/windows2unix/windows2unix.html) Windows CMD reference
 * [https://www.catalog.update.microsoft.com/](https://www.catalog.update.microsoft.com/) List of Windows hotfixes and updates
+
+#### Active Directory
+
+* [https://attack.stealthbits.com/](https://attack.stealthbits.com/) Active Directory attacks guide
+* [https://wadcoms.github.io/](https://wadcoms.github.io/) List of techniques for AD enumeration and exploit
 
 ### Linux specific
 
 * [https://gtfobins.github.io/](https://gtfobins.github.io/) List of common \*nix programs that can be exploited for PrivEsc
-* [https://github.com/s0wr0b1ndef/Linux-Kernal-Exploits-m-](https://github.com/s0wr0b1ndef/Linux-Kernal-Exploits-m-)  List of linux kernel exploits
-* [https://explainshell.com/](https://explainshell.com/)  Breaks down a bash command and explains it
-* [https://linux.die.net/man/](https://linux.die.net/man/)  Linux man pages
+* [https://github.com/s0wr0b1ndef/Linux-Kernal-Exploits-m-](https://github.com/s0wr0b1ndef/Linux-Kernal-Exploits-m-) List of linux kernel exploits
+* [https://explainshell.com/](https://explainshell.com/) Breaks down a bash command and explains it
+* [https://linux.die.net/man/](https://linux.die.net/man/) Linux man pages
 
 ## Exploit databases
 
@@ -84,7 +88,7 @@
 
 * [https://crackstation.net/](https://crackstation.net/)
 * [https://hashes.org/search.php](https://hashes.org/search.php)
-* [https://www.onlinehashcrack.com/](https://www.onlinehashcrack.com/)&#x20;
+* [https://www.onlinehashcrack.com/](https://www.onlinehashcrack.com/)
 * [https://hashkiller.co.uk/Cracker](https://hashkiller.co.uk/Cracker)
 
 ## Networking
@@ -107,7 +111,7 @@
 **Network security analysis services**
 
 * [https://www.ssllabs.com/ssltest/](https://www.ssllabs.com/ssltest/)analyze.html?d=\<url> SSL/TLS Configuration
-* [https://sitereport.netcraft.com](https://sitereport.netcraft.com)/?url= \<url>  SSL/TLS Configuration
+* [https://sitereport.netcraft.com](https://sitereport.netcraft.com)/?url= \<url> SSL/TLS Configuration
 * [https://securityheaders.com](https://securityheaders.com)/?q=\<url> HSTS Configuration
 
 ## OSINT
