@@ -17,4 +17,3 @@ These notes cover the following topics:
 * Windows privilege escalation
 * Active Directory enumeration, pivoting and persistence
 * Web applications pentesting
-* s
