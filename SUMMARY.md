@@ -78,6 +78,7 @@
 ## Active Directory
 
 * [Introduction](windows-privesc/active-directory/README.md)
+* [Checklist](active-directory/checklist.md)
 * [Enumeration](windows-privesc/active-directory/enumeration.md)
 * [Kerberos](active-directory/kerberos.md)
 * [Rubeus](active-directory/rubeus.md)
