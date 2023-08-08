@@ -6,7 +6,7 @@ Send a request to a TGT for a Kerberos token, dump it from memory, crack it loca
 
 ### Windows machine
 
-Vulnerable users in domain
+Vulnerable machines in domain
 
 ```
 Get-NetUser -SPN | select serviceprincipalname    //Powerview
