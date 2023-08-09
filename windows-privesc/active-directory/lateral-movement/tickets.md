@@ -87,6 +87,7 @@ In case of multiple tickets, the attacker has to create a new silver ticket for 
 | LDAP                                | LDAP                                           |
 | Windows File Share                  | CIFS                                           |
 | Windows Remote Administration Tools | RPCSS, LDAP, CIFS                              |
+| MSSQL                               | MSSQL                                          |
 
 #### WMI
 
@@ -119,6 +120,12 @@ dir \\<target>\c$
 
 ```
 lsadump::dcsync /dc:<DC> /domain:<domain> /user:krbtgt
+```
+
+#### MSSQL
+
+```
+sqlcmd.exe -S <hostname>
 ```
 
 ## Skeleton Key
