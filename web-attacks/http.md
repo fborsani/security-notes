@@ -174,7 +174,7 @@ The host header is used to inform balancers and front end server to where to red
 * Check for host validation where only the url is validated and not the port `hostsite.com:evil`
 * Try to send a request with an url as part of an accepted subdomain `evil-hostsite.com` or `evilhostsite.com`
 * Duplicate the Host header
-* Add indentation before or after the header such as tabs spaces and \n
+* Add indentation before or after the header such as tabs spaces and&#x20;
 * Sending the request to a full url instead of a relative one may lead the server to parse the header differently
 
 ### Header overwrite
