@@ -80,6 +80,7 @@
 * [Introduction](windows-privesc/active-directory/README.md)
 * [Checklist](active-directory/checklist.md)
 * [Enumeration](windows-privesc/active-directory/enumeration.md)
+* [Page](active-directory/page.md)
 * [Kerberos](active-directory/kerberos.md)
 * [Rubeus](active-directory/rubeus.md)
 * [Credentials harvesting](windows-privesc/active-directory/local-credentials.md)
