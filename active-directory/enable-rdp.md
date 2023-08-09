@@ -20,7 +20,7 @@ Configure firewall
 netsh firewall add portopening TCP 3389 "Remote Desktop"
 ```
 
-IF during connection the following error appears: "Account Restrictions are preventing this user from signing in." Enable restricted admin mode on the server
+If during connection the following error appears: "Account Restrictions are preventing this user from signing in." enable restricted admin mode on the server
 
 ```
 reg add HKLM\System\CurrentControlSet\Control\Lsa /t REG_DWORD /v DisableRestrictedAdmin /d 0x0 /f

