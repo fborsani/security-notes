@@ -22,6 +22,7 @@
   * [Hashcat](resources/bruteforce/hashcat.md)
 * [BOF](resources/bof/README.md)
   * [Assembly](resources/bof/asm.md)
+* [Gaining access checklist](resources/gaining-access-checklist.md)
 
 ## Networking
 
