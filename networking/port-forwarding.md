@@ -2,7 +2,7 @@
 
 ## Proxychains-ng
 
-Version of proxychains that allows to specify different configurations for each connection. Useful for  running multiple proxies on different ports when pivoting through several subnets.
+Version of proxychains that allows to specify different configurations for each connection. Useful for running multiple proxies on different ports when pivoting through several subnets.
 
 ```
 apt-get install proxychains4
@@ -32,6 +32,16 @@ Can also be used to expose services running as localhost on the remote machine t
 ```
 ssh -N -R <kali ip>:<kali port>:<target address>:<target port> <kali user>@<kali ip>
 ```
+
+#### Example of exposing services running as localhost
+
+Run the following command on the compromised machine to map the local service port to a new port exposed to the attacker's machine.
+
+```
+ssh -N -R <exposed port>:localhost:<service port> <kali user>@<kali ip>
+```
+
+We can access the exposed service by navigating to the exposed port in our attacker machine. For instance if the exposed service is a web server and the specified exposed port is 8000 we can access the hosted content by navigating to `http://localhost:8000` on the attacker machine
 
 ### Dynamic port forwarding
 
@@ -87,6 +97,3 @@ socks4 <proxy ip> <port>
 #run commands through proxy
 proxychains <command>
 ```
-
-
-
