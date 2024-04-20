@@ -69,6 +69,18 @@ This vulnerability arises when an application uses an internal package that is m
 
 ### Package structure
 
+Create standard python package structure
+
+```
+package = '<package>' && \
+mkdir "$package" && \
+touch "${package}/__init__.py" && \
+echo -e '#!/usr/bin/python3\ndef main():\n\tpass\n\nif __name__=="__main__":\n\tmain()' > "${package}/main.py" && \
+touch "${package}/setup.py"
+```
+
+Configure setup.py
+
 ```
 from setuptools import find_packages
 from setuptools import setup
