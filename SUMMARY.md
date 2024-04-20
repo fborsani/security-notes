@@ -106,6 +106,7 @@
   * [PHP shells](web-attacks/file-upload/php-shells.md)
 * [RCE](web-attacks/code.md)
 * [Code Injection](web-attacks/code-injection.md)
+* [Dependency Injection](web-attacks/dependency-injection.md)
 * [Joomla](web-attacks/joomla.md)
 * [Wordpress](web-attacks/wordpress.md)
 * [WebDAV](web-attacks/webdav.md)
