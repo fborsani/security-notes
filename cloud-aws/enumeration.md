@@ -38,3 +38,10 @@ aws iam get-group --group-name <group name>
 aws iam list-roles
 aws iam get-role --role-name <role-name>
 ```
+
+## Buckets
+
+```
+aws s3 ls
+aws s3 ls s3:<bucket name>/<path>    #bucket name or arn
+```
