@@ -24,6 +24,10 @@
   * [Assembly](resources/bof/asm.md)
 * [Gaining access checklist](resources/gaining-access-checklist.md)
 
+## Cloud - AWS
+
+* [AWS Infrastructure](cloud-aws/aws-infrastructure.md)
+
 ## Networking
 
 * [Nmap](networking/nmap/README.md)
