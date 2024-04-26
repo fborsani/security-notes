@@ -27,6 +27,8 @@
 ## Cloud - AWS
 
 * [AWS Infrastructure](cloud-aws/aws-infrastructure.md)
+* [AWS Commands](cloud-aws/aws-commands.md)
+* [Enumeration](cloud-aws/enumeration.md)
 
 ## Networking
 
