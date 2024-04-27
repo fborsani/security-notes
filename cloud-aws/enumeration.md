@@ -12,6 +12,28 @@ aws iam list-roles
 aws iam list-access-keys
 ```
 
+### Access Keys
+
+To identify users from a leaked Access Key use the following command
+
+```
+aws sts get-access-key-info --access-key-id <key id>
+```
+
+### MFA
+
+Users using virtual MFA (TOTP)
+
+```
+aws iam list-virtual-mfa-devices
+```
+
+List of registered MFA devices
+
+```
+aws iam list-mfa-devices
+```
+
 ### Other Users
 
 ```
@@ -39,9 +61,23 @@ aws iam list-roles
 aws iam get-role --role-name <role-name>
 ```
 
+### Policies
+
+```
+aws s3api get-bucket-policy-status --bucket <bucket name>
+aws lambda get-policy --function-name <ARN> --query Policy --output text | jq
+```
+
 ## Buckets
+
+List all buckets
 
 ```
 aws s3 ls
-aws s3 ls s3:<bucket name>/<path>    #bucket name or arn
 ```
+
+List content of bucket
+
+<pre><code>aws s3 ls s3:&#x3C;bucket name>    #root level
+<strong>aws s3 ls s3:&#x3C;bucket name>/&#x3C;path>   
+</strong></code></pre>
