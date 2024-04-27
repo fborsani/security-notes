@@ -1,5 +1,76 @@
 # AWS Commands
 
+## Authentication
+
+### Access Key
+
+Create Access Key
+
+```
+aws iam create-access-key    #for current user
+aws iam create-access-key --user-name <user name>
+```
+
+Configure local variables
+
+```
+export AWS_SECRET_ACCESS_KEY="<access key>"
+export AWS_ACCESS_KEY_ID="<key id>"
+```
+
+Alternatively these variables can be configured by running the following command on the local machine
+
+```
+aws configure
+```
+
+### Session Token
+
+Create Session Token
+
+```
+aws sts get-session-token    #for current user
+aws sts get-session-token --user-name <user name>
+```
+
+Configure local variables
+
+```
+export AWS_ACCESS_KEY_ID="<access key>"
+export AWS_SECRET_ACCESS_KEY="<secret key>"
+export AWS_SESSION_TOKEN="<session token>"
+```
+
+### Assume Role
+
+#### Gain temporary access to a resource
+
+CLI Command. The session name is arbitrary and is requested only for logging purposes.
+
+```
+aws sts assume-role --role-arn <role arn> --role-session-name <session name>
+```
+
+Obtain temporary access to ECS instance. To be executed within the target instance
+
+```
+curl 169.254.170.2$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
+```
+
+Generate temporary credentials for Cloudshell instance. To be executed within the Cloudshell session. These credentials can be used to grant access to the shell to other users or services.
+
+```
+curl $AWS_CONTAINER_CREDENTIALS_FULL_URI -H "X-aws-ec2-metadata-token: $AWS_CONTAINER_AUTHORIZATION_TOKEN" 
+```
+
+After obtaining the credentials update the local environment
+
+```
+export AWS_ACCESS_KEY_ID="<access key>"
+export AWS_SECRET_ACCESS_KEY="<secret key>"
+export AWS_SESSION_TOKEN="<session token>"
+```
+
 ## Access Control
 
 ### Accounts
@@ -7,7 +78,7 @@
 Create account
 
 ```
-aws iam create-login-profile --user TryHackMe-IAM-User
+aws iam create-login-profile --user <username>
 ```
 
 Change password
@@ -22,18 +93,6 @@ Set password for AWS Console Access. If not present the IAM User is not allowed 
 
 ```
 aws iam update-login-profile --user <IAM> --password '<password>'
-```
-
-Create Access Key
-
-```
-aws iam create-access-key --user-name <user name>
-```
-
-&#x20;Create Session Token
-
-```
-aws sts get-session-token
 ```
 
 ### Manage Access Keys

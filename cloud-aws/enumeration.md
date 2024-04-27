@@ -2,7 +2,15 @@
 
 ## Access Control
 
-### Who am i?
+### Who am I?
+
+When logged in remotely using access keys
+
+```
+aws sts get-caller-identity
+```
+
+From Cloudshell
 
 ```
 aws iam get-user
@@ -78,6 +86,7 @@ aws s3 ls
 
 List content of bucket
 
-<pre><code>aws s3 ls s3:&#x3C;bucket name>    #root level
-<strong>aws s3 ls s3:&#x3C;bucket name>/&#x3C;path>   
-</strong></code></pre>
+```
+aws s3 ls s3:<bucket name>    #root level
+aws s3 ls s3:<bucket name>/<path>   
+```
