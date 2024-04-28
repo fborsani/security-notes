@@ -30,6 +30,7 @@
 * [References](cloud-aws/references.md)
 * [AWS Commands](cloud-aws/aws-commands.md)
 * [Enumeration](cloud-aws/enumeration.md)
+* [Public S3 Bucket Exploits](cloud-aws/public-s3-bucket-exploits.md)
 
 ## Networking
 
