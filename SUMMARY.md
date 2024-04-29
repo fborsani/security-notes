@@ -31,6 +31,7 @@
 * [AWS Commands](cloud-aws/aws-commands.md)
 * [Enumeration](cloud-aws/enumeration.md)
 * [Public S3 Bucket Exploits](cloud-aws/public-s3-bucket-exploits.md)
+* [EC2](cloud-aws/ec2.md)
 
 ## Networking
 
