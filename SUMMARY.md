@@ -31,7 +31,9 @@
 * [AWS Commands](cloud-aws/aws-commands.md)
 * [Enumeration](cloud-aws/enumeration.md)
 * [Public S3 Bucket Exploits](cloud-aws/public-s3-bucket-exploits.md)
-* [EC2](cloud-aws/ec2.md)
+* [EC2](cloud-aws/ec2/README.md)
+  * [cloud-init Exploits](cloud-aws/ec2/cloud-init-exploits.md)
+  * [Unencrypted EBS](cloud-aws/ec2/unencrypted-ebs.md)
 
 ## Networking
 
