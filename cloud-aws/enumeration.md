@@ -76,17 +76,3 @@ aws s3api get-bucket-policy-status --bucket <bucket name>
 aws lambda get-policy --function-name <ARN> --query Policy --output text | jq
 ```
 
-## Buckets
-
-List all buckets
-
-```
-aws s3 ls
-```
-
-List content of bucket
-
-```
-aws s3 ls s3:<bucket name>    #root level
-aws s3 ls s3:<bucket name>/<path>   
-```
