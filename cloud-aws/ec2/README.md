@@ -135,13 +135,3 @@ curl -s -H "X-aws-ec2-metadata-token: $IMDS_TOKEN" http://169.254.169.254/latest
 ```
 {% endtab %}
 {% endtabs %}
-
-## Cloudshell Enumeration
-
-Network information. Can be filtered by instance id or by entry index
-
-```
-aws ec2 describe-network-interfaces    #display all
-aws ec2 describe-network-interfaces --filters "Name=attachment.instance-id,Values=<instance id>"
-aws ec2 describe-network-interfaces | jq '.NetworkInterfaces[0]'
-```
