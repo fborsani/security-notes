@@ -22,16 +22,23 @@ Assign public IP to attached ENI. The required IDs are the ENI (eni-xxxx) and th
 
 ## Modify Routing Table to allow public traffic
 
+Get VPC and subnets of EC2 instances
+
+```
+aws ec2 describe-instances --query "Reservations[].Instances[].[InstanceId, VpcId, SubnetId]" --output text
+```
+
 Get a list of available gateways in current VPC. Save the ID of a gateway to use to route traffic outside the VPC
 
 ```
 aws ec2 describe-internet-gateways
 ```
 
-Get routing tables
+Get routing tables of specified VPC and subnet
 
 ```
-aws ec2 describe-route-tables
+aws ec2 describe-route-tables --filters "Name=vpc-id,Values=<vpc id>" "Name=association.subnet-id,Values=<subnet id>"
+aws ec2 describe-route-tables --filters "Name=vpc-id,Values=<vpc id>" "Name=association.subnet-id,Values=<subnet id>" --query "RouteTables[].[RouteTableId, Routes[*]]" --output text
 ```
 
 Edit the routing table to allow traffic from the VPC to the internet
