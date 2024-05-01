@@ -37,7 +37,8 @@
   * [cloud-init Exploits](cloud-aws/ec2/cloud-init-exploits.md)
   * [SSRF To AWS Role compromise](cloud-aws/ec2/ssrf-to-aws-role-compromise.md)
   * [Unencrypted EBS](cloud-aws/ec2/unencrypted-ebs.md)
-* [VPC](cloud-aws/vpc.md)
+* [VPC](cloud-aws/vpc/README.md)
+  * [Expose Resources](cloud-aws/vpc/expose-resources.md)
 
 ## Networking
 
