@@ -28,6 +28,7 @@
 
 * [AWS Infrastructure](cloud-aws/aws-infrastructure.md)
 * [References](cloud-aws/references.md)
+* [Page](cloud-aws/page.md)
 * [AWS Commands](cloud-aws/aws-commands.md)
 * [Enumeration](cloud-aws/enumeration.md)
 * [Bucket S3](cloud-aws/bucket-s3/README.md)
