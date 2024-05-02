@@ -11,11 +11,17 @@ arn:partition:service:region:account-id:resource-type:resource-id
 ```
 
 * Partition: can be one of the following: `aws`, `aws-cn` (Chinese branch), `aws-us-gov` (US Gov restricted access)
-* Service
+* [Service](references.md#services)
 * [Region](references.md#regions)
 * Account-id: account id of the resource owner
 * Resource-id: id code of the specified resource or service
 * Resource-type: some resource categories allow more granularity whensearching for a particular resource. For instance EC2 services can be subdivided into instances, images, security groups and so on
+
+## Services
+
+The following repository contains a list of services grouped by resource. The list is generated from the AWS documentation
+
+{% embed url="https://github.com/fborsani/aws-service-list/blob/main/generated_docs/aws_services.md" %}
 
 ## Regions
 
