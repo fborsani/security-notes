@@ -1,33 +1,5 @@
 # AWS Infrastructure
 
-## Networking
-
-### Global services
-
-* Cludfront
-* Route 53
-* IAM
-* Organizations
-* STS
-
-### Regional architecture
-
-* **Region:** a physical location in the world where a cluster of data centers is present
-  * **Availability Zone:** one or more discrete data centers with redundant power, networking, and connectivity in an AWS Region. These separations mean that an outage of one AZ due to lost power, networking issues, or ISP connectivity issues should not affect any other AZ
-    * S3 Bucket
-    * VPC
-      * Gateway
-      * Amazon DNS resolver instance
-      * Amazon Time Sync Service
-      * Microsoft KMS Service
-      * Elastic IP Address range
-      * EC2 Instance Metadata Service
-      * ECS Task Metadata Service
-      * EC2 Instances
-      * VPC Endpoints
-
-
-
 ## Access Control
 
 ### Accounts
