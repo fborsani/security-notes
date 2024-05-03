@@ -18,4 +18,5 @@ These notes cover the following topics:
 * Linux privilege escalation
 * Windows privilege escalation
 * Active Directory enumeration, pivoting and persistence
-* Web applications pentesting
+* Web application pentesting
+* Attacking common AWS services

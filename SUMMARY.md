@@ -26,17 +26,20 @@
 
 ## Cloud - AWS
 
-* [AWS Infrastructure](cloud-aws/aws-infrastructure.md)
-* [References](cloud-aws/references.md)
-* [AWS Commands](cloud-aws/aws-commands.md)
 * [Enumeration](cloud-aws/enumeration.md)
+* [References](cloud-aws/references.md)
 * [Bucket S3](cloud-aws/bucket-s3/README.md)
-  * [Public S3 Bucket Exploits](cloud-aws/bucket-s3/public-s3-bucket-exploits.md)
+  * [Public Bucket](cloud-aws/bucket-s3/public-bucket.md)
+  * [AMI Files](cloud-aws/bucket-s3/ami-files.md)
+  * [File upload to RCE](cloud-aws/bucket-s3/file-upload-to-rce.md)
 * [EC2](cloud-aws/ec2/README.md)
   * [cloud-init Exploits](cloud-aws/ec2/cloud-init-exploits.md)
   * [SSRF To AWS Role compromise](cloud-aws/ec2/ssrf-to-aws-role-compromise.md)
   * [Unencrypted EBS](cloud-aws/ec2/unencrypted-ebs.md)
-* [Lambda Function](cloud-aws/lambda-function.md)
+* [IAM](cloud-aws/iam.md)
+* [Lambda Function](cloud-aws/lambda-function/README.md)
+  * [Code Injection](cloud-aws/lambda-function/code-injection.md)
+  * [Attacking APIs](cloud-aws/lambda-function/attacking-apis.md)
 * [VPC](cloud-aws/vpc/README.md)
   * [Expose Resources](cloud-aws/vpc/expose-resources.md)
 

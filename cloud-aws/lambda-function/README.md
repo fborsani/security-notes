@@ -54,6 +54,6 @@ mkdir -p $dump_folder
 for f in $(aws lambda list-functions --query "Functions[].FunctionName" --output text); do
     wget $(aws lambda get-function --function-name "$f" --query Code.Location --output text) -O "$dump_folder/$f.zip"
     mkdir "$dump_folder/$f"
-    unzip "$dump_folderp/$f.zip" -d "$dump_folder/$f"
+    unzip "$dump_folder/$f.zip" -d "$dump_folder/$f"
 done
 ```
