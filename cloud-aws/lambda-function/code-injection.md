@@ -2,7 +2,7 @@
 
 ## Upload malicious code
 
-Download source code, unzip the archive alter the source code and create a new archive containing the malicious code
+Download lambda source code, unzip the archive alter the source code and create a new archive containing the malicious code
 
 ```
 wget $(aws lambda get-function --function-name "<function>" --query Code.Location --output text) -O "./source.zip"
@@ -25,7 +25,7 @@ Run code
 aws lambda invoke --function-name <function> output.json
 ```
 
-Run with parameters. Use the payload switch and specify your parameters inside a json file
+Run with parameters. Use the payload switch and specify your parameters inside a json file stored on your local machine or in the home folder of AWS Cli session
 
 ```
 aws lambda invoke --function-name <function> --payload fileb://<path>.json output.json
