@@ -15,7 +15,7 @@ arn:partition:service:region:account-id:resource-type:resource-id
 * [Region](references.md#regions)
 * Account-id: account id of the resource owner
 * Resource-id: id code of the specified resource or service
-* Resource-type: some resource categories allow more granularity whensearching for a particular resource. For instance EC2 services can be subdivided into instances, images, security groups and so on
+* Resource-type: some resource categories allow more granularity when searching for a particular resource. For instance EC2 services can be subdivided into instances, images, security groups and so on
 
 ## Services
 

