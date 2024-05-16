@@ -21,9 +21,9 @@ By default, root users do not have multi-factor authentication (MFA) enforced. F
 The authentication procedure is composed by elements called Principals. These elements are used to define access rules to services and resources. A principal falls into one of the following categories:
 
 * **Users**: represent a person or an application.  IAM Users are linked to a single AWS Account
-* **Groups**:
-* **Roles**:
-* **Policies**:
+* **Groups**: allow to easily manage users by assigning group-wide roles.
+* **Roles**: a temporary privilege that can be acquired by users or resources such as lambda functions and EC2 instances
+* **Policies**: a policy defines the type of operation that a specified user or role can perform on a resource. In the case of users that are members of groups, their policies are the combination of group assigned policies and the policies to the specific user
 
 <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
